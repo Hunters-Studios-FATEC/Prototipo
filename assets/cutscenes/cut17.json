@@ -1,0 +1,15 @@
+{
+  "name": "Cutscene 17",
+  "final_step": 0,
+  "events": [
+    {
+      "step": 0,
+      "text": "Malditos! Vocês conhecerão o poder dos sangues puros!",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

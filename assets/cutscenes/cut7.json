@@ -1,0 +1,25 @@
+{
+  "name": "Cutscene 7",
+  "final_step": 1,
+  "events": [
+    {
+      "step": 0,
+      "text": "Bélgica, 1918,",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+
+      "step": 1,
+      "text": "Finalmente a humanidade não sentirá os horrores desse monstro...",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

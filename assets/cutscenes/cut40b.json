@@ -1,0 +1,24 @@
+{
+  "name": "Cutscene 40",
+  "final_step": 1,
+  "events": [
+    {
+      "step": 0,
+      "text": "Ora, ora, parece que você é bem curioso. Não seguiu o caminho?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Muito bem, farei você segui-lo à força!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

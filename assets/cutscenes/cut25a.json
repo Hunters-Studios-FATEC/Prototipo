@@ -1,0 +1,24 @@
+{
+  "name": "Cutscene 25",
+  "final_step": 1,
+  "events": [
+    {
+      "step": 0,
+      "text": "Acho que esse era o último.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Agora só nos resta derrotar o Fuhrer!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

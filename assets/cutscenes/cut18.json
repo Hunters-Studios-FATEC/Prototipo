@@ -1,0 +1,42 @@
+{
+  "name": "Cutscene 18",
+  "final_step": 2,
+  "events": [
+    {
+      "step": 0,
+      "text": "Não! Não! Vermes...não...matarão...a...pureza...",
+      "speed": 0.3,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "De puro vocês não tem nada. Assassinos!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Vamos, depressa! Podemos entrar no castelo.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Vamos, Jacob! O portão está aberto.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

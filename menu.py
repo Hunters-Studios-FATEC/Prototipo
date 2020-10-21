@@ -1,30 +1,41 @@
 import pygame, sys
+from movimento import *
+from assets.cutscenes import *
+from cutscene_manager import CutSceneManager, Cutscene
+import json
 
 # init
 pygame.init()
 
+fps = pygame.time.Clock()
+
 # screen
-screen = pygame.display.set_mode((1280, 720), pygame.RESIZABLE)
+screen = pygame.display.set_mode((1280, 720))
 
 # fonts
-font = pygame.font.Font("Perfect DOS VGA 437.ttf", 100)
-font_2 = pygame.font.Font("Perfect DOS VGA 437.ttf", 50)
+font_menu = pygame.font.Font("assets/fontes/Very Damaged.ttf", 100)
+font_menu_2 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 50)
 
 # texts
 # text = font.render("Teste", True, (255, 255, 255))
-play = font_2.render("Play", True, (255, 255, 255))
-options = font_2.render("Options", True, (255, 255, 255))
-new_game = font_2.render('New Game', True, (255, 255, 255))
-load_game = font_2.render('Load Game', True, (255, 255, 255))
-X = font_2.render("X", True, (0, 0, 0))
-gam = font.render("Game", True, (255, 255, 255))
-opt = font.render("Options", True, (255, 255, 255))
-save_text = font_2.render('Choose a slot:', True, (255, 255, 255))
-slots = (font_2.render('Slot 1', True, (255, 255, 255)), font_2.render('Slot 2', True, (255, 255, 255)),
-         font_2.render('Slot 3', True, (255, 255, 255)))
+play = font_menu_2.render("Play", True, (255, 255, 255))
+options = font_menu_2.render("Options", True, (255, 255, 255))
+new_game = font_menu_2.render('New Game', True, (255, 255, 255))
+load_game = font_menu_2.render('Load Game', True, (255, 255, 255))
+X = font_menu_2.render("X", True, (0, 0, 0))
+gam = font_menu.render("Game", True, (255, 255, 255))
+opt = font_menu.render("Options", True, (255, 255, 255))
+save_text = font_menu_2.render('Choose a slot:', True, (255, 255, 255))
+slots = (font_menu_2.render('Slot 1', True, (255, 255, 255)), font_menu_2.render('Slot 2', True, (255, 255, 255)),
+         font_menu_2.render('Slot 3', True, (255, 255, 255)))
 
 # Bacgkground menu
-bg = pygame.image.load("bg.jpeg")
+bg = pygame.image.load("assets/backgrounds/bg.jpeg")
+
+# Cutscenes
+gerenciador = CutSceneManager(screen)
+cut1 = json.load(open("assets/cutscenes/cut1.json"), encoding='utf-8')
+cutscene1 = Cutscene(cut1)
 
 
 # main menu
@@ -52,7 +63,7 @@ def menu():
                     else:
                         pygame.quit()
                         sys.exit()
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_s:
                     if load_file == -1:
                         menu_select = not menu_select
                     else:
@@ -60,7 +71,7 @@ def menu():
                             load_file += 1
                         else:
                             load_file = 0
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_w:
                     if load_file == -1:
                         menu_select = not menu_select
                     else:
@@ -77,7 +88,7 @@ def menu():
                     else:
                         if load_file == -1:
                             if menu_select:
-                                game()
+                                trans()
                                 game_select = False
                             else:
                                 load_file = 0
@@ -97,7 +108,6 @@ def menu():
                                 game(int(load.readline().rstrip()), int(load.readline().rstrip()),
                                      int(load.readline().rstrip()))
                                 load.close()
-
 
         # buttons
         # screen.blit(text, (screen.get_width() / 2 - text.get_rect().width / 2, 100))
@@ -131,6 +141,23 @@ def menu():
         pygame.display.update()
 
 
+def cutscene(cut):
+    screen.fill((0, 0, 0))
+    while True:
+        fps.tick(60)
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+
+        gerenciador.start_cutscene(cut)
+        gerenciador.draw()
+        gerenciador.update()
+        pygame.display.update()
+        if not gerenciador.cutscene_running:
+            trans(1, 1)
+
+
 def game(p_hp=100, p_bllts=50, p_lvl=1):
     player_health_pts = p_hp
     player_bullets = p_bllts
@@ -157,7 +184,7 @@ def game(p_hp=100, p_bllts=50, p_lvl=1):
                     save_game(player_health_pts, player_bullets, player_level)
 
         screen.blit(gam, (screen.get_width() / 2 - gam.get_rect().width / 2, 100))
-        hp = font_2.render(f'HP:{player_health_pts}', True, (255, 255, 255))
+        hp = font_menu_2.render(f'HP:{player_health_pts}', True, (255, 255, 255))
         screen.blit(hp, (0, 0))
 
         pygame.display.update()

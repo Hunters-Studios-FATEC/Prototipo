@@ -1,0 +1,34 @@
+{
+  "name": "Cutscene 26",
+  "final_step": 2,
+  "events": [
+    {
+      "step": 0,
+      "text": "Então são vocês que estão causando problemas no castelo?",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Muito bem. Darei uma morte rápida pra vocês!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Preparem-se!",
+       "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+
+    }
+  ]
+}

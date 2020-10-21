@@ -1,0 +1,16 @@
+{
+  "name": "Cutscene 19",
+  "final_step": 0,
+  "events":[
+    {
+      "step": 0,
+      "text": "HAHAHAHA, siga seu “destino”, mortal.",
+      "speed": 0.3,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+
+    }
+  ]
+}

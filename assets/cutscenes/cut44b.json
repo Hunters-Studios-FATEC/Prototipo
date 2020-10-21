@@ -1,0 +1,26 @@
+{
+  "name": "Cutscene 44",
+  "final_step": 1,
+  "events": [
+    {
+      "step": 0,
+      "text": "Entendeu agora? Tudo não passa de um joguinho pra mim.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Mas agora me entediei de novo. E acho melhor você morrer!",
+      "speed": 1,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+    }
+  ]
+}

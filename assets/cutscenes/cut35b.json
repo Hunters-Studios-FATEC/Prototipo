@@ -1,0 +1,15 @@
+{
+  "name": "Cutscene 35",
+  "final_step": 0,
+  "events": [
+    {
+      "step": 0,
+      "text": "Jacob!",
+      "speed": 1,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "name": "Cutscene 1",
+  "final_step": 10,
+  "events": [
+    {
+      "step": 0,
+      "text": "6 de Junho de 20XX, Shenzhen - China",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Acontecia nesse dia um dos maiores eventos tecnológicos do planeta: A Convenção Ziaomi",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Dentre a multidão polvorosa, Jacob Back aguardava, ansiosamente, o início do evento.",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Jacob era um homem comum, de ascendência judia, dos Estados Unidos.",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Seu interesse por tecnologia era imenso.",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "De repente, uma movimentação incomum próxima toma sua atenção.",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Cuide disso com sua vida!",
+      "speed": 2,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "Mas o que...?!",
+      "speed": 0.2,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 8,
+      "text": "Não há tempo para explicar!",
+      "speed": 2,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Jacob pega, sem jeito, o relógio de pulso.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 10,
+      "text": "Sem querer, acaba tocando num dos botões....",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

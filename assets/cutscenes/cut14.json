@@ -1,0 +1,46 @@
+{
+  "name": "Cutscene 14",
+  "final_step": 2,
+  "events": [
+    {
+      "step": 0,
+      "text": "Jacob e Kenji chegam à praça principal. ",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Oh não! Desgraçados!",
+      "speed": 1,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Jacob, rápido, precisamos ajudá-los.",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+  ]
+
+}

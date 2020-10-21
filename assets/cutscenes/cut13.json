@@ -1,0 +1,186 @@
+{
+  "name": "Cutscene 13",
+  "final_step": 19,
+  "events": [
+    {
+      "step": 0,
+      "text": "20XX Shenzhen, China.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Mas o que?! Vim parar em 1945?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Jacob olha no relógio e vê marcando 6 de junho de 20XX – porém com o dizer: cargas finalizadas.",
+      "speed": 0.6,
+      "size": 36,
+      "rgb_color": [237, 237, 237],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Não! Não!",
+      "speed": 1,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Jacob se lembra de uma voz dizendo “Deverás viver com as consequências de seus atos”",
+      "speed": 0.6,
+      "size": 38,
+      "rgb_color": [237, 237, 237],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Mas eu matei Hitler! Tenho certeza! Então por que...?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Ei, você aí. Você não parece ariano. Quem é?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "Jacob olha pra cima.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 8,
+      "text": "Você é o cara do relógio! Onde estamos? Por que está tudo assim?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Relógio? Não sei do que fala. Estamos em 20XX. Os coturnos pretos devem ter te batido forte.",
+      "speed": 0.6,
+      "size": 38,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": "10",
+      "text": "Me chamo Kenji.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 11,
+      "text": "Sou da célula de resistência asiática. Meus companheiros e eu estamos dando início à retomada da China.",
+      "speed": 0.6,
+      "size": 34,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 12,
+      "text": "Retomada?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 13,
+      "text": "Sim. Dos Nazistas. Como havia dito, você não parece ariano.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 14,
+      "text": "E pela arma, talvez possa me ajudar. A propósito, qual seu nome?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 15,
+      "text": "Jacob. Jacob Back.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 16,
+      "text": "Bom Jacob, o que me diz, pode me ajudar a matar os malditos?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 17,
+      "text": "Jacob pensa que se o ajudar, talvez descubra o quê está acontecendo.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 18,
+      "text": "Sim, o ajudarei.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 19,
+      "text": "Muito bem! Vamos!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    }
+  ]
+}

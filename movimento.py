@@ -1,8 +1,11 @@
 import pygame as pg
 from pygame.locals import *
 import sys
+import json
 from classes import *
+from cutscene_manager import CutSceneManager, Cutscene
 import random
+from assets.cutscenes import *
 from battle_ui import BattleBox, Button, BattleLog
 
 # pygame init
@@ -32,11 +35,29 @@ seta = pg.image.load("assets/sprites/SETA1.png")
 seta_vert = pg.image.load("assets/sprites/SETA1_vert.png")
 tfont = pg.font.Font("assets/fontes/Very Damaged.ttf", 50)
 
+# dialogos
+cut2 = json.load(open("assets/cutscenes/cut2.json", encoding='utf-8'))
+cut3 = json.load(open("assets/cutscenes/cut3.json", encoding='utf-8'))
+cut4 = json.load(open("assets/cutscenes/cut4.json", encoding='utf-8'))
+cut5 = json.load(open("assets/cutscenes/cut5.json", encoding='utf-8'))
+
+cutscene2 = Cutscene(cut2)
+cutscene3 = Cutscene(cut3)
+cutscene4 = Cutscene(cut4)
+cutscene5 = Cutscene(cut5)
+
+gerenciador = CutSceneManager(screen)
+
+# Contagem de salas
+salas = 0
+
+# FPS
+fps = pygame.time.Clock()
 
 # battle call
 def combate():
 
-    global xpos
+    global xpos, salas
     xpos -= 1
 
     # enemy/player list and positioning
@@ -74,6 +95,8 @@ def combate():
     ground_2 = pg.Surface((SCREEN_W, SCREEN_H * 0.3))
     ground_2.fill((139, 69, 13))
     while True:
+        if salas == 6 and jacob.vida <= 100:
+            cutscene(cut5)
 
         screen.fill((0, 255, 255))
 
@@ -115,6 +138,7 @@ def combate():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
+                                    salas -= 1
                                     mov()
                             elif enemy_select:  # caso a ação escolhida seja ataque, seleciona o inimigo
                                 if battle_state == 'attack':
@@ -174,6 +198,7 @@ def combate():
             party_life += party[i].vida  # cria uma variavel da vida total da party
 
         if enemy_life <= 0 or party_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
+            salas -= 1
             mov()
 
         if turno_inimigo >= len(enemy_list):  # retorna ao turno do jogador
@@ -234,9 +259,22 @@ def combate():
 # mov call
 def mov():
     enemy_list.clear()
-    global xpos
+    global xpos, salas, gerenciador
     xchange = 0
+    salas += 1
+
     while True:
+        if salas == 1:
+            cutscene(cutscene2)
+            salas -= 1
+
+        if salas == 4:
+            cutscene(cutscene3)
+            salas -= 1
+
+        if salas == 6:
+            cutscene(cutscene4)
+            salas -= 1
 
         screen.fill((0, 255, 255))
 
@@ -259,8 +297,8 @@ def mov():
             xpos = 1
             trans()
         if xpos <= 0:
-            xpos = 1229
-            trans()
+            xpos = 0
+
         xpos += xchange
 
         # random encounter
@@ -273,6 +311,7 @@ def mov():
         # draw
         screen.blit(ground, (0, SCREEN_H - 150))
         screen.blit(jacob.img, (xpos, SCREEN_H - 200))
+        print(salas)
         pg.display.update()
 
 
@@ -293,3 +332,22 @@ def trans():
         pg.display.update()
         pg.time.wait(1500)
         mov()
+
+
+def cutscene(cut):
+    global salas
+    screen.fill((0, 0, 0))
+    while True:
+        fps.tick(60)
+        for event in pg.event.get():
+            if event.type == QUIT:
+                pg.quit()
+                sys.exit()
+
+        gerenciador.start_cutscene(cut)
+        gerenciador.draw()
+        gerenciador.update()
+        pg.display.update()
+        if not gerenciador.cutscene_running:
+            trans()
+

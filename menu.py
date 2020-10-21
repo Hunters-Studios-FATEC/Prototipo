@@ -33,7 +33,6 @@ slots = (font_menu_2.render('Slot 1', True, (255, 255, 255)), font_menu_2.render
 bg = pygame.image.load("assets/backgrounds/bg.jpeg")
 
 # Cutscenes
-gerenciador = CutSceneManager(screen)
 cut1 = json.load(open("assets/cutscenes/cut1.json", encoding='utf-8'))
 cutscene1 = Cutscene(cut1)
 
@@ -139,24 +138,6 @@ def menu():
                                 - X.get_rect().width, 300 + 80 * load_file))
 
         pygame.display.update()
-
-
-def cutscene(cut):
-    screen.fill((0, 0, 0))
-    while True:
-        fps.tick(60)
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-
-        gerenciador.start_cutscene(cut)
-        gerenciador.draw()
-        gerenciador.update()
-        pygame.display.update()
-        if not gerenciador.cutscene_running:
-            trans()
-
 
 def game(p_hp=100, p_bllts=50, p_lvl=1):
     player_health_pts = p_hp
@@ -275,5 +256,6 @@ def save_game(hp, bullets, level):
 
         pygame.display.update()
 
-
 menu()
+
+

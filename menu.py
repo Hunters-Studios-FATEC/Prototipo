@@ -34,7 +34,7 @@ bg = pygame.image.load("assets/backgrounds/bg.jpeg")
 
 # Cutscenes
 gerenciador = CutSceneManager(screen)
-cut1 = json.load(open("assets/cutscenes/cut1.json"), encoding='utf-8')
+cut1 = json.load(open("assets/cutscenes/cut1.json", encoding='utf-8'))
 cutscene1 = Cutscene(cut1)
 
 
@@ -88,7 +88,7 @@ def menu():
                     else:
                         if load_file == -1:
                             if menu_select:
-                                trans()
+                                cutscene(cutscene1)
                                 game_select = False
                             else:
                                 load_file = 0
@@ -155,7 +155,7 @@ def cutscene(cut):
         gerenciador.update()
         pygame.display.update()
         if not gerenciador.cutscene_running:
-            trans(1, 1)
+            trans()
 
 
 def game(p_hp=100, p_bllts=50, p_lvl=1):

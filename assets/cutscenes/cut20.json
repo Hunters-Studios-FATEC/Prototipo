@@ -1,0 +1,46 @@
+{
+  "name": "Cutscene 20",
+  "final_step": 0,
+  "events":[
+    {
+      "step": 0,
+      "text": "O fuhrer deve estar na sala central",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+
+    },
+    {
+      "step": 1,
+      "text": "Vamos! Depressa!",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+
+    },
+    {
+      "step": 2,
+      "text": "Novamente, Jacob se pergunta se esse será seu destino: ",
+      "speed": 0.3,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+
+    },
+    {
+      "step": 3,
+      "text": "Lutar contra nazistas nesse futuro disópico",
+      "speed": 0.3,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+
+    }
+  ]
+}

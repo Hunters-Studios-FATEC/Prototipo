@@ -1,10 +1,10 @@
 {
-  "name": "Cutscene 42",
-  "final_step": "3",
+  "name": "Cutscene 27",
+  "final_step": 5,
   "events": [
     {
       "step": 0,
-      "text": "Agora me lembro! Você é Cronos, deus do tempo!",
+      "text": "Ei pessoal olhem!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,8 +13,8 @@
     },
     {
       "step": 1,
-      "text": "Eu matei Hitler, por que nada mudou?",
-      "speed": 0.8,
+      "text": "Ora, ora, parece que você é bem curioso. Não seguiu o caminho?",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -22,8 +22,8 @@
     },
     {
       "step": 2,
-      "text": "E por que você está nos atacando?",
-      "speed": 0.8,
+      "text": "Mas o que?",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Mortal idiota. Não percebeu ainda?",
+      "text": "É ele. O homem estranho.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,8 +40,17 @@
     },
     {
       "step": 4,
-      "text": "Você não 'matou' Hitler. Pelo menos eu não deixei. Veja!",
-      "speed": 0.6,
+      "text": "Parabéns Jacob... Você me divertiu bastante...",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Mas agora.... é hora de morrer!",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

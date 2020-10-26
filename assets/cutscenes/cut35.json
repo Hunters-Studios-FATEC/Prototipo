@@ -1,10 +1,19 @@
 {
-  "name": "Cutscene 9",
-  "final_step": 7,
+  "name": "Cutscene 35",
+  "final_step": 6,
   "events": [
     {
       "step": 0,
-      "text": "Segurem a linha. Tiros de supressão!",
+      "text": "Como dói mein cabeça!!!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Malditos ingleses! Como passaram das linhas alemãs? Como perdemos?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -12,26 +21,17 @@
       "pos_y": 50
     },
     {
-      "step": 1,
-      "text": "EMPURREM AS LINHAS INIMIGAS!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
       "step": 2,
-      "text": "(parece que os aliados estão em apuros...)",
-      "speed": 0.4,
-      "size": 40,
+      "text": "Não importa, essa coisa parece ter muito poder. Vingarei a Alemanha!",
+      "speed": 0.6,
+      "size": 38,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 3,
-      "text": "Oh, não!",
+      "text": "Vocês não perdem por esperar!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,8 +40,8 @@
     },
     {
       "step": 4,
-      "text": "Maldição!",
-      "speed": 0.4,
+      "text": "Não tão rápido!",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -49,8 +49,8 @@
     },
     {
       "step": 5,
-      "text": "Podem me matar, mas não facilmente!",
-      "speed": 0.4,
+      "text": "Huh? O outro inglês?? Como foi parar ai?",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -58,17 +58,8 @@
     },
     {
       "step": 6,
-      "text": "Ei, você, me ajude, soldado!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 7,
-      "text": "Pegue isto para lutar.",
-      "speed": 0.4,
+      "text": "Não importa! morrerá igual seu amigo. Não será tão fácil dessa vez!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

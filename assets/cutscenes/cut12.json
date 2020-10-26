@@ -1,11 +1,11 @@
 {
   "name": "Cutscene 12",
-  "final_step": 9,
+  "final_step": 1,
   "events": [
     {
       "step": 0,
-      "text": "Malditos ingleses.... Como perdemos para vermes inferiores?",
-      "speed": 0.6,
+      "text": "Nein! Nein! Nein! Não passarão tão facilmente!",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,71 +13,8 @@
     },
     {
       "step": 1,
-      "text": "Então... é isso?",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 2,
-      "text": "Sim. Mas há certas coisas que não falei.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 3,
-      "text": "Você estava certo. Não sou um soldado.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 4,
-      "text": "Digamos que eu possuo uma missão secreta. E graças a sua ajuda pude cumpri-la.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 6,
-      "text": "Muito obrigado!",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 7,
-      "text": "Mas agora devo ir. Adeus!",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 8,
-      "text": "Jacob sai da sala, e sem que Peter veja, retorna para seu tempo.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [237, 237, 237],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 9,
-      "text": "Espera! Para onde ele foi?",
-      "speed": 0.6,
+      "text": "Nem que eu morra, não destruirão nosso império.",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

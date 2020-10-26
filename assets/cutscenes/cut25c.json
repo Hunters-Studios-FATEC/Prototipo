@@ -1,10 +1,10 @@
 {
-  "name": "Cutscene 21",
+  "name": "Cutscene 25c",
   "final_step": 3,
   "events": [
     {
       "step": 0,
-      "text": "Que lugar é esse?",
+      "text": "Vá Soldado!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Acho que é o laboratório de design de máquinas...",
+      "text": "Você está livre!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Vocês ouviram isso?",
+      "text": "Obrigado amigos!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "De novo? Está se aproximando!",
+      "text": "Vá para a entrada e segure a posição!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

@@ -1,10 +1,10 @@
 {
   "name": "Cutscene 10",
-  "final_step": 5,
+  "final_step": 8,
   "events": [
     {
       "step": 0,
-      "text": "Chegamos! Mas... por que ele é tão importante mesmo?",
+      "text": "Obrigado, soldado. Com certeza estaria morto agora se não fosse você...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Ele possui informações valiosas sobre as estratégias aliadas...",
+      "text": "Mas... espere.. você não é um soldado!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Um mero cabo?",
+      "text": "Quem é você?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Sim...",
+      "text": "Hm, é um pouco complicado... Mas me chamo Jacob.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,8 +40,8 @@
     },
     {
       "step": 4,
-      "text": "Nossa... Os alemães devem estar desesperados mesmo.",
-      "speed": 0.4,
+      "text": "Estou numa missão para matar um certo soldado inimigo. Adolf Hitler.",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -49,13 +49,84 @@
     },
     {
       "step": 5,
-      "text": "Malditos ingleses! Non destruirão a grandiosa Alemania!",
+      "text": "Mas... passar pelas linhas alemãs será difícil...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-
+    },
+    {
+      "step": 6,
+      "text": "Entendo. Bem, você me ajudou.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "E cada alemão morto é uma vitória para a Inglaterra! Irei te ajudar!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 8,
+      "text": "A propósito, meu nome é Peter. Peter Kazinsson.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Mas... por que ele é tão importante?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 10,
+      "text": "Ahnn...Ele possui informações valiosas sobre as estratégias aliadas...",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Um mero cabo?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Sim...",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Nossa... Os alemães devem estar desesperados mesmo.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
     }
   ]
 }

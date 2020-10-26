@@ -1,14 +1,77 @@
 {
   "name": "Cutscene 17",
-  "final_step": 0,
+  "final_step": 7,
   "events": [
     {
       "step": 0,
-      "text": "Malditos! Vocês conhecerão o poder dos sangues puros!",
+      "text": "Chegamos, ufa!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step":1,
+      "text": "Parece não ter ninguém. Vamos entrar, rápido!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Un minutti banbini!",
+      "speed": 1,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Acharam mesmo que iam entrar sem serem vistos?",
       "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Não se perguntaram por que não tem ninguém?",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Pessoal, é ele! O general de brigada!",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Não existe outra opção. Teremos que lutar!",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "Venham seus vermes! Antonius Mussolinus irá esmagá-los!",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
       "pos_y": 50
     }
   ]

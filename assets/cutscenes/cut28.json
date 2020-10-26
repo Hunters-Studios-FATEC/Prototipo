@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 9",
-  "final_step": 7,
+  "name": "Cutscene 28",
+  "final_step": 5,
   "events": [
     {
       "step": 0,
-      "text": "Segurem a linha. Tiros de supressão!",
-      "speed": 0.6,
+      "text": "Huff...Puff... Quem é você?",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "EMPURREM AS LINHAS INIMIGAS!",
+      "text": "E como sabe huff... puff... meu nome?",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "(parece que os aliados estão em apuros...)",
+      "text": "Hmm? Já se esqueceu? ",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Oh, não!",
+      "text": "Ahh é. Reverti o tempo hahaha",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,7 @@
     },
     {
       "step": 4,
-      "text": "Maldição!",
+      "text": "Mas chega de lenga-lenga!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -49,25 +49,7 @@
     },
     {
       "step": 5,
-      "text": "Podem me matar, mas não facilmente!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 6,
-      "text": "Ei, você, me ajude, soldado!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 7,
-      "text": "Pegue isto para lutar.",
+      "text": "Estou começando a me entediar.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],

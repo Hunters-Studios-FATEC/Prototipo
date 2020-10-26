@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 29",
-  "final_step": 14,
+  "name": "Cutscene 32",
+  "final_step": 13,
   "events": [
     {
       "step": 0,
-      "text": "Nein! Nein! Neinnnn!",
-      "speed": 0.6,
+      "text": "Malditos humanos! Até quando pretendem desafiar aquilo que não compreendem?",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Agora acabou de verdade.",
+      "text": "O que foi tudo isso? Deuses?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,34 +22,34 @@
     },
     {
       "step": 2,
-      "text": "Jacob olha para a pulseira no chão. Novamente, inscrições similares aos do relógio dele.",
+      "text": "Jacob, você entendeu algo?",
       "speed": 0.6,
-      "size": 38,
-      "rgb_color": [237, 237, 237],
+      "size": 40,
+      "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 3,
-      "text": "Novamente isso...",
+      "text": "Jacob explica sua jornada, sobre o relógio e sobre ser um viajante do tempo.",
       "speed": 0.6,
       "size": 40,
-      "rgb_color": [0, 0, 0],
+      "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 4,
-      "text": "Ah, essas pulseiras? Aparentemente são a fonte do poderio tecnológico deles.",
+      "text": "E sobre ter esquecido as interações com os divinos.",
       "speed": 0.6,
       "size": 40,
-      "rgb_color": [0, 0, 0],
+      "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 5,
-      "text": "Não conseguimos decifrar como funciona.",
+      "text": "Só não entendo como pude esquecer de tudo...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -58,8 +58,8 @@
     },
     {
       "step": 6,
-      "text": "Quase cem anos, e ainda não sabemos o que é.",
-      "speed": 0.6,
+      "text": "Simples, você não pode lembrar daquilo que não aconteceu.",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -67,8 +67,8 @@
     },
     {
       "step": 7,
-      "text": "Só que com essas coisas, os nazistas conseguiram manter o poder por tanto tempo.",
-      "speed": 0.6,
+      "text": "Kairós!",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -76,8 +76,8 @@
     },
     {
       "step": 8,
-      "text": "Mas não mais. Eles podem morrer como qualquer outro.",
-      "speed": 0.8,
+      "text": "Quando você nos encontrou na fenda, Cronos reverteu o tempo como você o conhecia.",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -85,8 +85,8 @@
     },
     {
       "step": 9,
-      "text": "Só a quantidade de balas que muda!",
-      "speed": 0.8,
+      "text": "selando suas memórias no processo...",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -94,7 +94,7 @@
     },
     {
       "step": 10,
-      "text": "Os reforços estão a caminho. Vencemos!",
+      "text": "Logo, é como se você tivesse seguido viagem normalmente.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -103,7 +103,7 @@
     },
     {
       "step": 11,
-      "text": "Bem, agora que acabou, gostaria de se juntar formalmente a nós, Jacob?",
+      "text": "Mas como você o encontrou novamente, o selo se rompeu.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -112,7 +112,7 @@
     },
     {
       "step": 12,
-      "text": "Não parece que eu tenha outra opção não é mesmo?",
+      "text": "E agora que você o derrotou, sua essência divina se tornou uma carga.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -121,17 +121,8 @@
     },
     {
       "step": 13,
-      "text": "(E talvez se eu decifrar essa tecnologia, consiga voltar pra casa...)",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 14,
-      "text": "Não mesmo hahaha.",
-      "speed": 0.6,
+      "text": "E você terá mais uma oportunidade de mudar o passado.",
+      "speed": 0.2,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

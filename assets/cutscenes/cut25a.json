@@ -1,10 +1,10 @@
 {
-  "name": "Cutscene 25",
-  "final_step": 1,
+  "name": "Cutscene 25a",
+  "final_step": 3,
   "events": [
     {
       "step": 0,
-      "text": "Acho que esse era o último.",
+      "text": "Vá Soldado!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,25 @@
     },
     {
       "step": 1,
-      "text": "Agora só nos resta derrotar o Fuhrer!",
+      "text": "Você está livre!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Obrigado amigos!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Vá para a entrada e segure a posição!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

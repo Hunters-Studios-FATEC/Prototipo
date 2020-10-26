@@ -1,19 +1,19 @@
 {
-  "name": "Cutscene 13",
-  "final_step": 9,
+  "name": "Cutscene 33",
+  "final_step": 10,
   "events": [
     {
       "step": 0,
-      "text": "Malditos ingleses.... Como perdemos para vermes inferiores?",
+      "text": "Há um porém. Ao voltar, será sua última viagem. Tudo que você conhece será mudado.",
       "speed": 0.6,
-      "size": 40,
+      "size": 38,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 1,
-      "text": "Então... é isso?",
+      "text": "Em outras palavras, será uma nova linha do tempo.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Sim. Mas há certas coisas que não falei.",
+      "text": "Você ficará preso no passado.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Você estava certo. Não sou um soldado.",
+      "text": "E seus amigos aqui deixarão de existir.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,16 @@
     },
     {
       "step": 4,
-      "text": "Digamos que eu possuo uma missão secreta. E graças a sua ajuda pude cumpri-la.",
+      "text": "O silêncio toma conta da sala",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Não tem problema Jacob. Arrume tudo!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -49,8 +58,8 @@
     },
     {
       "step": 6,
-      "text": "Muito obrigado!",
-      "speed": 0.6,
+      "text": "Sim. Acabar com os nazistas é nossa prioridade.",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -58,7 +67,7 @@
     },
     {
       "step": 7,
-      "text": "Mas agora devo ir. Adeus!",
+      "text": "Mesmo que deixemos de existir!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -67,16 +76,25 @@
     },
     {
       "step": 8,
-      "text": "Jacob sai da sala, e sem que Peter veja, retorna para seu tempo.",
+      "text": "Pessoal...",
       "speed": 0.6,
       "size": 40,
-      "rgb_color": [237, 237, 237],
+      "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 9,
-      "text": "Espera! Para onde ele foi?",
+      "text": "Certo! Prometo consertar tudo!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 10,
+      "text": "Então está feito. Adeus, Jacob.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

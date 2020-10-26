@@ -1,29 +1,29 @@
 {
   "name": "Cutscene 16",
-  "final_step": 7,
+  "final_step": 15,
   "events": [
     {
       "step": 0,
-      "text": "Chegamos, ufa!",
+      "text": "O que aconteceu aqui?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-      "pos_x": 50,
+       "pos_x": 50,
       "pos_y": 50
     },
     {
-      "step":1,
-      "text": "Parece não ter ninguém. Vamos entrar, rápido!",
-      "speed": 0.6,
+      "step": 1,
+      "text": "Eram muitos. Estávamos indo bem, ganhando uma rua de cada vez até que...",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
-      "pos_x": 50,
+       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 2,
-      "text": "Um minutti banbini!",
-      "speed": 1,
+      "text": "O General de Brigada fez uma armadilha. Ele estava nos esperando.",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Acharam mesmo que iam entrar sem serem vistos?",
+      "text": "Quando chegamos, fomos rapidamente cercados.",
       "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,8 +40,8 @@
     },
     {
       "step": 4,
-      "text": "Não se perguntaram por que não tem ninguém?",
-      "speed": 0.8,
+      "text": "Um massacre... Levaram muitos de nós.",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -49,7 +49,7 @@
     },
     {
       "step": 5,
-      "text": "Pessoal, é ele! O general de brigada!",
+      "text": "Droga! E agora? Não podemos recuar! Não temos para onde fugir!",
       "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -58,8 +58,8 @@
     },
     {
       "step": 6,
-      "text": "Não existe outra opção. Teremos que lutar!",
-      "speed": 0.8,
+      "text": "Talvez se... E se irmos pelas ruas paralelas? ",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -67,8 +67,80 @@
     },
     {
       "step": 7,
-      "text": "Venham seus vermes! Antonius Mussolinus irá esmagá-los!",
-      "speed": 0.8,
+      "text": "Um grupo pequeno pode passar despercebido.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 8,
+      "text": "Sim! Se chegarmos no castelo, podemos matar o Fuhrer e resgatar os prisioneiros.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Jacob, odeio pedir isso, mas você nos ajudaria?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 10,
+      "text": "Como pode ver, somos o que restou da resistência.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 11,
+      "text": "E precisamos garantir que Shenzhen saia do controle nazista antes dos reforços chegarem.",
+      "speed": 0.6,
+      "size": 38,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 12,
+      "text": "Sem muita opção, Jacob aceita.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 13,
+      "text": "Ele parecia cada vez mais conformado que esse era seu futuro agora, sem as cargas do relógio.",
+      "speed": 0.6,
+      "size": 37,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 14,
+      "text": "Antes que me esqueça, meu nome é Bárbara Von Gotisch.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 15,
+      "text": "Mas pode me chamar de Gotisch.",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

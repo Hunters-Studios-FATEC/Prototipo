@@ -1,20 +1,20 @@
 {
   "name": "Cutscene 15",
-  "final_step": 15,
+  "final_step": 2,
   "events": [
     {
       "step": 0,
-      "text": "O que aconteceu aqui?",
+      "text": "Jacob e Kenji chegam à praça principal. ",
       "speed": 0.6,
       "size": 40,
-      "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 1,
-      "text": "Eram muitos. Estávamos indo bem, ganhando uma rua de cada vez até que...",
-      "speed": 0.8,
+      "text": "Oh não! Desgraçados!",
+      "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
        "pos_x": 50,
@@ -22,129 +22,25 @@
     },
     {
       "step": 2,
-      "text": "O General de Brigada fez uma armadilha. Ele estava nos esperando.",
+      "text": "Jacob, rápido, precisamos ajudá-los.",
       "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
-      "pos_x": 50,
+       "pos_x": 50,
       "pos_y": 50
-    },
-    {
-      "step": 3,
-      "text": "Quando chegamos, fomos rapidamente cercados.",
-      "speed": 0.8,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 4,
-      "text": "Um massacre... Levaram muitos de nós.",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 5,
-      "text": "Droga! E agora? Não podemos recuar! Não temos para onde fugir!",
-      "speed": 0.8,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 6,
-      "text": "Talvez se... E se irmos pelas ruas paralelas? ",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 7,
-      "text": "Um grupo pequeno pode passar despercebido.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 8,
-      "text": "Sim! Se chegarmos no castelo, podemos matar o Fuhrer e resgatar os prisioneiros.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 9,
-      "text": "Jacob, odeio pedir isso, mas você nos ajudaria?",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 10,
-      "text": "Como pode ver, somos o que restou da resistência.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 11,
-      "text": "E precisamos garantir que Shenzhen saia do controle nazista antes dos reforços chegarem.",
-      "speed": 0.6,
-      "size": 38,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 12,
-      "text": "Sem muita opção, Jacob aceita.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [237, 237, 237],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 13,
-      "text": "Ele parecia cada vez mais conformado que esse era seu futuro agora, sem as cargas do relógio.",
-      "speed": 0.6,
-      "size": 37,
-      "rgb_color": [237, 237, 237],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 14,
-      "text": "Antes que me esqueça, meu nome é Bárbara Von Gotisch.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 15,
-      "text": "Mas pode me chamar de Gotisch.",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
+
+
+
+
+
+
+
+
+
+
+
+
     }
   ]
+
 }

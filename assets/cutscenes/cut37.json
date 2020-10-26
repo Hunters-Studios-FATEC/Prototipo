@@ -1,10 +1,10 @@
 {
-  "name": "Cutscene 28",
-  "final_step": 5,
+  "name": "Cutscene 37",
+  "final_step": 4,
   "events": [
     {
       "step": 0,
-      "text": "Conseguimos!",
+      "text": "Parece que ele agarrou essa oportunidade.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Acabou!",
+      "text": "Excelente. E com a essência do meu pai utilizada...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,8 +22,8 @@
     },
     {
       "step": 2,
-      "text": "Agora podemos contatar os reforços.",
-      "speed": 0.6,
+      "text": "Parece que só eu controlo o tempo agora.",
+      "speed": 0.2,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -31,8 +31,8 @@
     },
     {
       "step": 3,
-      "text": "Malditos! Sentirão a fúria do sucessor de Hitler no Leste! Morram!",
-      "speed": 0.6,
+      "text": "ha ha ha ha ha",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -40,17 +40,8 @@
     },
     {
       "step": 4,
-      "text": "Pessoal? Olhem!",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 5,
-      "text": "Contemplem a pureza ariana!",
-      "speed": 0.6,
+      "text": "HAHAHAHAHAHAHAHAHAHAHAHA",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

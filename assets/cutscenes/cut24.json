@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 45",
-  "final_step": 25,
+  "name": "Cutscene 24",
+  "final_step": 24,
   "events": [
     {
       "step": 0,
-      "text": "Malditos humanos! Até quando pretendem desafiar aquilo que não compreendem?",
-      "speed": 0.8,
+      "text": "Nein! Nein! Neeeeinnnn!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,8 +13,8 @@
     },
     {
       "step": 1,
-      "text": "O que foi tudo isso? Deuses?",
-      "speed": 0.6,
+      "text": "Conseguimos!",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -22,8 +22,8 @@
     },
     {
       "step": 2,
-      "text": "Jacob, você entendeu algo?",
-      "speed": 0.6,
+      "text": "Agora podemos chamar os reforços!",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Jacob explica sua jornada, sobre o relógio e sobre ser um viajante do tempo.",
+      "text": "Dentre os vestígios do corpo de Joseph Dúcái Zhe, Jacob nota um artefato.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [237, 237, 237],
@@ -40,16 +40,16 @@
     },
     {
       "step": 4,
-      "text": "E sobre ter esquecido as interações com os divinos.",
-      "speed": 0.6,
+      "text": "Que estranho! Parece o relógio. Mas, sem controle de tempo",
+      "speed": 0.4,
       "size": 40,
-      "rgb_color": [237, 237, 237],
+      "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 5,
-      "text": "Só não entendo como pude esquecer de tudo...",
+      "text": "Me ajudem...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -58,8 +58,8 @@
     },
     {
       "step": 6,
-      "text": "Simples, você não pode lembrar daquilo que não aconteceu.",
-      "speed": 0.4,
+      "text": "Huh? Kazi?",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -67,8 +67,8 @@
     },
     {
       "step": 7,
-      "text": "Kairós!",
-      "speed": 0.8,
+      "text": "Você está vivo!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -76,7 +76,7 @@
     },
     {
       "step": 8,
-      "text": "Quando você nos encontrou na fenda, Cronos reverteu o tempo como você o conhecia.",
+      "text": "Jacob, me ajude a libertá-lo.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -85,7 +85,7 @@
     },
     {
       "step": 9,
-      "text": "Selando suas memórias no processo...",
+      "text": "Obrigado, amigos... Vocês acharam mais alguém?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -94,7 +94,7 @@
     },
     {
       "step": 10,
-      "text": "Logo, é como se você tivesse seguido viagem normalmente.",
+      "text": "Você foi o único, por enquanto.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -103,7 +103,7 @@
     },
     {
       "step": 11,
-      "text": "Mas como você o encontrou novamente, o selo se rompeu.",
+      "text": "A propósito, quem é você?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -112,17 +112,17 @@
     },
     {
       "step": 12,
-      "text": "Agora que você o derrotou, sua essência se tornou uma carga.",
+      "text": "(Jacob nota a semelhança entre Kazi e o soldado Peter.)",
       "speed": 0.6,
       "size": 40,
-      "rgb_color": [0, 0, 0],
+      "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 13,
-      "text": "E você terá mais uma oportunidade de mudar o passado.",
-      "speed": 0.2,
+      "text": "Sou Jacob. E estou ajudando a resistência.",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -130,16 +130,16 @@
     },
     {
       "step": 14,
-      "text": "Há um porém. Ao voltar, será sua última viagem. E tudo que você conhece será mudado.",
+      "text": "Entendo. Prazer, Jacob, sou David Kazi. Obrigado pela ajuda!",
       "speed": 0.6,
-      "size": 38,
+      "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 15,
-      "text": "Em outras palavras, será uma nova linha do tempo.",
+      "text": "Os outros devem estar aqui perto. Podemos liberá-los se irmos adiante.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -148,7 +148,7 @@
     },
     {
       "step": 16,
-      "text": "Tenha em mente que você cessará de existir também.",
+      "text": "Há também aquela figura...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -157,7 +157,7 @@
     },
     {
       "step": 17,
-      "text": "Afinal, você é consequência de sua linha do tempo.",
+      "text": "Figura?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -166,7 +166,7 @@
     },
     {
       "step": 18,
-      "text": "Mas e eles?",
+      "text": "Sim. Um homem estranho.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -175,7 +175,7 @@
     },
     {
       "step": 19,
-      "text": "Deixe-me ser clara. TUDO cessará de existir como você conhece. Incluindo você.",
+      "text": "Acho que é o cientista que trabalhou nessas pulseiras.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -184,8 +184,8 @@
     },
     {
       "step": 20,
-      "text": "...",
-      "speed": 0.4,
+      "text": "Você sabe o que são?",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -193,7 +193,7 @@
     },
     {
       "step": 21,
-      "text": "Não tem problema, Jacob. Arrume tudo!",
+      "text": "Não...Mas sem dúvida é o que dá a força sobrenatural aos nazistas.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -202,7 +202,7 @@
     },
     {
       "step": 22,
-      "text": "Sim. Acabar com os nazistas é nossa prioridade. Mesmo que deixemos de existir.",
+      "text": "Então podemos encontrá-lo também!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -211,7 +211,7 @@
     },
     {
       "step": 23,
-      "text": "Pessoal...",
+      "text": "Por mim, tudo bem.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -220,16 +220,7 @@
     },
     {
       "step": 24,
-      "text": "Certo! Prometo consertar tudo!",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 25,
-      "text": "Então está feito. Adeus, Jacob.",
+      "text": "Talvez consigamos desvendar o mistério por trás dessa tecnologia.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

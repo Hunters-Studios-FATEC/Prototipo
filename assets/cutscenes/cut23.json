@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 6",
+  "name": "Cutscene 23",
   "final_step": 5,
   "events": [
     {
       "step": 0,
-      "text": "Que lugar estranho...Definitivamente não é 1918.",
-      "speed": 0.4,
+      "text": "Fazia tempo que não me divertia assim!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "NÃO! Por que você não me escutou?",
+      "text": "Agora sei como chegaram aqui!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,8 +22,8 @@
     },
     {
       "step": 2,
-      "text": "Você é a moça de mais cedo? Onde estou?",
-      "speed": 0.4,
+      "text": "Fazia tempo que não me divertia assim!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Você foi descoberto por ele, e é tarde demais agora...",
+      "text": "Mas será que conseguem conter nossa pureza tecnológica?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,7 @@
     },
     {
       "step": 4,
-      "text": "Aconteça o que acontecer, não fale que me conhece. Entendido?",
+      "text": "Ahnn pessoal? Olhem! ",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -49,10 +49,10 @@
     },
     {
       "step": 5,
-      "text": "Antes de Jacob responder, Cronos surge das sombras.",
-      "speed": 1,
+      "text": "Contemplem a pureza ariana!",
+      "speed": 0.6,
       "size": 40,
-      "rgb_color": [237, 237, 237],
+      "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     }

@@ -1,25 +1,214 @@
 {
   "name": "Cutscene 7",
-  "final_step": 1,
+  "final_step": 22,
   "events": [
     {
       "step": 0,
-      "text": "Bélgica, 1918,",
+      "text": "Então você é o verme insolente que ousa utilizar meu artefato divino?",
       "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 1,
+      "text": "Mortal imundo, não deveria utilizar aquilo que não compreende. Pagarás com a vida!",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Espere. Talvez ele tenha um motivo. Talvez seja um acidente. Deixe que se explique.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Deixar que se explique? O que um humano pode dizer que esteja além da compreensão de um deus?",
+      "speed": 0.8,
+      "size": 36,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Jacob interrompe.",
+      "speed": 1,
       "size": 40,
       "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     },
     {
-
-      "step": 1,
-      "text": "Finalmente a humanidade não sentirá os horrores desse monstro...",
-      "speed": 0.4,
+      "step": 5,
+      "text": "Perdão. Não queria causar problemas, ou utilizar seu artefato.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Além de tudo é sem educação. Não deves interromper seu superior.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "Mas se não queria utilizá-lo, então porque contabilizei o uso de duas cargas?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 8,
+      "text": "Uma delas, inclusive, recentemente.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Jacob explica a história de como entrou em posse do artefato e como chegou ali.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 10,
+      "text": "Porém, não mencionando seu encontro com Kairós.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 11,
+      "text": "Entendo. Espera que eu acredite? Se foi um acidente, por que não voltas para casa?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 12,
+      "text": "Ou pensas que não sei que pretendes mudar o tempo?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 13,
+      "text": "Eu pretendia, não posso deixar meu povo sofrer assim.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 14,
+      "text": "Não sem ao menos tentar evitar essa catástrofe. E com esse relógio, é possível!",
+      "speed": 0.6,
+      "size": 38,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 15,
+      "text": "(risos abafados) Intrigante. Muito bem, continue sua viagem.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 16,
+      "text": "O quê?!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 17,
+      "text": "Mas deverás viver com as consequências de seus atos.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 18,
+      "text": "Cronos estala os dedos e Jacob resume a viagem.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 19,
+      "text": "Por que fez isso?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 20,
+      "text": "Sempre existem os idealistas que querem “consertar” o passado.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 21,
+      "text": "Você sabe isso melhor que ninguém. Mas o tempo não é como imaginam.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 22,
+      "text": "E bem da verdade, me sinto um pouco entediado ha ha ha ha!",
+       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     }
+
   ]
 }

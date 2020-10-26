@@ -1,10 +1,10 @@
 {
-  "name": "Cutscene 49",
-  "final_step": 3,
+  "name": "Cutscene 21",
+  "final_step": 4,
   "events": [
     {
       "step": 0,
-      "text": "Parece que ele agarrou essa oportunidade.",
+      "text": "Que lugar é esse?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Excelente. E com a essência do meu pai utilizada...",
+      "text": "Acho que é a sala de comando do Fuhrer...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,8 +22,8 @@
     },
     {
       "step": 2,
-      "text": "Parece que só eu controlo o tempo agora.",
-      "speed": 0.2,
+      "text": "Vocês ouviram isso?",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -31,7 +31,16 @@
     },
     {
       "step": 3,
-      "text": "HAHAHAHAHAHAHA",
+      "text": "Chegaram tão longe...",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Então são vocês que estão causando problemas no castelo?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

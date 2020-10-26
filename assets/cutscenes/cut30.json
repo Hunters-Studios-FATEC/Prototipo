@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 47",
+  "name": "Cutscene 30",
   "final_step": 5,
   "events": [
     {
       "step": 0,
-      "text": "Peter está no chão morto. Ao lado dele, Hitler.",
-      "speed": 0.6,
+      "text": "Hitler acorda... Ao seu lado, um item brilhando.",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [237, 237, 237],
       "pos_x": 50,
@@ -13,8 +13,8 @@
     },
     {
       "step": 1,
-      "text": "Malditos ingleses! Como passaram das linhas alemãs? Como perdemos?",
-      "speed": 0.6,
+      "text": "Mein Cabeça!!!! Que dor!!",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -22,17 +22,17 @@
     },
     {
       "step": 2,
-      "text": "Não importa, essa coisa parece ter muito poder. Vingarei a Alemanha com o poder do aço!",
+      "text": "Mas que diabos é isso?",
       "speed": 0.6,
-      "size": 38,
+      "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 3,
-      "text": "Não tão rápido!",
-      "speed": 0.8,
+      "text": "Você os odeia não é mesmo?",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -40,8 +40,8 @@
     },
     {
       "step": 4,
-      "text": "Você? Como foi parar ai?",
-      "speed": 0.6,
+      "text": "Isso vai te o poder pra conquistar o que quiser.",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -49,8 +49,8 @@
     },
     {
       "step": 5,
-      "text": "Não importa, morrerá igual seu amigo. Não será tão fácil dessa vez!",
-      "speed": 0.6,
+      "text": "Com o tempo você vai entender...",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

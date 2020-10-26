@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 20",
+  "name": "Cutscene 26",
   "final_step": 1,
   "events": [
     {
       "step": 0,
-      "text": "Posso sentir, estamos perto de mudar o mundo!",
-      "speed": 0.8,
+      "text": "Acho que este era o último.",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "(Então é isso... Será essa minha luta agora?...)",
+      "text": "Agora só nos resta achar essa figura misteriosa.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

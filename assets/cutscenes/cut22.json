@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 6",
-  "final_step": 5,
+  "name": "Cutscene 22",
+  "final_step": 4,
   "events": [
     {
       "step": 0,
-      "text": "Que lugar estranho...Definitivamente não é 1918.",
-      "speed": 0.4,
+      "text": "Quem é você?",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "NÃO! Por que você não me escutou?",
+      "text": "Ele é....",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,8 +22,8 @@
     },
     {
       "step": 2,
-      "text": "Você é a moça de mais cedo? Onde estou?",
-      "speed": 0.4,
+      "text": "Sou o comandante supremo do leste Joseph Dúcái Zhe",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Você foi descoberto por ele, e é tarde demais agora...",
+      "text": "E darei uma morte rápida para vocês!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,19 +40,10 @@
     },
     {
       "step": 4,
-      "text": "Aconteça o que acontecer, não fale que me conhece. Entendido?",
+      "text": "Preparem-se!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 5,
-      "text": "Antes de Jacob responder, Cronos surge das sombras.",
-      "speed": 1,
-      "size": 40,
-      "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     }

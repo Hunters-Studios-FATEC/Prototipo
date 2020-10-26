@@ -1,10 +1,10 @@
 {
-  "name": "Cutscene 11",
-  "final_step": 6,
+  "name": "Cutscene 31",
+  "final_step": 4,
   "events": [
     {
       "step": 0,
-      "text": "O que? Estamos perdendo a guerra? ",
+      "text": "Então você salvou Hitler? E deu a tecnologia pros nazistas?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Malditos Ingleses! Non destruirão a grandiosa Alemania!",
+      "text": "Dar é uma palavra muito forte...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Alí está ele!",
+      "text": "Somente impulsionei. Eles desvendaram o cubo sozinhos.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "AAAAHHHHHHH. Ingleses? Aqui?",
+      "text": "Entendeu agora? Tudo não passa de um joguinho pra mim.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,32 +40,12 @@
     },
     {
       "step": 4,
-      "text": "Quais informações possui verme?",
+      "text": "Mas agora me entediei de novo. E acho melhor você morrer!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-    },
-    {
-      "step": 5,
-      "text": "Informações? O que?",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-
-    },
-    {
-      "step": 6,
-      "text": "Não importa! Você deve morrer!",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-
     }
   ]
 }

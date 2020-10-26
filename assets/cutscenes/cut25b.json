@@ -1,11 +1,11 @@
 {
-  "name": "Cutscene 26",
-  "final_step": 2,
+  "name": "Cutscene 25b",
+  "final_step": 3,
   "events": [
     {
       "step": 0,
-      "text": "Então são vocês que estão causando problemas no castelo?",
-      "speed": 0.4,
+      "text": "Vá Soldado!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Muito bem. Darei uma morte rápida pra vocês!",
+      "text": "Você está livre!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,13 +22,21 @@
     },
     {
       "step": 2,
-      "text": "Preparem-se!",
-       "speed": 0.6,
+      "text": "Obrigado amigos!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-
+    },
+    {
+      "step": 3,
+      "text": "Vá para a entrada e segure a posição!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
     }
   ]
 }

@@ -1,19 +1,20 @@
 {
   "name": "Cutscene 8",
-  "final_step": 7,
+  "final_step": 1,
   "events": [
     {
       "step": 0,
-      "text": "Segurem a linha. Tiros de supressão!",
-      "speed": 0.6,
+      "text": "Bélgica, 1918,",
+      "speed": 0.4,
       "size": 40,
-      "rgb_color": [0, 0, 0],
+      "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     },
     {
+
       "step": 1,
-      "text": "EMPURREM AS LINHAS INIMIGAS!",
+      "text": "Agora preciso achar e matar Hitler.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +23,7 @@
     },
     {
       "step": 2,
-      "text": "(parece que os aliados estão em apuros...)",
+      "text": "Se me lembro bem, ele foi hospitalizado aqui no final da guerra.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,43 +32,7 @@
     },
     {
       "step": 3,
-      "text": "Oh, não!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 4,
-      "text": "Maldição!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 5,
-      "text": "Podem me matar, mas não facilmente!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 6,
-      "text": "Ei, você, me ajude, soldado!",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 7,
-      "text": "Pegue isto para lutar.",
+      "text": "Finalmente a humanidade não sentirá os horrores desse monstro...",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],

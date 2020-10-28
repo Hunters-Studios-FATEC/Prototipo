@@ -1,6 +1,6 @@
 {
   "name": "Cutscene 7",
-  "final_step": 22,
+  "final_step": 23,
   "events": [
     {
       "step": 0,
@@ -33,13 +33,22 @@
       "step": 3,
       "text": "Deixar que se explique? O que um humano pode dizer que esteja além da compreensão de um deus?",
       "speed": 0.8,
-      "size": 36,
+      "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 4,
+      "text": "O que um humano pode dizer que esteja além da compreensão de um deus?",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
       "text": "Jacob interrompe.",
       "speed": 1,
       "size": 40,
@@ -48,7 +57,7 @@
       "pos_y": 50
     },
     {
-      "step": 5,
+      "step": 6,
       "text": "Perdão. Não queria causar problemas, ou utilizar seu artefato.",
       "speed": 0.6,
       "size": 40,
@@ -57,7 +66,7 @@
       "pos_y": 50
     },
     {
-      "step": 6,
+      "step": 7,
       "text": "Além de tudo é sem educação. Não deves interromper seu superior.",
       "speed": 0.6,
       "size": 40,
@@ -66,7 +75,7 @@
       "pos_y": 50
     },
     {
-      "step": 7,
+      "step": 8,
       "text": "Mas se não queria utilizá-lo, então porque contabilizei o uso de duas cargas?",
       "speed": 0.6,
       "size": 40,
@@ -75,7 +84,7 @@
       "pos_y": 50
     },
     {
-      "step": 8,
+      "step": 9,
       "text": "Uma delas, inclusive, recentemente.",
       "speed": 0.6,
       "size": 40,
@@ -84,7 +93,7 @@
       "pos_y": 50
     },
     {
-      "step": 9,
+      "step": 10,
       "text": "Jacob explica a história de como entrou em posse do artefato e como chegou ali.",
       "speed": 0.6,
       "size": 40,
@@ -93,7 +102,7 @@
       "pos_y": 50
     },
     {
-      "step": 10,
+      "step": 11,
       "text": "Porém, não mencionando seu encontro com Kairós.",
       "speed": 0.6,
       "size": 40,
@@ -102,7 +111,7 @@
       "pos_y": 50
     },
     {
-      "step": 11,
+      "step": 12,
       "text": "Entendo. Espera que eu acredite? Se foi um acidente, por que não voltas para casa?",
       "speed": 0.6,
       "size": 40,
@@ -111,7 +120,7 @@
       "pos_y": 50
     },
     {
-      "step": 12,
+      "step": 13,
       "text": "Ou pensas que não sei que pretendes mudar o tempo?",
       "speed": 0.6,
       "size": 40,
@@ -120,7 +129,7 @@
       "pos_y": 50
     },
     {
-      "step": 13,
+      "step": 14,
       "text": "Eu pretendia, não posso deixar meu povo sofrer assim.",
       "speed": 0.6,
       "size": 40,
@@ -129,7 +138,7 @@
       "pos_y": 50
     },
     {
-      "step": 14,
+      "step": 15,
       "text": "Não sem ao menos tentar evitar essa catástrofe. E com esse relógio, é possível!",
       "speed": 0.6,
       "size": 38,
@@ -138,7 +147,7 @@
       "pos_y": 50
     },
     {
-      "step": 15,
+      "step": 16,
       "text": "(risos abafados) Intrigante. Muito bem, continue sua viagem.",
       "speed": 0.6,
       "size": 40,
@@ -147,7 +156,7 @@
       "pos_y": 50
     },
     {
-      "step": 16,
+      "step": 17,
       "text": "O quê?!",
       "speed": 0.6,
       "size": 40,
@@ -156,7 +165,7 @@
       "pos_y": 50
     },
     {
-      "step": 17,
+      "step": 18,
       "text": "Mas deverás viver com as consequências de seus atos.",
       "speed": 0.6,
       "size": 40,
@@ -165,7 +174,7 @@
       "pos_y": 50
     },
     {
-      "step": 18,
+      "step": 19,
       "text": "Cronos estala os dedos e Jacob resume a viagem.",
       "speed": 0.6,
       "size": 40,
@@ -174,7 +183,7 @@
       "pos_y": 50
     },
     {
-      "step": 19,
+      "step": 20,
       "text": "Por que fez isso?",
       "speed": 0.6,
       "size": 40,
@@ -183,7 +192,7 @@
       "pos_y": 50
     },
     {
-      "step": 20,
+      "step": 21,
       "text": "Sempre existem os idealistas que querem “consertar” o passado.",
       "speed": 0.6,
       "size": 40,
@@ -192,7 +201,7 @@
       "pos_y": 50
     },
     {
-      "step": 21,
+      "step": 22,
       "text": "Você sabe isso melhor que ninguém. Mas o tempo não é como imaginam.",
       "speed": 0.6,
       "size": 40,
@@ -201,7 +210,7 @@
       "pos_y": 50
     },
     {
-      "step": 22,
+      "step": 23,
       "text": "E bem da verdade, me sinto um pouco entediado ha ha ha ha!",
        "speed": 0.6,
       "size": 40,

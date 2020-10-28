@@ -14,13 +14,6 @@ pg.init()
 # player pos
 xpos = 1
 
-# fase/sala
-fase_n = 1
-sala_n = 1
-
-# transição
-transition = 'fora de batalha'
-
 # screen setup
 SCREEN_W = 1280
 SCREEN_H = 720
@@ -36,28 +29,24 @@ seta_vert = pg.image.load("assets/sprites/SETA1_vert.png")
 tfont = pg.font.Font("assets/fontes/Very Damaged.ttf", 50)
 
 # dialogos
-cut2 = json.load(open("assets/cutscenes/cut2.json", encoding='utf-8'))
-cut3 = json.load(open("assets/cutscenes/cut3.json", encoding='utf-8'))
-cut4 = json.load(open("assets/cutscenes/cut4.json", encoding='utf-8'))
-cut5 = json.load(open("assets/cutscenes/cut5.json", encoding='utf-8'))
+cut12 = json.load(open("assets/cutscenes/cut12.json", encoding='utf-8'))
+cut13 = json.load(open("assets/cutscenes/cut13.json", encoding='utf-8'))
 
-cutscene2 = Cutscene(cut2)
-cutscene3 = Cutscene(cut3)
-cutscene4 = Cutscene(cut4)
-cutscene5 = Cutscene(cut5)
+cutscene12 = Cutscene(cut12)
+cutscene13 = Cutscene(cut13)
 
 gerenciador = CutSceneManager(screen)
-
-# Contagem de salas
-salas = 0
 
 # FPS
 fps = pygame.time.Clock()
 
-# battle call
-def combate():
+#boss
+inacio = hitler
 
-    global xpos, salas
+party = [jacob, kazi]
+
+def combate_boss():
+    global xpos, inacio
     xpos -= 1
 
     # enemy/player list and positioning
@@ -86,18 +75,18 @@ def combate():
     turno_inimigo = 0
     chosen_player = 0
 
-    # random enemy generator
-    enemy_gen()
-
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
 
     ground_2 = pg.Surface((SCREEN_W, SCREEN_H * 0.3))
     ground_2.fill((139, 69, 13))
-    while True:
-        if salas == 6 and jacob.vida <= 100:
-            cutscene(cut5)
 
+    soma_xp = 0
+    soma_xp += hitler2.xpdrop
+
+    print(soma_xp)
+
+    while True:
         screen.fill((0, 255, 255))
 
         for event in pg.event.get():
@@ -138,18 +127,19 @@ def combate():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
-                                    salas -= 1
-                                    mov()
+                                    log_text = "SIFUDEU KKK"
                             elif enemy_select:  # caso a ação escolhida seja ataque, seleciona o inimigo
                                 if battle_state == 'attack':
-                                    party[ally_index].attack(enemy_list[seta_vert_pos])
-                                    log_text = "{} atacou por {}".format(party[ally_index].nome, party[ally_index].dano_m)
+                                    party[ally_index].attack(inacio)
+                                    log_text = "{} atacou por {}".format(party[ally_index].nome,
+                                                                         party[ally_index].dano_m)
                                     ally_index += 1
                                     enemy_select = False
                                     battle_state = 'action'
                                 if battle_state == 'skill':
-                                    party[ally_index].skill(enemy_list[seta_vert_pos])
-                                    log_text = "{} atirou por {}".format(party[ally_index].nome, party[ally_index].dano_m)
+                                    party[ally_index].skill(inacio)
+                                    log_text = "{} atirou por {}".format(party[ally_index].nome,
+                                                                         party[ally_index].dano_m)
                                     ally_index += 1
                                     enemy_select = False
                                     battle_state = 'action'
@@ -157,18 +147,13 @@ def combate():
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
 
-        for i in range(4):
+        for i in range(len(party)):
             if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
                 screen.blit(party[i].img, allies_pos[i])
-        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
-            screen.blit(enemy_list[e].img, enemy_pos[e])
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20)) # barra de vida
-            enemy_list[e].life_update()
 
-        for i in range(len(enemy_list)):  # remove da lista de inimigos os que morreram
-            if enemy_list[i].vida <= 0:
-                enemy_list.pop(i)
-                break
+        screen.blit(inacio.img, enemy_pos[0])
+        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
+        inacio.life_update()
 
         # action select
         if battle_state == 'action':  # define a posição x da seta de ação
@@ -189,24 +174,29 @@ def combate():
 
         enemy_life = 0
         party_life = 0
-        for i in range(len(enemy_list)):
-            if enemy_list[i].vida < 0:  # impede a vida dos grupos de ficar negativa
-                enemy_list[i].vida = 0
+
+        if inacio.vida < 0:  # impede a vida dos grupos de ficar negativa
+            inacio.vida = 0
+        enemy_life += inacio.vida  # cria uma variavel da vida total dos inimigos
+
+        for i in range(len(party)):
             if party[i].vida < 0:
                 party[i].vida = 0
-            enemy_life += enemy_list[i].vida  # cria uma variavel da vida total dos inimigos
             party_life += party[i].vida  # cria uma variavel da vida total da party
 
-        if enemy_life <= 0 or party_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
-            salas -= 1
-            mov()
+        if inacio == hitler and enemy_life <= inacio.vida_total / 2:
+            inacio = hitler2
+            cutscene(cutscene12)
 
-        if turno_inimigo >= len(enemy_list):  # retorna ao turno do jogador
-            turno_inimigo = 0
-            player_turn = True
+        if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
+            for i in range(len(party)):
+                party[i].lvl_up(soma_xp)
+            cutscene(cutscene13)
+
+
 
         if not player_turn:
-            if enemy_list[turno_inimigo].vida > 0:  # escolhe a ação inimiga com base em chance
+            if inacio.vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
                 for i in range(len(party)):
@@ -215,31 +205,28 @@ def combate():
                         break
                 pg.time.wait(1000)
 
-                if enemy_list[turno_inimigo].vida > enemy_list[turno_inimigo].vida * 0.4:
+                if inacio.vida > inacio.vida * 0.4:
                     if 1 <= action_prob <= 7:
-                        enemy_list[turno_inimigo].ataque(party[chosen_player])
-                        log_text = "inimigo {} atacou {} por {}".format(enemy_list[turno_inimigo].nome,
+                        inacio.ataque(party[chosen_player])
+                        log_text = "inimigo {} atacou {} por {}".format(inacio.nome,
                                                                         party[chosen_player].nome,
-                                                                        enemy_list[turno_inimigo].dano)
+                                                                        inacio.dano)
                     else:
-                        enemy_list[turno_inimigo].enemy_def()
-                        log_text = "inimigo {} defende".format(enemy_list[turno_inimigo].nome)
+                        inacio.enemy_def()
+                        log_text = "inimigo {} defende".format(inacio.nome)
                 else:
                     if 1 <= action_prob <= 5:
-                        enemy_list[turno_inimigo].ataque(party[chosen_player])
-                        log_text = "inimigo {} atacou {} por {}".format(enemy_list[turno_inimigo].nome,
+                        inacio.ataque(party[chosen_player])
+                        log_text = "inimigo {} atacou {} por {}".format(inacio.nome,
                                                                         party[chosen_player].nome,
-                                                                        enemy_list[turno_inimigo].dano)
+                                                                        inacio.dano)
                     else:
-                        enemy_list[turno_inimigo].enemy_def()
-                        log_text = "inimigo {} defende".format(enemy_list[turno_inimigo].nome)
-            turno_inimigo += 1
+                        inacio.enemy_def()
+                        log_text = "inimigo {} defende".format(inacio.nome)
+            player_turn = True
 
         if enemy_select:  # seta de seleção inimigo
-            if seta_vert_pos < 0:
-                seta_vert_pos = len(enemy_list) - 1
-            if seta_vert_pos > len(enemy_list) - 1:
-                seta_vert_pos = 0
+            seta_vert_pos = 0
 
         # desenho do resto das imagens
         screen.blit(ground_2, (0, SCREEN_H - 200))
@@ -253,69 +240,9 @@ def combate():
                 screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
+
         pg.display.update()
 
-
-# mov call
-def mov():
-    enemy_list.clear()
-    global xpos, salas, gerenciador
-    xchange = 0
-    salas += 1
-
-    while True:
-        if salas == 1:
-            cutscene(cutscene2)
-            salas -= 1
-
-        if salas == 4:
-            cutscene(cutscene3)
-            salas -= 1
-
-        if salas == 6:
-            cutscene(cutscene4)
-            salas -= 1
-
-        screen.fill((0, 255, 255))
-
-        # key events
-        for event in pg.event.get():
-            if event.type == QUIT:
-                pg.quit()
-                sys.exit()
-            if event.type == KEYDOWN:
-                if event.key == K_d:
-                    xchange = +1
-                if event.key == K_a:
-                    xchange = -1
-            if event.type == KEYUP:
-                if event.key == K_a or K_d:
-                    xchange = 0
-
-        # player movement
-        if xpos >= 1230:
-            xpos = 1
-            trans()
-        if xpos <= 0:
-            xpos = 0
-
-        xpos += xchange
-
-        # random encounter
-        if ((xpos / 100) % 1) == 0 and xpos is not 0:
-            chance = random.randint(1, 50)
-            if chance == 1:
-                pg.time.wait(1000)
-                combate()
-
-        # draw
-        screen.blit(ground, (0, SCREEN_H - 150))
-        screen.blit(jacob.img, (xpos, SCREEN_H - 200))
-        print(salas)
-        pg.display.update()
-
-
-# Transição
 def trans():
     screen.fill((20, 20, 20))
     texto = tfont.render("Carregando...", True, (230, 230, 230))
@@ -331,8 +258,7 @@ def trans():
         screen.blit(texto, texto_rect)
         pg.display.update()
         pg.time.wait(1500)
-        mov()
-
+        #mov_f_1()
 
 def cutscene(cut):
     global salas
@@ -349,5 +275,9 @@ def cutscene(cut):
         gerenciador.update()
         pg.display.update()
         if not gerenciador.cutscene_running:
-            trans()
+            if cut == cutscene12:
+                combate_boss()
+
+            else:
+                trans()
 

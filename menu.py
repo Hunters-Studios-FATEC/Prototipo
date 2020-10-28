@@ -1,5 +1,5 @@
 import pygame, sys
-from movimento import *
+from tutorial import *
 from assets.cutscenes import *
 from cutscene_manager import CutSceneManager, Cutscene
 import json

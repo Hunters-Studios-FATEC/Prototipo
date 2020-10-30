@@ -58,7 +58,7 @@ salas = 0
 fps = pygame.time.Clock()
 
 # Party
-party = [jacob]
+party = [jacob, kazi]
 
 # battle call
 def combate():
@@ -70,7 +70,7 @@ def combate():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((250 - (80 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
         enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
@@ -147,6 +147,10 @@ def combate():
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
+                                    pg.time.wait(500)
+                                    battle_log.update()
+                                    battle_log.draw()
+                                    battle_log.draw_text(log_text, screen)
                                     ally_index += 1
                                 else:
                                     if salas == 5:
@@ -175,6 +179,8 @@ def combate():
         for i in range(len(party)):
             if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
                 screen.blit(party[i].img, allies_pos[i])
+                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
+                party[i].life_update()
         for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
             screen.blit(enemy_list[e].img, enemy_pos[e])
             screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20)) # barra de vida
@@ -198,10 +204,6 @@ def combate():
             else:
                 setay = 620
 
-        if ally_index >= len(party):  # reseta o turno dos aliados
-            ally_index = 0
-            player_turn = False
-
         enemy_life = 0
         party_life = 0
         for i in range(len(enemy_list)):
@@ -214,7 +216,7 @@ def combate():
                 party[i].vida = 0
             party_life += party[i].vida  # cria uma variavel da vida total da party
 
-        if enemy_life <= 0 or party_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
+        if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
             if salas == 5:
                 cutscene(cutscene10)
 
@@ -224,6 +226,8 @@ def combate():
                 party[i].lvl_up(soma_xp)
 
             mov_f_1()
+        elif party_life <= 0:
+            pass
 
         if turno_inimigo >= len(enemy_list):  # retorna ao turno do jogador
             turno_inimigo = 0
@@ -264,6 +268,10 @@ def combate():
                 seta_vert_pos = len(enemy_list) - 1
             if seta_vert_pos > len(enemy_list) - 1:
                 seta_vert_pos = 0
+
+        if ally_index >= len(party):  # reseta o turno dos aliados
+            ally_index = 0
+            player_turn = False
 
         # desenho do resto das imagens
         screen.blit(ground_2, (0, SCREEN_H - 200))
@@ -339,7 +347,7 @@ def mov_f_1():
         screen.blit(ground, (0, SCREEN_H - 150))
         screen.blit(jacob.img, (xpos, SCREEN_H - 200))
         print(salas)
-        #print(jacob.level, jacob.xp)
+        print(jacob.level, jacob.xp)
         pg.display.update()
 
 
@@ -385,5 +393,3 @@ def cutscene(cut):
 
             else:
                 trans()
-
-mov_f_1()

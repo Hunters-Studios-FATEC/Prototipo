@@ -8,9 +8,14 @@ BRANCO = (255, 255, 255)
 VIOLETA = (138, 43, 226)
 FUCHSIA = (255, 0, 255)
 
+
 class Allies:
     def __init__(self, vida, dano_m, dano_r, cor, nome, lvl, inc_mel, inc_ran, inc_vida):
         self.vida = vida
+        self.vida_total = vida
+        self.dano_recebido = 1
+        self.barra = pygame.Surface((100 * self.dano_recebido, 10))
+        self.barra.fill((255, 0, 0))
         self.level = lvl
         self.nome = nome
         self.dano_m = dano_m
@@ -32,7 +37,6 @@ class Allies:
         enemy.vida -= self.dano_r * enemy.dmg_red_e
 
     def lvl_up(self, soma):
-
         self.xp += soma
 
         if self.xp >= self.to_next_lvl:
@@ -43,6 +47,11 @@ class Allies:
             self.vida += self.inc_vida
             self.dano_m += self.inc_mel
             self.dano_r += self.inc_ran
+
+    def life_update(self):
+        self.dano_recebido = self.vida / self.vida_total
+        self.barra = pygame.Surface((abs(100 * self.dano_recebido), 10))
+        self.barra.fill((255, 0, 0))
 
 
 jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 4, 2, 50)
@@ -77,6 +86,7 @@ class Enemy:
         self.dano_recebido = self.vida / self.vida_total
         self.barra = pygame.Surface((abs(100 * self.dano_recebido), 10))
         self.barra.fill((255, 0, 0))
+
 
 class Boss:
     def __init__(self, vida, dano, cor, nome, xpdrop):
@@ -127,5 +137,6 @@ def enemy_gen():
                                                  random.choice(nomes), random.randint(6, 10))
     for enemy in range(len(enemy_dict)):
         enemy_list.append(enemy_dict["enemy{0}".format(enemy)])
+
 
 enemy_list = []

@@ -38,7 +38,7 @@ cutscene1 = Cutscene(cut1)
 
 
 # main menu
-def menu():
+def menu_start():
     menu_select = True
     game_select = False
     load_file = -1
@@ -256,6 +256,6 @@ def save_game(hp, bullets, level):
 
         pygame.display.update()
 
-menu()
+menu_start()
 
 

@@ -40,10 +40,11 @@ gerenciador = CutSceneManager(screen)
 # FPS
 fps = pygame.time.Clock()
 
-#boss
+# boss
 inacio = hitler
 
 party = [jacob, kazi]
+
 
 def combate_boss():
     global xpos, inacio
@@ -53,7 +54,7 @@ def combate_boss():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((250 - (80 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
         enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
@@ -150,6 +151,8 @@ def combate_boss():
         for i in range(len(party)):
             if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
                 screen.blit(party[i].img, allies_pos[i])
+                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
+                party[i].life_update()
 
         screen.blit(inacio.img, enemy_pos[0])
         screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
@@ -167,10 +170,6 @@ def combate_boss():
                 setay = 560
             else:
                 setay = 620
-
-        if ally_index >= len(party):  # reseta o turno dos aliados
-            ally_index = 0
-            player_turn = False
 
         enemy_life = 0
         party_life = 0
@@ -192,8 +191,6 @@ def combate_boss():
             for i in range(len(party)):
                 party[i].lvl_up(soma_xp)
             cutscene(cutscene13)
-
-
 
         if not player_turn:
             if inacio.vida > 0:  # escolhe a ação inimiga com base em chance
@@ -228,6 +225,10 @@ def combate_boss():
         if enemy_select:  # seta de seleção inimigo
             seta_vert_pos = 0
 
+        if ally_index >= len(party):  # reseta o turno dos aliados
+            ally_index = 0
+            player_turn = False
+
         # desenho do resto das imagens
         screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
@@ -242,6 +243,7 @@ def combate_boss():
                 screen.blit(seta, (setax, setay))
 
         pg.display.update()
+
 
 def trans():
     screen.fill((20, 20, 20))
@@ -258,7 +260,8 @@ def trans():
         screen.blit(texto, texto_rect)
         pg.display.update()
         pg.time.wait(1500)
-        #mov_f_1()
+        # mov_f_1()
+
 
 def cutscene(cut):
     global salas
@@ -280,4 +283,3 @@ def cutscene(cut):
 
             else:
                 trans()
-

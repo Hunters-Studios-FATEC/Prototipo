@@ -16,6 +16,7 @@ class Allies:
         self.dano_recebido = 1
         self.barra = pygame.Surface((100 * self.dano_recebido, 10))
         self.barra.fill((255, 0, 0))
+        self.ammo = 20
         self.level = lvl
         self.nome = nome
         self.dano_m = dano_m
@@ -35,6 +36,7 @@ class Allies:
 
     def skill(self, enemy):
         enemy.vida -= self.dano_r * enemy.dmg_red_e
+        self.ammo -= 1
 
     def lvl_up(self, soma):
         self.xp += soma
@@ -64,6 +66,9 @@ class Allies:
         self.vida += 50
         if self.vida > self.vida_total:
             self.vida = self.vida_total
+
+    def procurar(self):
+        self.ammo += 5
 
 
 jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 4, 2, 50)

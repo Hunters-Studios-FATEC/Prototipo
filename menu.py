@@ -19,6 +19,7 @@ screen = pygame.display.set_mode((1280, 720))
 # fonts
 font_menu = pygame.font.Font("assets/fontes/Very Damaged.ttf", 100)
 font_menu_2 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 50)
+font_menu_3 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 24)
 tfont = pygame.font.Font("assets/fontes/Very Damaged.ttf", 50)
 
 # texts
@@ -33,6 +34,7 @@ opt = font_menu.render("Options", True, (255, 255, 255))
 save_text = font_menu_2.render('Choose a slot:', True, (255, 255, 255))
 slots = (font_menu_2.render('Slot 1', True, (255, 255, 255)), font_menu_2.render('Slot 2', True, (255, 255, 255)),
          font_menu_2.render('Slot 3', True, (255, 255, 255)))
+mov_log_text = ""
 
 # Bacgkground menu
 bg = pygame.image.load("assets/backgrounds/bg.jpeg")
@@ -45,7 +47,7 @@ battle_log = BattleLog(screen)
 ground = pygame.Surface((SCREEN_W, 150))
 ground.fill((139, 69, 13))
 
-# player pos
+# player info
 xpos = 1
 salas = 0
 party = [jacob]
@@ -288,8 +290,11 @@ def combate_tutorial():
                                     battle_state = 'attack'
                                     enemy_select = True
                                 elif axisx and not axisy:
-                                    battle_state = 'skill'
-                                    enemy_select = True
+                                    if party[ally_index].ammo > 0:
+                                        battle_state = 'skill'
+                                        enemy_select = True
+                                    else:
+                                        log_text = "{} está sem munnição".format(party[ally_index])
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -497,8 +502,11 @@ def combate_fase1():
                                     battle_state = 'attack'
                                     enemy_select = True
                                 elif axisx and not axisy:
-                                    battle_state = 'skill'
-                                    enemy_select = True
+                                    if party[ally_index].ammo > 0:
+                                        battle_state = 'skill'
+                                        enemy_select = True
+                                    else:
+                                        log_text = "{} está sem munnição".format(party[ally_index])
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -725,8 +733,11 @@ def combate_boss():
                                     battle_state = 'attack'
                                     enemy_select = True
                                 elif axisx and not axisy:
-                                    battle_state = 'skill'
-                                    enemy_select = True
+                                    if party[ally_index].ammo > 0:
+                                        battle_state = 'skill'
+                                        enemy_select = True
+                                    else:
+                                        log_text = "{} está sem munnição".format(party[ally_index])
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -853,8 +864,10 @@ def combate_boss():
 
 
 def mov_tutorial():
-    global xpos, salas, gerenciador, enemy_list
+    rest_count = True
+    global xpos, salas, gerenciador, enemy_list, mov_log_text
     enemy_list.clear()
+    mov_log_text = ""
     xchange = 0
     salas += 1
 
@@ -882,6 +895,16 @@ def mov_tutorial():
                     xchange = +1
                 if event.key == K_a:
                     xchange = -1
+                if event.key == K_v:
+                    for i in range(len(party)):
+                        party[i].procurar()
+                        mov_log_text = "o grupo recuperou 5 balas cada"
+                if rest_count:
+                    if event.key == K_c:
+                        for i in range(len(party)):
+                            party[i].rest()
+                            rest_count = False
+                            mov_log_text = "o grupo recuperou 50 de vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -895,19 +918,23 @@ def mov_tutorial():
 
         xpos += xchange
 
+        mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
+
         # draw
         screen.blit(ground, (0, SCREEN_H - 150))
         screen.blit(jacob.img, (xpos, SCREEN_H - 200))
+        screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
 
 def mov_f_1():
     rest_count = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state
+    global xpos, salas, gerenciador, trans_state, mov_log_text
     if trans_state == "fase1":
         salas = 0
         trans_state = "standby"
+    mov_log_text = ""
     xchange = 0
     salas += 1
 
@@ -938,13 +965,16 @@ def mov_f_1():
                 if event.key == K_SPACE:
                     for i in range(len(party)):
                         print(party[i].xp, party[i].to_next_lvl)
+                if event.key == K_v:
+                    for i in range(len(party)):
+                        party[i].procurar()
+                        mov_log_text = "o grupo recuperou 5 balas cada"
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
-                            print(party[i].vida)
                             party[i].rest()
-                            print(party[i].vida)
                             rest_count = False
+                            mov_log_text = "o grupo recuperou 50 de vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -965,9 +995,12 @@ def mov_f_1():
                 pygame.time.wait(1000)
                 combate_fase1()
 
+        mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
+
         # draw
         screen.blit(ground, (0, SCREEN_H - 150))
         screen.blit(jacob.img, (xpos, SCREEN_H - 200))
+        screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
 

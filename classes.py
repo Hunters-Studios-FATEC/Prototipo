@@ -44,19 +44,31 @@ class Allies:
             self.xp = self.xp - self.to_next_lvl
             self.to_next_lvl = round(self.to_next_lvl * 1.5)
 
-            self.vida += self.inc_vida
+            self.vida_total += self.inc_vida
             self.dano_m += self.inc_mel
             self.dano_r += self.inc_ran
+
+            print("-------------LEVEL UP!-------------")
+            print("{} foi para o nivel {}".format(self.nome, self.level))
+            print("ataque corpo a corpo {}".format(self.dano_m))
+            print("ataque raged {}".format(self.dano_r))
+            print("vida {}".format(self.vida_total))
+            print("-----------------------------------")
 
     def life_update(self):
         self.dano_recebido = self.vida / self.vida_total
         self.barra = pygame.Surface((abs(100 * self.dano_recebido), 10))
         self.barra.fill((255, 0, 0))
 
+    def rest(self):
+        self.vida += 50
+        if self.vida > self.vida_total:
+            self.vida = self.vida_total
+
 
 jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 4, 2, 50)
 barbara = Allies(200, 15, 35, (0, 0, 255), "barbara", 1, 2, 4, 30)
-kazi = Allies(200, 30, 10, (0, 255, 0), "kazi", 1, 3, 5, 30)
+kazi = Allies(200, 20, 30, (0, 255, 0), "kazi", 1, 3, 5, 30)
 kenji = Allies(200, 25, 25, (255, 150, 0), "kenji", 1, 5, 2, 40)
 party = [jacob, kazi, kenji, barbara]
 
@@ -125,11 +137,11 @@ chronos = Boss(550, 30, FUCHSIA, "Cronos", 0)
 chronos2 = Boss(600, 30, FUCHSIA, "Cronos", 9999)
 
 
-def enemy_gen():
-    vida = [50, 100, 150]
-    dano = [8, 13, 18]
+def enemy_gen(vidas, danos):
+    vida = vidas
+    dano = danos
     cor = [(0, 0, 0), (50, 50, 50), (100, 100, 100)]
-    nomes = ["nazi_melee", "nazi_atirador", "nazi_tank"]
+    nomes = ["nazi caréca", "nazi bigodudo", "nazi manco"]
 
     enemy_dict = {}
     for i in range(random.randint(1, 4)):

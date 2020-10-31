@@ -60,9 +60,9 @@ fps = pygame.time.Clock()
 # Party
 party = [jacob, kazi]
 
-# battle call
-def combate():
 
+# battle call
+def combate_fase1():
     global xpos, salas
     xpos -= 1
 
@@ -162,13 +162,15 @@ def combate():
                             elif enemy_select:  # caso a ação escolhida seja ataque, seleciona o inimigo
                                 if battle_state == 'attack':
                                     party[ally_index].attack(enemy_list[seta_vert_pos])
-                                    log_text = "{} atacou por {}".format(party[ally_index].nome, party[ally_index].dano_m)
+                                    log_text = "{} atacou por {}".format(party[ally_index].nome,
+                                                                         party[ally_index].dano_m)
                                     ally_index += 1
                                     enemy_select = False
                                     battle_state = 'action'
                                 if battle_state == 'skill':
                                     party[ally_index].skill(enemy_list[seta_vert_pos])
-                                    log_text = "{} atirou por {}".format(party[ally_index].nome, party[ally_index].dano_m)
+                                    log_text = "{} atirou por {}".format(party[ally_index].nome,
+                                                                         party[ally_index].dano_m)
                                     ally_index += 1
                                     enemy_select = False
                                     battle_state = 'action'
@@ -183,7 +185,7 @@ def combate():
                 party[i].life_update()
         for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
             screen.blit(enemy_list[e].img, enemy_pos[e])
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20)) # barra de vida
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20))  # barra de vida
             enemy_list[e].life_update()
 
         for i in range(len(enemy_list)):  # remove da lista de inimigos os que morreram
@@ -307,9 +309,9 @@ def mov_f_1():
         if salas == 9:
             cutscene(cutscene11)
 
-        #if salas == 6:
-            #cutscene(cutscene4)
-            #salas -= 1
+        # if salas == 6:
+        # cutscene(cutscene4)
+        # salas -= 1
 
         screen.fill((0, 255, 255))
 
@@ -330,7 +332,7 @@ def mov_f_1():
         # player movement
         if xpos >= 1230:
             xpos = 1
-            trans()
+            trans_fase1()
         if xpos <= 0:
             xpos = 0
 
@@ -341,7 +343,7 @@ def mov_f_1():
             chance = random.randint(1, 50)
             if chance == 1:
                 pg.time.wait(1000)
-                combate()
+                combate_fase1()
 
         # draw
         screen.blit(ground, (0, SCREEN_H - 150))
@@ -352,7 +354,7 @@ def mov_f_1():
 
 
 # Transição
-def trans():
+def trans_fase1():
     screen.fill((20, 20, 20))
     texto = tfont.render("Carregando...", True, (230, 230, 230))
     texto_rect = texto.get_rect()
@@ -386,10 +388,10 @@ def cutscene(cut):
         pg.display.update()
         if not gerenciador.cutscene_running:
             if cut == cutscene9:
-                combate()
+                combate_fase1()
 
             if cut == cutscene11:
                 combate_boss()
 
             else:
-                trans()
+                trans_fase1()

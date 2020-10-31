@@ -15,10 +15,6 @@ pg.init()
 # player pos
 xpos = 1
 
-# fase/sala
-fase_n = 1
-sala_n = 1
-
 # transição
 transition = 'fora de batalha'
 
@@ -64,9 +60,9 @@ fps = pg.time.Clock()
 enemy_list = []
 party = [jacob]
 
-# battle call
-def combate():
 
+# battle call
+def combate_tutorial():
     global xpos, salas
     xpos -= 1
 
@@ -96,7 +92,7 @@ def combate():
     turno_inimigo = 0
     chosen_player = 0
 
-    #enemy generator
+    # enemy generator
 
     def enemy_gen():
         vida = [50, 100, 150]
@@ -171,17 +167,19 @@ def combate():
                                     ally_index += 1
                                 else:
                                     salas -= 1
-                                    mov()
+                                    mov_tutorial()
                             elif enemy_select:  # caso a ação escolhida seja ataque, seleciona o inimigo
                                 if battle_state == 'attack':
                                     party[ally_index].attack(enemy_list[seta_vert_pos])
-                                    log_text = "{} atacou por {}".format(party[ally_index].nome, party[ally_index].dano_m)
+                                    log_text = "{} atacou por {}".format(party[ally_index].nome,
+                                                                         party[ally_index].dano_m)
                                     ally_index += 1
                                     enemy_select = False
                                     battle_state = 'action'
                                 if battle_state == 'skill':
                                     party[ally_index].skill(enemy_list[seta_vert_pos])
-                                    log_text = "{} atirou por {}".format(party[ally_index].nome, party[ally_index].dano_m)
+                                    log_text = "{} atirou por {}".format(party[ally_index].nome,
+                                                                         party[ally_index].dano_m)
                                     ally_index += 1
                                     enemy_select = False
                                     battle_state = 'action'
@@ -193,7 +191,7 @@ def combate():
             screen.blit(party[0].img, allies_pos[0])
         for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
             screen.blit(enemy_list[e].img, enemy_pos[e])
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20)) # barra de vida
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20))  # barra de vida
             enemy_list[e].life_update()
 
         for i in range(len(enemy_list)):  # remove da lista de inimigos os que morreram
@@ -234,7 +232,7 @@ def combate():
             for i in range(len(party)):
                 party[0].lvl_up(soma_xp)
 
-            mov()
+            mov_tutorial()
 
         if turno_inimigo >= len(enemy_list):  # retorna ao turno do jogador
             turno_inimigo = 0
@@ -292,7 +290,7 @@ def combate():
 
 
 # mov call
-def mov():
+def mov_tutorial():
     global xpos, salas, gerenciador, enemy_list
     enemy_list.clear()
     xchange = 0
@@ -309,7 +307,6 @@ def mov():
 
         if salas == 6:
             cutscene(cutscene4)
-
 
         screen.fill((0, 255, 255))
 
@@ -330,7 +327,7 @@ def mov():
         # player movement
         if xpos >= 1230:
             xpos = 1
-            trans()
+            trans_tutorial()
         if xpos <= 0:
             xpos = 0
 
@@ -343,7 +340,7 @@ def mov():
 
 
 # Transição
-def trans():
+def trans_tutorial():
     screen.fill((20, 20, 20))
     texto = tfont.render("Carregando...", True, (230, 230, 230))
     texto_rect = texto.get_rect()
@@ -358,7 +355,7 @@ def trans():
         screen.blit(texto, texto_rect)
         pg.display.update()
         pg.time.wait(1500)
-        mov()
+        mov_tutorial()
 
 
 def cutscene(cut):
@@ -376,11 +373,9 @@ def cutscene(cut):
         gerenciador.update()
         pg.display.update()
 
-
-
         if not gerenciador.cutscene_running:
             if cut == cutscene4:
-                combate()
+                combate_tutorial()
 
             elif cut == cutscene5:
                 cutscene(cutscene6)
@@ -395,5 +390,4 @@ def cutscene(cut):
                 mov_f_1()
 
             else:
-                trans()
-
+                trans_tutorial()

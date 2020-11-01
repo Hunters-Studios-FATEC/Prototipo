@@ -93,48 +93,36 @@ inacio = hitler
 # transição
 trans_state = "tutorial"
 
+# rest_count
+rest_c = True
+
+# loaded_content
+loaded_content = False
 
 # main menu
 def menu_start():
     menu_select = True
     game_select = False
-    load_file = -1
     while True:
 
-        global screen
+        global screen, salas, xpos, rest_c, loaded_content
         screen.blit(bg, (0, 0))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.VIDEORESIZE:
-                screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    if game_select and load_file == -1:
+                    if game_select:
                         game_select = False
-                    elif game_select and load_file >= 0:
-                        load_file = -1
                     else:
                         pygame.quit()
                         sys.exit()
                 if event.key == pygame.K_s:
-                    if load_file == -1:
-                        menu_select = not menu_select
-                    else:
-                        if load_file < 2:
-                            load_file += 1
-                        else:
-                            load_file = 0
+                    menu_select = not menu_select
                 if event.key == pygame.K_w:
-                    if load_file == -1:
-                        menu_select = not menu_select
-                    else:
-                        if load_file > 0:
-                            load_file -= 1
-                        else:
-                            load_file = 2
+                    menu_select = not menu_select
                 if event.key == pygame.K_RETURN:
                     if not game_select:
                         if menu_select:
@@ -142,25 +130,38 @@ def menu_start():
                         else:
                             pass
                     else:
-                        if load_file == -1:
-                            if menu_select:
-                                cutscene(cutscene1, "tutorial")
-                                game_select = False
-                            else:
-                                load_file = 0
+                        if menu_select:
+                            cutscene(cutscene1, "tutorial")
+                            game_select = False
                         else:
-                            if load_file == 0:
-                                load = open('save00.txt', 'r')
-                                pass
-                                load.close()
-                            elif load_file == 1:
-                                load = open('save01.txt', 'r')
-                                pass
-                                load.close()
-                            else:
-                                load = open('save02.txt', 'r')
-                                pass
-                                load.close()
+                            loaded_data = load_file()
+                            for data in loaded_data['stats']:
+                                if data[3] == 0:
+                                    # (vida, dano_m, dano_r, cor, nome, lvl, xp, inc_mel, inc_ran, inc_vida)
+                                    jacob = Allies(data[0], data[1], data[2], (255, 0, 0), "jacob", data[4],
+                                                   data[5], data[6], data[7], data[8])
+                                    jacob.load_stats()
+                                    party[0] = jacob
+                                elif data[3] == 1:
+                                    kazi = Allies(data[0], data[1], data[2], (0, 255, 0), "kazi", data[4],
+                                                   data[5], data[6], data[7], data[8])
+                                    kazi.load_stats()
+                                    party.append(kazi)
+                                elif data[3] == 2:
+                                    kenji = Allies(data[0], data[1], data[2], (255, 150, 0), "kenji", data[4],
+                                                   data[5], data[6], data[7], data[8])
+                                    kenji.load_stats()
+                                    party.append(kenji)
+                                else:
+                                    barbara = Allies(data[0], data[1], data[2], (0, 0, 255), "barbara", data[4],
+                                                   data[5], data[6], data[7], data[8])
+                                    barbara.load_stats()
+                                    party.append(barbara)
+                            salas = loaded_data['lvl_room'][1]
+                            xpos = loaded_data['x_pos']
+                            rest_c = loaded_data['rest_counter']
+                            loaded_content = True
+                            trans(loaded_data['lvl_room'][0])
 
         # buttons
         # screen.blit(text, (screen.get_width() / 2 - text.get_rect().width / 2, 100))
@@ -168,12 +169,8 @@ def menu_start():
             screen.blit(play, (screen.get_width() / 2 - play.get_rect().width / 2, 300))
             screen.blit(options, (screen.get_width() / 2 - options.get_rect().width / 2, 380))
         else:
-            if load_file == -1:
-                screen.blit(new_game, (screen.get_width() / 2 - new_game.get_rect().width / 2, 300))
-                screen.blit(load_game, (screen.get_width() / 2 - load_game.get_rect().width / 2, 380))
-            else:
-                for pos, slt in enumerate(slots):
-                    screen.blit(slt, (screen.get_width() / 2 - slt.get_rect().width / 2, 300 + 80 * pos))
+            screen.blit(new_game, (screen.get_width() / 2 - new_game.get_rect().width / 2, 300))
+            screen.blit(load_game, (screen.get_width() / 2 - load_game.get_rect().width / 2, 380))
 
         # X mark
         if not game_select:
@@ -182,14 +179,10 @@ def menu_start():
             else:
                 screen.blit(X, (screen.get_width() / 2 - options.get_rect().width / 2 - X.get_rect().width, 380))
         else:
-            if load_file == -1:
-                if menu_select:
-                    screen.blit(X, (screen.get_width() / 2 - new_game.get_rect().width / 2 - X.get_rect().width, 300))
-                else:
-                    screen.blit(X, (screen.get_width() / 2 - load_game.get_rect().width / 2 - X.get_rect().width, 380))
+            if menu_select:
+                screen.blit(X, (screen.get_width() / 2 - new_game.get_rect().width / 2 - X.get_rect().width, 300))
             else:
-                screen.blit(X, (screen.get_width() / 2 - slots[0].get_rect().width / 2
-                                - X.get_rect().width, 300 + 80 * load_file))
+                screen.blit(X, (screen.get_width() / 2 - load_game.get_rect().width / 2 - X.get_rect().width, 380))
 
         pygame.display.update()
 
@@ -254,6 +247,7 @@ def combate_tutorial():
         soma_xp += enemy_list[i].xp_drop
 
     print(soma_xp)
+    print(jacob.xp)
 
     while True:
 
@@ -467,6 +461,7 @@ def combate_fase1():
         soma_xp += enemy_list[i].xp_drop
 
     print(soma_xp)
+    print(jacob.xp)
 
     while True:
         screen.fill((0, 255, 255))
@@ -865,7 +860,10 @@ def combate_boss():
 
 def mov_tutorial():
     rest_count = True
-    global xpos, salas, gerenciador, enemy_list, mov_log_text
+    global xpos, salas, gerenciador, enemy_list, mov_log_text, rest_c, loaded_content
+    if loaded_content:
+        rest_count = rest_c
+        loaded_content = False
     enemy_list.clear()
     mov_log_text = ""
     xchange = 0
@@ -899,6 +897,21 @@ def mov_tutorial():
                     for i in range(len(party)):
                         party[i].procurar()
                         mov_log_text = "o grupo recuperou 5 balas cada"
+                if event.key == K_s:
+                    characters = list()
+                    for data in party:
+                        if data.nome == "jacob":
+                            characters.append(0)
+                        elif data.nome == "kazi":
+                            characters.append(1)
+                        elif data.nome == "kenji":
+                            characters.append(2)
+                        else:
+                            characters.append(3)
+                    save_game(stats=[(party[stats].vida, party[stats].dano_m, party[stats].dano_r, characters[stats],
+                                      party[stats].level, party[stats].xp, party[stats].inc_mel, party[stats].inc_ran,
+                                      party[stats].inc_vida) for stats in range(len(party))], lvl_room=(0, salas - 1),
+                              x_pos=xpos, rest_count=rest_count)
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
@@ -930,7 +943,10 @@ def mov_tutorial():
 def mov_f_1():
     rest_count = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text
+    global xpos, salas, gerenciador, trans_state, mov_log_text, rest_c, loaded_content
+    if loaded_content:
+        rest_count = rest_c
+        loaded_content = False
     if trans_state == "fase1":
         salas = 0
         trans_state = "standby"
@@ -969,6 +985,21 @@ def mov_f_1():
                     for i in range(len(party)):
                         party[i].procurar()
                         mov_log_text = "o grupo recuperou 5 balas cada"
+                if event.key == K_s:
+                    characters = list()
+                    for data in party:
+                        if data.nome == "jacob":
+                            characters.append(0)
+                        elif data.nome == "kazi":
+                            characters.append(1)
+                        elif data.nome == "kenji":
+                            characters.append(2)
+                        else:
+                            characters.append(3)
+                    save_game(stats=[(party[stats].vida, party[stats].dano_m, party[stats].dano_r, characters[stats],
+                                      party[stats].level, party[stats].xp, party[stats].inc_mel, party[stats].inc_ran,
+                                      party[stats].inc_vida) for stats in range(len(party))], lvl_room=(1, salas - 1),
+                              x_pos=xpos, rest_count=rest_count)
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
@@ -1131,4 +1162,172 @@ def fim_jogo():
         pygame.display.update()
 
 
-mov_f_1()
+def save_game(**dados):
+    """
+    Inicializa a tela de salvamento de progresso.
+
+    Parâmetros a serem passados:
+    stats -> status dos personagens (exemplo: vida, balas, etc)
+    lvl_room -> nível e sala
+    """
+
+    save_text = font_menu_2.render('Escolha um slot:', True, (255, 255, 255))
+    X = font_menu_2.render("X", True, (255, 255, 255))
+    slots = (font_menu_2.render('Slot 1', True, (255, 255, 255)), font_menu_2.render('Slot 2', True, (255, 255, 255)),
+             font_menu_2.render('Slot 3', True, (255, 255, 255)))
+
+    save_screen = True
+    slot_select = 0
+
+    while save_screen:
+        screen.fill((0, 0, 0))
+
+        # slots
+        screen.blit(save_text, (screen.get_width() // 2 - save_text.get_rect().width // 2, 100))
+        for pos, slt in enumerate(slots):
+            screen.blit(slt, (screen.get_width() // 2 - slt.get_rect().width // 2, 300 + 80 * pos))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_s:
+                    if slot_select < 2:
+                        slot_select += 1
+                    else:
+                        slot_select = 0
+                if event.key == pygame.K_w:
+                    if slot_select > 0:
+                        slot_select -= 1
+                    else:
+                        slot_select = 2
+                if event.key == pygame.K_ESCAPE:
+                    save_screen = False
+                if event.key == pygame.K_RETURN:
+                    save = open(f'save0{slot_select}.txt', 'w')
+                    for data in dados:
+                        save.write(str(dados[f'{data}']) + '\n')
+                    save.close()
+                    save_screen = False
+
+        # X mark
+        screen.blit(X, (screen.get_width() // 2 - slots[0].get_rect().width // 2
+                        - X.get_rect().width, 300 + 80 * slot_select))
+
+        pygame.display.update()
+
+
+def load_file():
+    """
+    Inicializa a tela de load file do jogo.
+    Retorna uma lista com todas as informações contidas no arquivo txt escolhido.
+    Cada linha do arquivo é uma string da lista.
+    """
+
+    load_text = font_menu_2.render('Escolha um slot para carregar:', True, (255, 255, 255))
+    X = font_menu_2.render("X", True, (255, 255, 255))
+    slots = (font_menu_2.render('Slot 1', True, (255, 255, 255)), font_menu_2.render('Slot 2', True, (255, 255, 255)),
+             font_menu_2.render('Slot 3', True, (255, 255, 255)))
+
+    load_screen = True
+    slot_select = 0
+
+    info = list()
+
+    while load_screen:
+        screen.fill((0, 0, 0))
+
+        # slots
+        screen.blit(load_text, (screen.get_width() // 2 - load_text.get_rect().width // 2, 100))
+        for pos, slt in enumerate(slots):
+            screen.blit(slt, (screen.get_width() // 2 - slt.get_rect().width // 2, 300 + 80 * pos))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_s:
+                    if slot_select < 2:
+                        slot_select += 1
+                    else:
+                        slot_select = 0
+                if event.key == pygame.K_w:
+                    if slot_select > 0:
+                        slot_select -= 1
+                    else:
+                        slot_select = 2
+                if event.key == pygame.K_RETURN:
+                    save = open(f'save0{slot_select}.txt', 'r')
+                    for linha in save:
+                        info.append(linha[:-1])
+                    return string_converter(info)
+
+        # X mark
+        screen.blit(X, (screen.get_width() // 2 - slots[0].get_rect().width // 2
+                        - X.get_rect().width, 300 + 80 * slot_select))
+
+        pygame.display.update()
+
+
+def string_converter(info):
+    """
+    Converte todos os dados de string coletados ao carregar um arquivo de save.
+    Retorna um dicionário com os dados convertidos.
+
+    Parâmetro a ser passado:
+    info -> lista com os dados carregados do arquivo txt
+    """
+
+    # Converte a primeira linha do arquivo txt
+    data = info[0][1:-1]
+    stats = list()
+    avaiable_tuples = True
+    start_point = 0
+    end_point = 0
+    while avaiable_tuples:
+        start = data.find('(', start_point)
+        start_point = start + 1
+
+        fim = data.find(')', end_point)
+        end_point = fim + 1
+
+        if start == -1:
+            avaiable_tuples = False
+        else:
+            valores = data[start + 1:fim]
+            stats.append(list(map(int, valores.split(', '))))
+
+    # Converte a segunda linha do arquivo txt
+    data = info[1][1:-1]
+    lvl_room = list(map(int, data.split(', ')))
+    if lvl_room[0] == 0:
+        lvl_room[0] = 'tutorial'
+    elif lvl_room[0] == 1:
+        lvl_room[0] = 'fase1'
+    lvl_room = tuple(lvl_room)
+
+    # Converte a terceira linha do arquivo txt
+    data = info[2]
+    x_position = int(data)
+
+    # Converte a quarta linha do arquivo txt
+    data = info[3]
+    if data == 'True':
+        rest_c = True
+    else:
+        rest_c = False
+
+    converted_data = dict()
+
+    converted_data['stats'] = stats
+    converted_data['lvl_room'] = lvl_room
+    converted_data['x_pos'] = x_position
+    converted_data['rest_counter'] = rest_c
+    return converted_data
+
+
+# mov_f_1()
+menu_start()
+# mov_tutorial()

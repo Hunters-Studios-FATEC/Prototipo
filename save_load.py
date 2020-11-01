@@ -36,12 +36,12 @@ def save_game(**dados):
             if event.type == pygame.QUIT:
                 save_screen = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_s:
                     if slot_select < 2:
                         slot_select += 1
                     else:
                         slot_select = 0
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_w:
                     if slot_select > 0:
                         slot_select -= 1
                     else:
@@ -62,10 +62,10 @@ def save_game(**dados):
         pygame.display.update()
 
 
-def load_game():
+def load_file():
     """
     Inicializa a tela de load file do jogo.
-    Retorna uma lista com todas as informações continudas no arquivo txt escolhido.
+    Retorna uma lista com todas as informações contidas no arquivo txt escolhido.
     Cada linha do arquivo é uma string da lista.
     """
     font_2 = pygame.font.SysFont("arial", 50)
@@ -92,12 +92,12 @@ def load_game():
             if event.type == pygame.QUIT:
                 load_screen = False
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_s:
                     if slot_select < 2:
                         slot_select += 1
                     else:
                         slot_select = 0
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_w:
                     if slot_select > 0:
                         slot_select -= 1
                     else:
@@ -106,7 +106,7 @@ def load_game():
                     save = open(f'save0{slot_select}.txt', 'r')
                     for linha in save:
                         info.append(linha[:-1])
-                    return info
+                    return string_converter(info)
 
         # X mark
         screen.blit(X, (screen.get_width() // 2 - slots[0].get_rect().width // 2
@@ -123,13 +123,13 @@ def string_converter(info):
     Parâmetro a ser passado:
     info -> lista com os dados carregados do arquivo txt
     """
+
+    # Converte a primeira linha do arquivo txt
     data = info[0][1:-1]
     stats = list()
-
     avaiable_tuples = True
     start_point = 0
     end_point = 0
-
     while avaiable_tuples:
         start = data.find('(', start_point)
         start_point = start + 1
@@ -141,17 +141,35 @@ def string_converter(info):
             avaiable_tuples = False
         else:
             valores = data[start + 1:fim]
-            stats.append(tuple(map(int, valores.split(', '))))
-    stats = tuple(stats)
+            stats.append(list(map(int, valores.split(', '))))
 
+    # Converte a segunda linha do arquivo txt
     data = info[1][1:-1]
-    lvl_room = tuple(map(int, data.split(', ')))
+    lvl_room = list(map(int, data.split(', ')))
+    if lvl_room[0] == 0:
+        lvl_room[0] = 'tutorial'
+    elif lvl_room[0] == 1:
+        lvl_room[0] = 'fase1'
+    lvl_room = tuple(lvl_room)
+
+    # Converte a terceira linha do arquivo txt
+    data = info[2]
+    x_position = int(data)
+
+    # Converte a quarta linha do arquivo txt
+    data = info[3]
+    if data == 'True':
+        rest_c = True
+    else:
+        rest_c = False
 
     converted_data = dict()
 
     converted_data['stats'] = stats
     converted_data['lvl_room'] = lvl_room
+    converted_data['x_pos'] = x_position
+    converted_data['rest_counter'] = rest_c
     return converted_data
 
 
-save_game(stats=((100, 50, 1), (82, 30, 2)), lvl_room=(1, 1))
+# (self, vida, dano_m, dano_r, cor, nome, lvl, xp, inc_mel, inc_ran, inc_vida)

@@ -10,7 +10,7 @@ FUCHSIA = (255, 0, 255)
 
 
 class Allies:
-    def __init__(self, vida, dano_m, dano_r, cor, nome, lvl, inc_mel, inc_ran, inc_vida):
+    def __init__(self, vida, dano_m, dano_r, cor, nome, lvl, xp, inc_mel, inc_ran, inc_vida):
         self.vida = vida
         self.vida_total = vida
         self.dano_recebido = 1
@@ -25,7 +25,7 @@ class Allies:
         self.img.fill(cor)
         self.dmg_red = 1
 
-        self.xp = 0
+        self.xp = xp
         self.to_next_lvl = 25
         self.inc_mel = inc_mel
         self.inc_ran = inc_ran
@@ -70,11 +70,15 @@ class Allies:
     def procurar(self):
         self.ammo += 5
 
+    def load_stats(self):
+        self.vida_total = 200 + (self.level - 1) * self.inc_vida
+        self.to_next_lvl = round(self.to_next_lvl * 1.5) * (self.level - 1)
 
-jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 4, 2, 50)
-barbara = Allies(200, 15, 35, (0, 0, 255), "barbara", 1, 2, 4, 30)
-kazi = Allies(200, 20, 30, (0, 255, 0), "kazi", 1, 3, 5, 30)
-kenji = Allies(200, 25, 25, (255, 150, 0), "kenji", 1, 5, 2, 40)
+
+jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 0, 4, 2, 50)
+barbara = Allies(200, 15, 35, (0, 0, 255), "barbara", 1, 0, 2, 4, 30)
+kazi = Allies(200, 20, 30, (0, 255, 0), "kazi", 1, 0, 3, 5, 30)
+kenji = Allies(200, 25, 25, (255, 150, 0), "kenji", 1, 0, 5, 2, 40)
 party = [jacob, kazi, kenji, barbara]
 
 

@@ -10,13 +10,13 @@ FUCHSIA = (255, 0, 255)
 
 
 class Allies:
-    def __init__(self, vida, dano_m, dano_r, cor, nome, lvl, xp, inc_mel, inc_ran, inc_vida):
+    def __init__(self, vida, dano_m, dano_r, cor, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida):
         self.vida = vida
         self.vida_total = vida
         self.dano_recebido = 1
         self.barra = pygame.Surface((100 * self.dano_recebido, 10))
         self.barra.fill((255, 0, 0))
-        self.ammo = 20
+        self.ammo = ammo
         self.level = lvl
         self.nome = nome
         self.dano_m = dano_m
@@ -75,10 +75,10 @@ class Allies:
         self.to_next_lvl = round(self.to_next_lvl * 1.5) * (self.level - 1)
 
 
-jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 0, 4, 2, 50)
-barbara = Allies(200, 15, 35, (0, 0, 255), "barbara", 1, 0, 2, 4, 30)
-kazi = Allies(200, 20, 30, (0, 255, 0), "kazi", 1, 0, 3, 5, 30)
-kenji = Allies(200, 25, 25, (255, 150, 0), "kenji", 1, 0, 5, 2, 40)
+jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 0, 20, 4, 2, 50)
+barbara = Allies(200, 15, 35, (0, 0, 255), "barbara", 1, 0, 20, 2, 4, 30)
+kazi = Allies(200, 20, 30, (0, 255, 0), "kazi", 1, 0, 20, 3, 5, 30)
+kenji = Allies(200, 25, 25, (255, 150, 0), "kenji", 1, 0, 20, 5, 2, 40)
 party = [jacob, kazi, kenji, barbara]
 
 

@@ -75,7 +75,7 @@ class Allies:
         self.to_next_lvl = round(self.to_next_lvl * 1.5) * (self.level - 1)
 
 
-jacob = Allies(200, 20, 30, (255, 0, 0), "jacob", 1, 0, 20, 4, 2, 50)
+jacob = Allies(200, 50, 30, (255, 0, 0), "jacob", 1, 0, 20, 4, 2, 50)
 barbara = Allies(200, 15, 35, (0, 0, 255), "barbara", 1, 0, 20, 2, 4, 30)
 kazi = Allies(200, 20, 30, (0, 255, 0), "kazi", 1, 0, 20, 3, 5, 30)
 kenji = Allies(200, 25, 25, (255, 150, 0), "kenji", 1, 0, 20, 5, 2, 40)
@@ -136,12 +136,8 @@ class Boss:
 
 
 hitler = Boss(400, 30, PRETO, "Hitler", 0)
-hitler2 = Boss(410, 32, PRETO, "TRUE HITLER: INACIO", 500)
-
+hitler2 = Boss(450, 40, PRETO, "TRUE HITLER: INACIO", 500)
 antonio = Boss(500, 10, VIOLETA, "Mussolinius", 0)
-antonio2 = Boss(600, 15, VIOLETA, "Enraged Mussolinius", 1000)
-joseph = Boss(400, 25, VERMELHO, "Joseph Ducai Zhe", 0)
-joseph2 = Boss(500, 25, VERMELHO, "Mecha Joseph", 2000)
 chronos = Boss(550, 30, FUCHSIA, "Cronos", 0)
 chronos2 = Boss(600, 30, FUCHSIA, "Cronos", 9999)
 

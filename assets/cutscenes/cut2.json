@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Hum? O que aconteceu?",
+      "text": "Jacob: Hum? O que aconteceu?",
       "speed": 0.5,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Você é louco porr acaso? Deve estarr bêbad...",
+      "text": "Idoso: Você é louco porr acaso? Deve estarr bêbad...",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "O toque de recolherr já passou há 2 horras!!",
+      "text": "Idoso: O toque de recolherr já passou há 2 horras!!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,7 @@
     },
     {
       "step": 4,
-      "text": "O que faz no meio da rua tão tarrde?",
+      "text": "Idoso: O que faz no meio da rua tão tarrde?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -49,7 +49,7 @@
     },
     {
       "step": 5,
-      "text": "Desculpe-me senhor, mas você pode me informar onde estamos?",
+      "text": "Jacob: Desculpe-me senhor, mas você pode me informar onde estamos?",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -58,7 +58,7 @@
     },
     {
       "step": 6,
-      "text": "Eu estava em Shenzhen agora mesmo e do nada vim parar aqui.",
+      "text": "Jacob: Eu estava em Shenzhen agora mesmo e do nada vim parar aqui.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -67,7 +67,7 @@
     },
     {
       "step": 7,
-      "text": "Você está no meio da rua depois do toque de recolherr no meio de uma guerra.",
+      "text": "Idoso: Você está no meio da rua depois do toque de recolherr no meio de uma guerra.",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -76,7 +76,7 @@
     },
     {
       "step": 8,
-      "text": "Está ficando louco porr acaso?",
+      "text": "Idoso: Está ficando louco porr acaso?",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -85,7 +85,7 @@
     },
     {
       "step": 9,
-      "text": "Guerra?? Não é possível... Em que ano estamos?",
+      "text": "Jacob: Guerra?? Não é possível... Em que ano estamos?",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -94,7 +94,7 @@
     },
     {
       "step": 10,
-      "text": "Estamos em 1942, você vive debaixo de uma pedrra?",
+      "text": "Idoso: Estamos em 1942, você vive debaixo de uma pedrra?",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -103,7 +103,7 @@
     },
     {
       "step": 11,
-      "text": "Mas então...Será que viajei no tempo mesmo?",
+      "text": "Jacob: Mas então...Será que viajei no tempo mesmo?",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -112,7 +112,7 @@
     },
     {
       "step": 12,
-      "text": "Ah não, aí vem eles...",
+      "text": "Idoso: Ah não, aí vem eles...",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -121,7 +121,7 @@
     },
     {
       "step": 13,
-      "text": "Ei. Você aí! O que faz na rua a essas horras se escondendo nas sombrras?",
+      "text": "Nazista 1: Ei. Você aí! O que faz na rua a essas horras se escondendo nas sombrras?",
       "speed": 0.5,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -130,7 +130,7 @@
     },
     {
       "step": 14,
-      "text": "EI! ESPERE!",
+      "text": "Nazista 2: EI! ESPERE!",
       "speed": 0.5,
       "size": 40,
       "rgb_color": [0, 0, 0],

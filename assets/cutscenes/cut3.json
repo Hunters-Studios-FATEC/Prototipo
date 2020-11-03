@@ -4,7 +4,7 @@
   "events": [
     {
       "step": 0,
-      "text": "Ahh!",
+      "text": "Jacob: Ahh!",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Não tenha medo. Só ouça com atenção.",
+      "text": "Mulher: Não tenha medo. Só ouça com atenção.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Quando seu relógio recuperar a carga, volte para seu tempo.",
+      "text": "Mulher: Quando seu relógio recuperar a carga, volte para seu tempo.",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "E esqueça o que aconteceu...",
+      "text": "Mulher: E esqueça o que aconteceu...",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,7 @@
     },
     {
       "step": 4,
-      "text": "Espere! Quem é você?",
+      "text": "Jacob: Espere! Quem é você?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -49,7 +49,7 @@
     },
     {
       "step": 5,
-      "text": "E como sabe do relógio?",
+      "text": "Jacob: E como sabe do relógio?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -58,7 +58,7 @@
     },
     {
       "step": 6,
-      "text": "Não perca essa oportunidade. Corra!",
+      "text": "Mulher: Não perca essa oportunidade. Corra!",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],

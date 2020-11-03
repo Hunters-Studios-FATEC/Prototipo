@@ -4,7 +4,7 @@
   "events": [
     {
       "step": 0,
-      "text": "Que lugar estranho...Definitivamente não é 1918.",
+      "text": "Jacob: Que lugar estranho...Definitivamente não é 1918.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "NÃO! Por que você não me escutou?",
+      "text": "Mulher: NÃO! Por que você não me escutou?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Você é a moça de mais cedo? Onde estou?",
+      "text": "Jacob: Você é a moça de mais cedo? Onde estou?",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Você foi descoberto por ele, e é tarde demais agora...",
+      "text": "Kairós: Meu nome é Kairós. E você foi descoberto por ele. É tarde demais agora...",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,7 @@
     },
     {
       "step": 4,
-      "text": "Aconteça o que acontecer, não fale que me conhece. Entendido?",
+      "text": "Kairós: Aconteça o que acontecer, não fale que me conhece. Entendido?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

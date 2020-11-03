@@ -67,7 +67,7 @@
     },
     {
       "step": 7,
-      "text": "Cuide disso com sua vida!",
+      "text": "Cientista 1: Cuide disso com sua vida!",
       "speed": 2,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -76,7 +76,7 @@
     },
     {
       "step": 8,
-      "text": "Mas o que...?!",
+      "text": "Jacob: Mas o que...?!",
       "speed": 0.2,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -85,7 +85,7 @@
     },
     {
       "step": 9,
-      "text": "Não há tempo para explicar!",
+      "text": "Cientista 2: Não há tempo para explicar!",
       "speed": 2,
       "size": 40,
       "rgb_color": [0, 0, 0],

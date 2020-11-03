@@ -4,7 +4,7 @@
   "events": [
     {
       "step": 0,
-      "text": "Cansado de resistir judeu? he he he he",
+      "text": "Nazista 1: Cansado de resistir judeu? he he he he",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Vai morrer igual os outros ki ki ki ki",
+      "text": "Nazista 2: Vai morrer igual os outros ki ki ki ki",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Talvez...Mas não é hoje!",
+      "text": "Jacob: Talvez...Mas não é hoje!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Mas que diab...",
+      "text": "Nazista 1: Mas que diab...",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],

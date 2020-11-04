@@ -122,8 +122,9 @@ inacio = hitler
 # transição
 trans_state = "tutorial"
 
-# rest_count
+# rest_count and find_b
 rest_c = True
+find_b = True
 
 # loaded_content
 loaded_content = False
@@ -135,7 +136,7 @@ def menu_start():
     game_select = False
     while True:
 
-        global screen, salas, xpos, rest_c, loaded_content
+        global screen, salas, xpos, rest_c, find_b, loaded_content, fase4
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -168,32 +169,72 @@ def menu_start():
                                 for data in loaded_data['stats']:
                                     if data[3] == 0:
                                         # (vida, dano_m, dano_r, cor, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida)
-                                        chr_list[0] = Allies(data[0], data[1], data[2], (255, 0, 0), "jacob", data[4],
-                                                             data[5], data[6], data[7], data[8], data[9])
-                                        chr_list[0].load_stats()
-                                        party[0] = chr_list[0]
+                                        jacob.vida = data[0]
+                                        jacob.dano_m = data[1]
+                                        jacob.dano_r = data[2]
+                                        jacob.cor = (255, 0, 0)
+                                        jacob.nome = "jacob"
+                                        jacob.level = data[4]
+                                        jacob.xp = data[5]
+                                        jacob.ammo = data[6]
+                                        jacob.inc_mel = data[7]
+                                        jacob.inc_ran = data[8]
+                                        jacob.inc_vida = data[9]
+                                        jacob.load_stats()
+                                        party[0] = jacob
                                     elif data[3] == 1:
-                                        chr_list[1] = Allies(data[0], data[1], data[2], (0, 255, 0), "kazi", data[4],
-                                                             data[5], data[6], data[7], data[8], data[9])
-                                        if "kazi" in loaded_data['party']:
-                                            chr_list[1].load_stats()
-                                            party.append(chr_list[1])
+                                        kazi.vida = data[0]
+                                        kazi.dano_m = data[1]
+                                        kazi.dano_r = data[2]
+                                        kazi.cor = (0, 255, 0)
+                                        kazi.nome = "kazi"
+                                        kazi.level = data[4]
+                                        kazi.xp = data[5]
+                                        kazi.ammo = data[6]
+                                        kazi.inc_mel = data[7]
+                                        kazi.inc_ran = data[8]
+                                        kazi.inc_vida = data[9]
+                                        kazi.load_stats()
                                     elif data[3] == 2:
-                                        chr_list[2] = Allies(data[0], data[1], data[2], (255, 150, 0), "kenji", data[4],
-                                                             data[5], data[6], data[7], data[8], data[9])
-                                        if "kenji" in loaded_data['party']:
-                                            chr_list[2].load_stats()
-                                            party.append(chr_list[2])
+                                        kenji.vida = data[0]
+                                        kenji.dano_m = data[1]
+                                        kenji.dano_r = data[2]
+                                        kenji.cor = (255, 150, 0)
+                                        kenji.nome = "kenji"
+                                        kenji.level = data[4]
+                                        kenji.xp = data[5]
+                                        kenji.ammo = data[6]
+                                        kenji.inc_mel = data[7]
+                                        kenji.inc_ran = data[8]
+                                        kenji.inc_vida = data[9]
+                                        kenji.load_stats()
                                     else:
-                                        chr_list[3] = Allies(data[0], data[1], data[2], (0, 0, 255), "barbara", data[4],
-                                                             data[5], data[6], data[7], data[8], data[9])
-                                        if "barbara" in loaded_data['party']:
-                                            chr_list[3].load_stats()
-                                            party.append(chr_list[3])
+                                        barbara.vida = data[0]
+                                        barbara.dano_m = data[1]
+                                        barbara.dano_r = data[2]
+                                        barbara.cor = (0, 0, 255)
+                                        barbara.nome = "barbara"
+                                        barbara.level = data[4]
+                                        barbara.xp = data[5]
+                                        barbara.ammo = data[6]
+                                        barbara.inc_mel = data[7]
+                                        barbara.inc_ran = data[8]
+                                        barbara.inc_vida = data[9]
+                                        barbara.load_stats()
+                                for character in loaded_data['party'][1:]:
+                                    if character == "kazi":
+                                        party.append(kazi)
+                                    elif character == "kenji":
+                                        party.append(kenji)
+                                    else:
+                                        party.append(barbara)
                                 salas = loaded_data['lvl_room'][1]
                                 xpos = loaded_data['x_pos']
                                 rest_c = loaded_data['rest_counter']
+                                find_b = loaded_data['find_bullet']
                                 loaded_content = True
+                                if len(loaded_data) > 6:
+                                    fase4 = loaded_data['fase4']
                                 trans(loaded_data['lvl_room'][0])
 
         screen.blit(bg, (0, 0))
@@ -1770,9 +1811,11 @@ def combate_fase3():
 
 def mov_tutorial():
     rest_count = True
-    global xpos, salas, gerenciador, enemy_list, mov_log_text, rest_c, loaded_content
+    find_bullet = True
+    global xpos, salas, gerenciador, enemy_list, mov_log_text, loaded_content
     if loaded_content:
         rest_count = rest_c
+        find_bullet = find_b
         loaded_content = False
     enemy_list.clear()
     mov_log_text = ""
@@ -1804,8 +1847,10 @@ def mov_tutorial():
                 if event.key == K_a:
                     xchange = -1
                 if event.key == K_v:
-                    for i in range(len(party)):
-                        party[i].procurar()
+                    if find_bullet:
+                        for i in range(len(party)):
+                            party[i].procurar()
+                        find_bullet = False
                         mov_log_text = "o grupo recuperou 5 balas cada"
                 if event.key == K_s:
                     # (self, vida, dano_m, dano_r, cor, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida)
@@ -1813,13 +1858,13 @@ def mov_tutorial():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(0, salas - 1), x_pos=xpos, rest_count=rest_count)
+                              lvl_room=(0, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet)
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
                             party[i].rest()
-                            rest_count = False
-                            mov_log_text = "o grupo recuperou 50 de vida"
+                        rest_count = False
+                        mov_log_text = "o grupo recuperou 50 de vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -1844,10 +1889,12 @@ def mov_tutorial():
 
 def mov_f_1():
     rest_count = True
+    find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, rest_c, loaded_content
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content
     if loaded_content:
         rest_count = rest_c
+        find_bullet = find_b
         loaded_content = False
     if trans_state == "fase1":
         salas = 0
@@ -1886,8 +1933,10 @@ def mov_f_1():
                     for i in range(len(party)):
                         print(party[i].xp, party[i].to_next_lvl)
                 if event.key == K_v:
-                    for i in range(len(party)):
-                        party[i].procurar()
+                    if find_bullet:
+                        for i in range(len(party)):
+                            party[i].procurar()
+                        find_bullet = False
                         mov_log_text = "o grupo recuperou 5 balas cada"
                 if event.key == K_s:
                     # (self, vida, dano_m, dano_r, cor, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida)
@@ -1895,13 +1944,14 @@ def mov_f_1():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count)
+                              lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              fase4=fase4)
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
                             party[i].rest()
-                            rest_count = False
-                            mov_log_text = "o grupo recuperou 50 de vida"
+                        rest_count = False
+                        mov_log_text = "o grupo recuperou 50 de vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -1933,10 +1983,12 @@ def mov_f_1():
 
 def mov_f_2():
     rest_count = True
+    find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, rest_c, loaded_content
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content
     if loaded_content:
         rest_count = rest_c
+        find_bullet = find_b
         loaded_content = False
     if trans_state == "fase2":
         salas = 0
@@ -1968,8 +2020,10 @@ def mov_f_2():
                     for i in range(len(party)):
                         print(party[i].xp, party[i].to_next_lvl)
                 if event.key == K_v:
-                    for i in range(len(party)):
-                        party[i].procurar()
+                    if find_bullet:
+                        for i in range(len(party)):
+                            party[i].procurar()
+                        find_bullet = False
                         mov_log_text = "o grupo recuperou 5 balas cada"
                 if event.key == K_s:
                     # (self, vida, dano_m, dano_r, cor, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida)
@@ -1977,13 +2031,13 @@ def mov_f_2():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count)
+                              lvl_room=(2, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet)
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
                             party[i].rest()
-                            rest_count = False
-                            mov_log_text = "o grupo recuperou 50 de vida"
+                        rest_count = False
+                        mov_log_text = "o grupo recuperou 50 de vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -2015,10 +2069,12 @@ def mov_f_2():
 
 def mov_f_3():
     rest_count = True
+    find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, rest_c, loaded_content
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content
     if loaded_content:
         rest_count = rest_c
+        find_bullet = find_b
         loaded_content = False
     if trans_state == "fase3":
         salas = 0
@@ -2051,8 +2107,10 @@ def mov_f_3():
                     for i in range(len(party)):
                         print(party[i].xp, party[i].to_next_lvl)
                 if event.key == K_v:
-                    for i in range(len(party)):
-                        party[i].procurar()
+                    if find_bullet:
+                        for i in range(len(party)):
+                            party[i].procurar()
+                        find_bullet = False
                         mov_log_text = "o grupo recuperou 5 balas cada"
                 if event.key == K_s:
                     # (self, vida, dano_m, dano_r, cor, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida)
@@ -2060,13 +2118,13 @@ def mov_f_3():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count)
+                              lvl_room=(3, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet)
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
                             party[i].rest()
-                            rest_count = False
-                            mov_log_text = "o grupo recuperou 50 de vida"
+                        rest_count = False
+                        mov_log_text = "o grupo recuperou 50 de vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -2232,7 +2290,7 @@ def fim_jogo():
 
     fim_de_jogo = True
     selector = True
-    global salas, xpos, rest_c, loaded_content
+    global salas, xpos, rest_c, find_b, loaded_content, fase4
     while fim_de_jogo:
         # regras
 
@@ -2261,32 +2319,72 @@ def fim_jogo():
                             for data in loaded_data['stats']:
                                 if data[3] == 0:
                                     # (vida, dano_m, dano_r, cor, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida)
-                                    chr_list[0] = Allies(data[0], data[1], data[2], (255, 0, 0), "jacob", data[4],
-                                                         data[5], data[6], data[7], data[8], data[9])
-                                    chr_list[0].load_stats()
-                                    party[0] = chr_list[0]
+                                    jacob.vida = data[0]
+                                    jacob.dano_m = data[1]
+                                    jacob.dano_r = data[2]
+                                    jacob.cor = (255, 0, 0)
+                                    jacob.nome = "jacob"
+                                    jacob.level = data[4]
+                                    jacob.xp = data[5]
+                                    jacob.ammo = data[6]
+                                    jacob.inc_mel = data[7]
+                                    jacob.inc_ran = data[8]
+                                    jacob.inc_vida = data[9]
+                                    jacob.load_stats()
+                                    party[0] = jacob
                                 elif data[3] == 1:
-                                    chr_list[1] = Allies(data[0], data[1], data[2], (0, 255, 0), "kazi", data[4],
-                                                         data[5], data[6], data[7], data[8], data[9])
-                                    if "kazi" in loaded_data['party']:
-                                        chr_list[1].load_stats()
-                                        party.append(chr_list[1])
+                                    kazi.vida = data[0]
+                                    kazi.dano_m = data[1]
+                                    kazi.dano_r = data[2]
+                                    kazi.cor = (0, 255, 0)
+                                    kazi.nome = "kazi"
+                                    kazi.level = data[4]
+                                    kazi.xp = data[5]
+                                    kazi.ammo = data[6]
+                                    kazi.inc_mel = data[7]
+                                    kazi.inc_ran = data[8]
+                                    kazi.inc_vida = data[9]
+                                    kazi.load_stats()
                                 elif data[3] == 2:
-                                    chr_list[2] = Allies(data[0], data[1], data[2], (255, 150, 0), "kenji", data[4],
-                                                         data[5], data[6], data[7], data[8], data[9])
-                                    if "kenji" in loaded_data['party']:
-                                        chr_list[2].load_stats()
-                                        party.append(chr_list[2])
+                                    kenji.vida = data[0]
+                                    kenji.dano_m = data[1]
+                                    kenji.dano_r = data[2]
+                                    kenji.cor = (255, 150, 0)
+                                    kenji.nome = "kenji"
+                                    kenji.level = data[4]
+                                    kenji.xp = data[5]
+                                    kenji.ammo = data[6]
+                                    kenji.inc_mel = data[7]
+                                    kenji.inc_ran = data[8]
+                                    kenji.inc_vida = data[9]
+                                    kenji.load_stats()
                                 else:
-                                    chr_list[3] = Allies(data[0], data[1], data[2], (0, 0, 255), "barbara", data[4],
-                                                         data[5], data[6], data[7], data[8], data[9])
-                                    if "barbara" in loaded_data['party']:
-                                        chr_list[3].load_stats()
-                                        party.append(chr_list[3])
+                                    barbara.vida = data[0]
+                                    barbara.dano_m = data[1]
+                                    barbara.dano_r = data[2]
+                                    barbara.cor = (0, 0, 255)
+                                    barbara.nome = "barbara"
+                                    barbara.level = data[4]
+                                    barbara.xp = data[5]
+                                    barbara.ammo = data[6]
+                                    barbara.inc_mel = data[7]
+                                    barbara.inc_ran = data[8]
+                                    barbara.inc_vida = data[9]
+                                    barbara.load_stats()
+                            for character in loaded_data['party'][1:]:
+                                if character == "kazi":
+                                    party.append(kazi)
+                                elif character == "kenji":
+                                    party.append(kenji)
+                                else:
+                                    party.append(barbara)
                             salas = loaded_data['lvl_room'][1]
                             xpos = loaded_data['x_pos']
                             rest_c = loaded_data['rest_counter']
+                            find_b = loaded_data['find_bullet']
                             loaded_content = True
+                            if len(loaded_data) > 6:
+                                fase4 = loaded_data['fase4']
                             trans(loaded_data['lvl_room'][0])
 
         # desenhar telas e botoes
@@ -2309,7 +2407,12 @@ def save_game(**dados):
 
     Parâmetros a serem passados:
     stats -> status dos personagens (exemplo: vida, balas, etc)
+    party -> personagens da party
     lvl_room -> nível e sala
+    x_pos -> posição x do jogador
+    rest_count -> variável local rest_count
+    find_bullet -> variável local find_bullet
+    fase4 -> variável global fase4
     """
 
     save_text = font_menu_2.render('Escolha um slot:', True, (255, 255, 255))
@@ -2435,6 +2538,8 @@ def string_converter(info):
     info -> lista com os dados carregados do arquivo txt
     """
 
+    converted_data = dict()
+
     # Converte a primeira linha do arquivo txt
     data = info[0][1:-1]
     stats = list()
@@ -2453,12 +2558,14 @@ def string_converter(info):
         else:
             valores = data[start + 1:fim]
             stats.append(list(map(int, valores.split(', '))))
+    converted_data['stats'] = stats
 
     # Converte a segunda linha do arquivo txt
     data = info[1][1:-1]
     party_chrs = list(data.split(', '))
     for name in range(len(party_chrs)):
         party_chrs[name] = party_chrs[name][1:-1]
+    converted_data['party'] = party_chrs
 
     # Converte a terceira linha do arquivo txt
     data = info[2][1:-1]
@@ -2467,11 +2574,17 @@ def string_converter(info):
         lvl_room[0] = 'tutorial'
     elif lvl_room[0] == 1:
         lvl_room[0] = 'fase1'
+    elif lvl_room[0] == 2:
+        lvl_room[0] = 'fase2'
+    elif lvl_room[0] == 3:
+        lvl_room[0] = 'fase3'
     lvl_room = tuple(lvl_room)
+    converted_data['lvl_room'] = lvl_room
 
     # Converte a quarta linha do arquivo txt
     data = info[3]
     x_position = int(data)
+    converted_data['x_pos'] = x_position
 
     # Converte a quinta linha do arquivo txt
     data = info[4]
@@ -2479,14 +2592,25 @@ def string_converter(info):
         rest_c = True
     else:
         rest_c = False
-
-    converted_data = dict()
-
-    converted_data['stats'] = stats
-    converted_data['lvl_room'] = lvl_room
-    converted_data['party'] = party_chrs
-    converted_data['x_pos'] = x_position
     converted_data['rest_counter'] = rest_c
+
+    # Converte a sexta linha do arquivo txt
+    data = info[5]
+    if data == 'True':
+        find_b = True
+    else:
+        find_b = False
+    converted_data['find_bullet'] = find_b
+
+    # Converte a sétima linha do arquivo txt (se houver)
+    if len(info) > 6:
+        data = info[6]
+        if data == 'True':
+            fase_quatro = True
+        else:
+            fase_quatro = False
+        converted_data['fase4'] = fase_quatro
+
     return converted_data
 
 

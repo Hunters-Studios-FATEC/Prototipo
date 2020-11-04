@@ -72,7 +72,7 @@ class Allies:
 
     def load_stats(self):
         self.vida_total = 200 + (self.level - 1) * self.inc_vida
-        self.to_next_lvl = round(self.to_next_lvl * 1.5) * (self.level - 1)
+        self.to_next_lvl = round(self.to_next_lvl * 1.5 ** (self.level - 1))
 
 
 jacob = Allies(200, 50, 30, (255, 0, 0), "jacob", 1, 0, 20, 4, 2, 50)

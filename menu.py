@@ -181,7 +181,6 @@ def menu_start():
                                         jacob.inc_ran = data[8]
                                         jacob.inc_vida = data[9]
                                         jacob.load_stats()
-                                        party[0] = jacob
                                     elif data[3] == 1:
                                         kazi.vida = data[0]
                                         kazi.dano_m = data[1]

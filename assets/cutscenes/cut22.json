@@ -1,19 +1,19 @@
 {
   "name": "Cutscene 22",
-  "final_step": 4,
+  "final_step": 2,
   "events": [
     {
       "step": 0,
-      "text": "Quem é você?",
-      "speed": 0.6,
+      "text": "Bélgica, 1918.",
+      "speed": 0.4,
       "size": 40,
-      "rgb_color": [0, 0, 0],
+      "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 1,
-      "text": "Ele é....",
+      "text": "Jacob: Dessa vez é pra valer!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,25 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Sou o comandante supremo do leste Joseph Dúcái Zhe",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 3,
-      "text": "E darei uma morte rápida para vocês!",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 4,
-      "text": "Preparem-se!",
+      "text": "Jacob: Devo voltar para o hospital. Hitler deve estar lá.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

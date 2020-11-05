@@ -1,10 +1,10 @@
 {
   "name": "Cutscene 23",
-  "final_step": 5,
+  "final_step": 8,
   "events": [
     {
       "step": 0,
-      "text": "Fazia tempo que não me divertia assim!",
+      "text": "Adolf: Como dói mein cabeça!!!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Agora sei como chegaram aqui!",
+      "text": "Adolf: Malditos ingleses! Como passaram das linhas alemãs? Como perdemos?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Fazia tempo que não me divertia assim!",
+      "text": "Adolf: Não importa, essa coisa parece ter muito poder.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Mas será que conseguem conter nossa pureza tecnológica?",
+      "text": "Adolf: É isso! Vingarei a Alemanha!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,8 +40,8 @@
     },
     {
       "step": 4,
-      "text": "Ahnn pessoal? Olhem! ",
-      "speed": 0.6,
+      "text": "Adolf: Vocês não perdem por esperar!",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -49,7 +49,34 @@
     },
     {
       "step": 5,
-      "text": "Contemplem a pureza ariana!",
+      "text": "Jacob: Não tão rápido!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Adolf: AHHHHHHH. Você?? Como foi parar ai?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "Adolf: Não importa! morrerá igual seu amigo.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 8,
+      "text": "Adolf: Não será tão fácil dessa vez!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

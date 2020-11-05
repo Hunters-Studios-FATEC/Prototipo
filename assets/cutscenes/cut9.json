@@ -4,7 +4,7 @@
   "events": [
     {
       "step": 0,
-      "text": "Segurem a linha. Tiros de supressão!",
+      "text": "Soldado: Segurem a linha. Tiros de supressão!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "EMPURREM AS LINHAS INIMIGAS!",
+      "text": "Soldado: EMPURREM AS LINHAS INIMIGAS!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "(parece que os aliados estão em apuros...)",
+      "text": "Jacob: (parece que os aliados estão em apuros...)",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "Oh, não!",
+      "text": "Jacob: Oh, não!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,7 @@
     },
     {
       "step": 4,
-      "text": "Maldição!",
+      "text": "Soldado: Maldição!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -49,7 +49,7 @@
     },
     {
       "step": 5,
-      "text": "Podem me matar, mas não facilmente!",
+      "text": "Soldado: Podem me matar, mas não facilmente!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -58,7 +58,7 @@
     },
     {
       "step": 6,
-      "text": "Ei, você, me ajude, soldado!",
+      "text": "Soldado: Ei, você, me ajude!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -67,7 +67,7 @@
     },
     {
       "step": 7,
-      "text": "Pegue isto para lutar.",
+      "text": "Soldado: Pegue isto para lutar.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],

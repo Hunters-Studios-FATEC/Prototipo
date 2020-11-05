@@ -1,46 +1,159 @@
 {
   "name": "Cutscene 20",
-  "final_step": 0,
-  "events":[
+  "final_step": 16,
+  "events": [
     {
       "step": 0,
-      "text": "O fuhrer deve estar na sala central",
-      "speed": 0.4,
+      "text": "Jacob: Agora me lembro! Você é Cronos, deus do tempo!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-
     },
     {
       "step": 1,
-      "text": "Vamos! Depressa!",
+      "text": "Jacob: Eu matei Hitler, por que nada mudou?",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 2,
+      "text": "Jacob: E por que você está nos atacando?",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Cronos: Mortal idiota. Não percebeu ainda?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Cronos: Você não 'matou' Hitler. Pelo menos eu não deixei.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Jacob: Você salvou Hitler??? E deu a tecnologia pros nazistas?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Cronos: Você está meio certo ha ha ha ha",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "Jacob: COMO PODE AJUDAR AQUELE SER PERVERSO?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 8,
+      "text": "Cronos: HAHAHAHAHA",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 9,
+      "text": "Cronos: As lutas e ideais dos mortais...",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 10,
+      "text": "Cronos: não passam de entretenimento para os deuses!",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 11,
+      "text": "Cronos: E somente impulsionei.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 12,
+      "text": "Cronos: Eles desvendaram a tecnologia sozinhos.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 13,
+      "text": "Cronos: Entendeu agora?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 14,
+      "text": "Cronos: Tudo não passou de um joguinho para mim.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-
     },
     {
-      "step": 2,
-      "text": "Novamente, Jacob se pergunta se esse será seu destino: ",
-      "speed": 0.3,
+      "step": 15,
+      "text": "Cronos: Mas agora me entediei de novo.",
+      "speed": 0.4,
       "size": 40,
-      "rgb_color": [237, 237, 237],
+      "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-
     },
     {
-      "step": 3,
-      "text": "Lutar contra nazistas nesse futuro disópico",
-      "speed": 0.3,
+      "step": 16,
+      "text": "Cronos: E acho melhor você morrer!",
+      "speed": 0.4,
       "size": 40,
-      "rgb_color": [237, 237, 237],
+      "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-
     }
   ]
 }

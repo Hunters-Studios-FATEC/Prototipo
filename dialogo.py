@@ -17,7 +17,7 @@ cutscene_playing = False
 cutscene_manager = CutSceneManager(screen)
 
 # Carregar os metadados da cutscene dos dicionários json. Encoding para exibir caracter português
-cut1 = json.load(open('assets/cutscenes/cut37.json', encoding='utf-8'))
+cut1 = json.load(open('assets/cutscenes/cut25.json', encoding='utf-8'))
 cutscene_one = Cutscene(cut1)
 
 cut2 = json.load(open('assets/cutscenes/cut2.json', encoding='utf-8'))

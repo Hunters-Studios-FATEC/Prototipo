@@ -1,46 +1,78 @@
 {
   "name": "Cutscene 15",
-  "final_step": 2,
+  "final_step": 7,
   "events": [
     {
       "step": 0,
-      "text": "Jacob e Kenji chegam à praça principal. ",
+      "text": "Gotisch: Chegamos, ufa!",
       "speed": 0.6,
       "size": 40,
-      "rgb_color": [237, 237, 237],
+      "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 1,
-      "text": "Oh não! Desgraçados!",
-      "speed": 1,
+      "text": "Kenji: Parece não ter ninguém. Vamos entrar, rápido!",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 2,
-      "text": "Jacob, rápido, precisamos ajudá-los.",
+      "text": "General Nazista: Un minutti banbini!",
+      "speed": 1,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "General Nazista: Acharam mesmo que iam entrar sem serem vistos?",
       "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
-
-
-
-
-
-
-
-
-
-
-
-
+    },
+    {
+      "step": 4,
+      "text": "General Nazista: Não se perguntaram por que não tem ninguém?",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Kazi: Pessoal, é ele! O general de brigada!",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Mussolinus: Venham seus vermes! Io, Antonius Mussolinus, irá esmagá-los!",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 7,
+      "text": "Jacob: Não temos outra opção. Temos que lutar então!",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
     }
   ]
-
 }

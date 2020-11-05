@@ -4,7 +4,7 @@
   "events": [
     {
       "step": 0,
-      "text": "O que? Estamos perdendo a guerra? ",
+      "text": "Adolf: O que? Estamos perdendo a guerra? ",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -13,7 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Malditos Ingleses! Non destruirão a grandiosa Alemania!",
+      "text": "Adolf: Malditos Ingleses! Non destruirão a grandiosa Alemania!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -22,7 +22,7 @@
     },
     {
       "step": 2,
-      "text": "Alí está ele!",
+      "text": "Jacob: Alí está ele!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -31,7 +31,7 @@
     },
     {
       "step": 3,
-      "text": "AAAAHHHHHHH. Ingleses? Aqui?",
+      "text": "Adolf: AAAAHHHHHHH. Ingleses? Aqui?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,7 +40,7 @@
     },
     {
       "step": 4,
-      "text": "Quais informações possui verme?",
+      "text": "Peter: Quais informações possui verme?",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -49,7 +49,7 @@
     },
     {
       "step": 5,
-      "text": "Informações? O que?",
+      "text": "Adolf: Informações? O que?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -59,7 +59,7 @@
     },
     {
       "step": 6,
-      "text": "Não importa! Você deve morrer!",
+      "text": "Jacob: Não importa! Você deve morrer!",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],

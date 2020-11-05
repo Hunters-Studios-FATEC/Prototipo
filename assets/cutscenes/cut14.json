@@ -1,10 +1,10 @@
 {
   "name": "Cutscene 14",
-  "final_step": 19,
+  "final_step": 21,
   "events": [
     {
       "step": 0,
-      "text": "20XX Shenzhen, China.",
+      "text": "Jacob e Kenji chegam à praça principal. ",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [237, 237, 237],
@@ -13,25 +13,7 @@
     },
     {
       "step": 1,
-      "text": "Mas o que?! Vim parar em 1945?",
-      "speed": 0.6,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-       "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 2,
-      "text": "Jacob olha no relógio e vê marcando 6 de junho de 20XX – porém com o dizer: cargas finalizadas.",
-      "speed": 0.6,
-      "size": 36,
-      "rgb_color": [237, 237, 237],
-       "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 3,
-      "text": "Não! Não!",
+      "text": "Kenji: Oh não! Desgraçados!",
       "speed": 1,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -39,148 +21,185 @@
       "pos_y": 50
     },
     {
-      "step": 4,
-      "text": "Jacob se lembra de uma voz dizendo “Deverás viver com as consequências de seus atos”",
+      "step": 2,
+      "text": "Kenji: O que aconteceu aqui?",
       "speed": 0.6,
-      "size": 38,
-      "rgb_color": [237, 237, 237],
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Atiradora: Eram muitos. Estávamos indo bem...",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+       "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Atiradora: Ganhamos uma rua de cada vez, até que...",
+      "speed": 0.8,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
        "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 5,
-      "text": "Mas eu matei Hitler! Tenho certeza! Então por que...?",
-      "speed": 0.6,
+      "text": "Atirador: O General de Brigada fez uma armadilha.",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 6,
-      "text": "Ei, você aí. Você não parece ariano. Quem é?",
-      "speed": 0.6,
+      "text": "Atirador: Ele estava nos esperando...",
+      "speed": 0.8,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 7,
-      "text": "Jacob olha pra cima.",
-      "speed": 0.6,
+      "text": "Atirador: Quando chegamos, fomos rapidamente cercados.",
+      "speed": 0.8,
       "size": 40,
-      "rgb_color": [237, 237, 237],
-       "pos_x": 50,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 8,
-      "text": "Você é o cara do relógio! Onde estamos? Por que está tudo assim?",
-      "speed": 0.6,
+      "text": "Atiradora: Um massacre... Levaram muitos de nós.",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 9,
-      "text": "Relógio? Não sei do que fala. Estamos em 20XX. Os coturnos pretos devem ter te batido forte.",
-      "speed": 0.6,
-      "size": 38,
+      "text": "Kenji: Droga! E agora? Não podemos recuar! Não temos para onde fugir!",
+      "speed": 0.8,
+      "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 10,
-      "text": "Me chamo Kenji.",
-      "speed": 0.6,
+      "text": "Atiradora: Talvez se... E se irmos pelas ruas paralelas? ",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 11,
-      "text": "Sou da célula de resistência asiática. Meus companheiros e eu estamos dando início à retomada da China.",
+      "text": "Atiradora: Um grupo pequeno pode passar despercebido.",
       "speed": 0.6,
-      "size": 34,
+      "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 12,
-      "text": "Retomada?",
+      "text": "Atirador: Sim... Se chegarmos no castelo, podemos matar o Fuhrer.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 13,
-      "text": "Sim. Dos Nazistas. Como havia dito, você não parece ariano.",
+      "text": "Kenji: Jacob, odeio pedir isso, mas você nos ajudaria?",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 14,
-      "text": "E pela arma, talvez possa me ajudar. A propósito, qual seu nome?",
+      "text": "Kenji: Como pode ver, somos o que restou da resistência.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 15,
-      "text": "Jacob. Jacob Back.",
+      "text": "Kenji: E precisamos garantir que Shenzhen saia do controle nazista.",
       "speed": 0.6,
-      "size": 40,
+      "size": 38,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 16,
-      "text": "Bom Jacob, o que me diz, pode me ajudar a matar os malditos?",
+      "text": "Sem muita opção, Jacob aceita.",
       "speed": 0.6,
       "size": 40,
-      "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 17,
-      "text": "Jacob pensa que se o ajudar, talvez descubra o quê está acontecendo.",
+      "text": "Ele parecia cada vez mais conformado que esse era seu futuro agora, sem as cargas do relógio.",
       "speed": 0.6,
-      "size": 40,
+      "size": 37,
       "rgb_color": [237, 237, 237],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 18,
-      "text": "Sim, o ajudarei.",
+      "text": "Gotisch: Antes que me esqueça, meu nome é Bárbara Von Gotisch.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 19,
-      "text": "Muito bem! Vamos!",
+      "text": "Gotisch: Mas pode me chamar de Gotisch.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
-       "pos_x": 50,
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 20,
+      "text": "Gotisch: E esse é o David.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 21,
+      "text": "Kazi: Prazer. Mas pode me chamar de Kazi.",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
       "pos_y": 50
     }
   ]
+
 }

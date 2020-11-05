@@ -1,11 +1,11 @@
 {
   "name": "Cutscene 19",
-  "final_step": 2,
+  "final_step": 6,
   "events": [
     {
       "step": 0,
-      "text": "Não! Não! Vermes...não...matarão...a...pureza...",
-      "speed": 0.3,
+      "text": "Kenji: Ei pessoal olhem! Aquele não é o fuhrer?",
+      "speed": 0.6,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -13,8 +13,8 @@
     },
     {
       "step": 1,
-      "text": "De puro vocês não tem nada. Assassinos!",
-      "speed": 0.6,
+      "text": "Cronos: Ora ora, parece que você é bem curioso hein?",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
@@ -22,8 +22,44 @@
     },
     {
       "step": 2,
-      "text": "Vamos, depressa! Podemos entrar no castelo.",
+      "text": "Cronos: Parabéns Jacob... Você me divertiu bastante...",
       "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 3,
+      "text": "Jacob: Mas o que? Quem é você? E como sabe meu nome?",
+      "speed": 0.6,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
+      "text": "Cronos: Hmm? Já se esqueceu? ",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Cronos: Ahh é. Alterei o tempo hahaha",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
+      "text": "Cronos: Mas agora.... é hora de morrer!",
+      "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
       "pos_x": 50,

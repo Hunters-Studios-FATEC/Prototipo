@@ -84,8 +84,8 @@ cut21 = json.load(open("assets/cutscenes/cut21.json", encoding='utf-8'))
 cut22 = json.load(open("assets/cutscenes/cut22.json", encoding='utf-8'))
 cut23 = json.load(open("assets/cutscenes/cut23.json", encoding='utf-8'))
 cut24 = json.load(open("assets/cutscenes/cut24.json", encoding='utf-8'))
-cut25 = json.load(open("assets/cutscenes/cut25a.json", encoding='utf-8'))
-cut26 = json.load(open("assets/cutscenes/cut26.json", encoding='utf-8'))
+cut25 = json.load(open("assets/cutscenes/cut25.json", encoding='utf-8'))
+
 
 cutscene1 = Cutscene(cut1)
 cutscene2 = Cutscene(cut2)
@@ -111,8 +111,8 @@ cutscene21 = Cutscene(cut21)
 cutscene22 = Cutscene(cut22)
 cutscene23 = Cutscene(cut23)
 cutscene24 = Cutscene(cut24)
-cutscene25 = Cutscene(cut25)
-cutscene26 = Cutscene(cut26)
+cutscene25 = Cutscene(cut25) # Pós Créditos
+
 
 gerenciador = CutSceneManager(screen)
 
@@ -873,10 +873,10 @@ def combate_boss():
         if enemy_life <= 0 and not fase4:  # retorna ao movimento em caso de vitória ou derrota
             for i in range(len(party)):
                 party[i].lvl_up(soma_xp)
-            cutscene(cutscene13, "fase2")
+            cutscene(cutscene12, "fase2")
 
         if enemy_life <= 0 and fase4:  # retorna ao movimento em caso de vitória ou derrota
-            cutscene(cutscene25, "boss4")
+            cutscene(cutscene24, "boss4")
 
         if party_life <= 0:
             fim_jogo()
@@ -1309,7 +1309,7 @@ def combate_boss2():
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
             for i in range(len(party)):
                 party[i].lvl_up(soma_xp)
-            cutscene(cutscene17, "fase3")
+            cutscene(cutscene16, "fase3")
 
         if party_life <= 0:
             fim_jogo()
@@ -1513,13 +1513,13 @@ def combate_boss3():
             if enemy_life <= inacio.vida_total / 2:
                 inacio = chronos2
                 chronos_fase2 = True
-                cutscene(cutscene21, "boss3")
+                cutscene(cutscene20, "boss3")
 
         if inacio == chronos2:
             if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
                 for i in range(len(party)):
                     party[i].lvl_up(soma_xp)
-                cutscene(cutscene22, "fase4")
+                cutscene(cutscene21, "fase4")
 
         if party_life <= 0:
             fim_jogo()
@@ -1910,7 +1910,7 @@ def mov_f_1():
             cutscene(cutscene11, "fase1")
 
         if salas == 9 and fase4:
-            cutscene(cutscene24, "boss1")
+            cutscene(cutscene23, "boss1")
 
         # if salas == 6:
         # cutscene(cutscene4)
@@ -1999,9 +1999,9 @@ def mov_f_2():
 
     while True:
         if salas == 5:
-            cutscene(cutscene15, "fase2")
+            cutscene(cutscene14, "fase2")
         elif salas == 9:
-            cutscene(cutscene16, "boss2")
+            cutscene(cutscene15, "boss2")
 
         screen.fill((0, 255, 255))
 
@@ -2085,10 +2085,10 @@ def mov_f_3():
 
     while True:
         if salas == 5:
-            cutscene(cutscene19, "fase3")
+            cutscene(cutscene18, "fase3")
 
         if salas == 9:
-            cutscene(cutscene20, "fase3")
+            cutscene(cutscene19, "fase3")
 
         screen.fill((0, 255, 255))
 
@@ -2222,45 +2222,45 @@ def cutscene(cut, fase):
             elif cut == cutscene11:
                 combate_boss()
 
-            elif cut == cutscene13:
-                cutscene(cutscene14, "fase2")
+            elif cut == cutscene12:
+                cutscene(cutscene13, "fase2")
 
-            elif cut == cutscene14:
+            elif cut == cutscene13:
                 trans_state = "fase2"
                 party.pop(1)
                 party.append(kenji)
                 mov_f_2()
 
-            elif cut == cutscene15:
+            elif cut == cutscene14:
                 party.append(barbara)
                 party.append(kazi)
                 trans(fase)
 
-            elif cut == cutscene16:
+            elif cut == cutscene15:
                 combate_boss2()
 
-            elif cut == cutscene17:
-                cutscene(cutscene18, "fase3")
+            elif cut == cutscene16:
+                cutscene(cutscene17, "fase3")
 
-            elif cut == cutscene18:
+            elif cut == cutscene17:
                 trans_state = "fase3"
                 mov_f_3()
+
+            elif cut == cutscene19:
+                combate_boss3()
 
             elif cut == cutscene20:
                 combate_boss3()
 
             elif cut == cutscene21:
-                combate_boss3()
+                cutscene(cutscene22, "fase1")
 
             elif cut == cutscene22:
-                cutscene(cutscene23, "fase1")
-
-            elif cut == cutscene23:
                 fase4 = True
                 trans_state = "fase1"
                 mov_f_1()
 
-            elif cut == cutscene25:
+            elif cut == cutscene24:
                 screen.fill((0, 0, 0))
                 pygame.display.update()
                 # tocar som da arma

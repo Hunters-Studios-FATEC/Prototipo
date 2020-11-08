@@ -2215,7 +2215,7 @@ def trans(fase):
 
 def cutscene(cut, fase):
     global salas, trans_state, fase4
-    screen.fill((0, 0, 0))
+    bg = pygame.image.load('assets/backgrounds/cut1.jpeg')
     while True:
         fps.tick(60)
         for event in pygame.event.get():
@@ -2223,6 +2223,7 @@ def cutscene(cut, fase):
                 pygame.quit()
                 sys.exit()
 
+        screen.blit(bg, (0, 0))
         gerenciador.start_cutscene(cut)
         gerenciador.draw()
         gerenciador.update()

@@ -9,7 +9,6 @@ def upload_data(scr):
     host = '127.0.0.1'
     port = 55000
 
-    print('Waiting for connection')
     try:
         client_socket.connect((host, port))
     except socket.error as e:
@@ -40,16 +39,17 @@ def upload_data(scr):
                     end_point = end + 1
                     converted_info = scr_info[start + 1:end].split(', ')
                     converted_info[0] = converted_info[0][1:-1]
+                    converted_info[2] = converted_info[2][1:-1]
                     scores_list.append(converted_info)
-            scores_list.sort(key=lambda scr_data: scr_data[1], reverse=True)
+            scores_list.sort(key=lambda scr_data: int(scr_data[1]), reverse=True)
 
             pos = 1
             scoreboard.clear()
             for score in range(len(scores_list)):
-                text = f'{pos}º lugar: {scores_list[score][0]} - {scores_list[score][1]} pontos'
+                text = f'{pos}. {scores_list[score][0]}: {scores_list[score][1]} pontos ' \
+                       f'(Rank {scores_list[score][2]})'
                 scoreboard.append(font.render(text, True, (255, 255, 255)))
                 pos += 1
-            print(scoreboard)
     client_socket.close()
 
 

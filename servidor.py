@@ -1,7 +1,7 @@
 import socket
 from _thread import start_new_thread
 
-points = list()
+points = ["('GKY', 4500, 'SS')", "('ABB', 3500, 'S')", "('PHK', 2500, 'A')", "('BLS', 1500, 'B')", "('ACR', 1000, 'C')"]
 clientes = list()
 
 

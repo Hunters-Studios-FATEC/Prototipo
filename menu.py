@@ -5,6 +5,8 @@ from cutscene_manager import CutSceneManager, Cutscene
 import json
 from classes import *
 from battle_ui import BattleBox, Button, BattleLog
+from _thread import start_new_thread
+import socket
 
 # init
 pygame.init()
@@ -129,6 +131,12 @@ find_b = True
 # loaded_content
 loaded_content = False
 
+# score conditions
+save_cnt = 0
+rest_cnt = 0
+bullet_cnt = 0
+death_cnt = 0
+
 
 # main menu
 def menu_start():
@@ -136,7 +144,7 @@ def menu_start():
     game_select = False
     while True:
 
-        global screen, salas, xpos, rest_c, find_b, loaded_content, fase4
+        global screen, salas, xpos, rest_c, find_b, loaded_content, fase4, save_cnt, rest_cnt, bullet_cnt, death_cnt
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -232,7 +240,8 @@ def menu_start():
                                 rest_c = loaded_data['rest_counter']
                                 find_b = loaded_data['find_bullet']
                                 loaded_content = True
-                                if len(loaded_data) > 6:
+                                save_cnt, rest_cnt, bullet_cnt, death_cnt = loaded_data['score_conds']
+                                if len(loaded_data) > 7:
                                     fase4 = loaded_data['fase4']
                                 trans(loaded_data['lvl_room'][0])
 
@@ -443,7 +452,7 @@ def combate_tutorial():
             if enemy_list[turno_inimigo].vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
-                for i in range(len(party)):
+                while True:
                     chosen_player = random.randint(0, len(party) - 1)
                     if party[chosen_player].vida > 0:
                         break
@@ -491,7 +500,7 @@ def combate_tutorial():
 
 
 def combate_fase1():
-    global xpos, salas
+    global xpos, salas, death_cnt
     xpos -= 1
 
     # enemy/player list and positioning
@@ -671,7 +680,7 @@ def combate_fase1():
             if enemy_list[turno_inimigo].vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
-                for i in range(len(party)):
+                while True:
                     chosen_player = random.randint(0, len(party) - 1)
                     if party[chosen_player].vida > 0:
                         break
@@ -683,6 +692,8 @@ def combate_fase1():
                         log_text = "inimigo {} atacou {} por {}".format(enemy_list[turno_inimigo].nome,
                                                                         party[chosen_player].nome,
                                                                         enemy_list[turno_inimigo].dano)
+                        if party[chosen_player].vida <= 0:
+                            death_cnt += 1
                     else:
                         enemy_list[turno_inimigo].enemy_def()
                         log_text = "inimigo {} defende".format(enemy_list[turno_inimigo].nome)
@@ -727,7 +738,7 @@ def combate_fase1():
 
 
 def combate_boss():
-    global xpos, inacio
+    global xpos, inacio, death_cnt
     xpos -= 1
 
     # enemy/player list and positioning
@@ -885,7 +896,7 @@ def combate_boss():
             if inacio.vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
-                for i in range(len(party)):
+                while True:
                     chosen_player = random.randint(0, len(party) - 1)
                     if party[chosen_player].vida > 0:
                         break
@@ -897,6 +908,8 @@ def combate_boss():
                         log_text = "inimigo {} atacou {} por {}".format(inacio.nome,
                                                                         party[chosen_player].nome,
                                                                         inacio.dano)
+                        if party[chosen_player].vida <= 0:
+                            death_cnt += 1
                     else:
                         inacio.enemy_def()
                         log_text = "inimigo {} defende".format(inacio.nome)
@@ -935,7 +948,7 @@ def combate_boss():
 
 
 def combate_fase2():
-    global xpos, salas
+    global xpos, salas, death_cnt
     xpos -= 1
 
     # enemy/player list and positioning
@@ -1113,7 +1126,7 @@ def combate_fase2():
             if enemy_list[turno_inimigo].vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
-                for i in range(len(party)):
+                while True:
                     chosen_player = random.randint(0, len(party) - 1)
                     if party[chosen_player].vida > 0:
                         break
@@ -1125,6 +1138,8 @@ def combate_fase2():
                         log_text = "inimigo {} atacou {} por {}".format(enemy_list[turno_inimigo].nome,
                                                                         party[chosen_player].nome,
                                                                         enemy_list[turno_inimigo].dano)
+                        if party[chosen_player].vida <= 0:
+                            death_cnt += 1
                     else:
                         enemy_list[turno_inimigo].enemy_def()
                         log_text = "inimigo {} defende".format(enemy_list[turno_inimigo].nome)
@@ -1166,7 +1181,7 @@ def combate_fase2():
 
 
 def combate_boss2():
-    global xpos, inacio
+    global xpos, inacio, death_cnt
     xpos -= 1
 
     # enemy/player list and positioning
@@ -1318,7 +1333,7 @@ def combate_boss2():
             if inacio.vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
-                for i in range(len(party)):
+                while True:
                     chosen_player = random.randint(0, len(party) - 1)
                     if party[chosen_player].vida > 0:
                         break
@@ -1330,6 +1345,8 @@ def combate_boss2():
                         log_text = "inimigo {} atacou {} por {}".format(inacio.nome,
                                                                         party[chosen_player].nome,
                                                                         inacio.dano)
+                        if party[chosen_player].vida <= 0:
+                            death_cnt += 1
                     else:
                         inacio.enemy_def()
                         log_text = "inimigo {} defende".format(inacio.nome)
@@ -1368,7 +1385,7 @@ def combate_boss2():
 
 
 def combate_boss3():
-    global xpos, inacio, chronos_fase2
+    global xpos, inacio, chronos_fase2, death_cnt
     xpos -= 1
 
     # enemy/player list and positioning
@@ -1528,7 +1545,7 @@ def combate_boss3():
             if inacio.vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
-                for i in range(len(party)):
+                while True:
                     chosen_player = random.randint(0, len(party) - 1)
                     if party[chosen_player].vida > 0:
                         break
@@ -1540,6 +1557,8 @@ def combate_boss3():
                         log_text = "inimigo {} atacou {} por {}".format(inacio.nome,
                                                                         party[chosen_player].nome,
                                                                         inacio.dano)
+                        if party[chosen_player].vida <= 0:
+                            death_cnt += 1
                     else:
                         inacio.enemy_def()
                         log_text = "inimigo {} defende".format(inacio.nome)
@@ -1578,7 +1597,7 @@ def combate_boss3():
 
 
 def combate_fase3():
-    global xpos, salas
+    global xpos, salas, death_cnt
     xpos -= 1
 
     # enemy/player list and positioning
@@ -1756,7 +1775,7 @@ def combate_fase3():
             if enemy_list[turno_inimigo].vida > 0:  # escolhe a ação inimiga com base em chance
 
                 action_prob = random.randint(1, 10)
-                for i in range(len(party)):
+                while True:
                     chosen_player = random.randint(0, len(party) - 1)
                     if party[chosen_player].vida > 0:
                         break
@@ -1768,6 +1787,8 @@ def combate_fase3():
                         log_text = "inimigo {} atacou {} por {}".format(enemy_list[turno_inimigo].nome,
                                                                         party[chosen_player].nome,
                                                                         enemy_list[turno_inimigo].dano)
+                        if party[chosen_player].vida <= 0:
+                            death_cnt += 1
                     else:
                         enemy_list[turno_inimigo].enemy_def()
                         log_text = "inimigo {} defende".format(enemy_list[turno_inimigo].nome)
@@ -1857,7 +1878,8 @@ def mov_tutorial():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(0, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet)
+                              lvl_room=(0, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
@@ -1890,7 +1912,7 @@ def mov_f_1():
     rest_count = True
     find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -1933,6 +1955,7 @@ def mov_f_1():
                         print(party[i].xp, party[i].to_next_lvl)
                 if event.key == K_v:
                     if find_bullet:
+                        bullet_cnt += 1
                         for i in range(len(party)):
                             party[i].procurar()
                         find_bullet = False
@@ -1944,9 +1967,10 @@ def mov_f_1():
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
                               lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
-                              fase4=fase4)
+                              score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt), fase4=fase4)
                 if rest_count:
                     if event.key == K_c:
+                        rest_cnt += 1
                         for i in range(len(party)):
                             party[i].rest()
                         rest_count = False
@@ -1984,7 +2008,7 @@ def mov_f_2():
     rest_count = True
     find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -2020,6 +2044,7 @@ def mov_f_2():
                         print(party[i].xp, party[i].to_next_lvl)
                 if event.key == K_v:
                     if find_bullet:
+                        bullet_cnt += 1
                         for i in range(len(party)):
                             party[i].procurar()
                         find_bullet = False
@@ -2030,9 +2055,11 @@ def mov_f_2():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(2, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet)
+                              lvl_room=(2, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
                 if rest_count:
                     if event.key == K_c:
+                        rest_cnt += 1
                         for i in range(len(party)):
                             party[i].rest()
                         rest_count = False
@@ -2070,7 +2097,7 @@ def mov_f_3():
     rest_count = True
     find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -2107,6 +2134,7 @@ def mov_f_3():
                         print(party[i].xp, party[i].to_next_lvl)
                 if event.key == K_v:
                     if find_bullet:
+                        bullet_cnt += 1
                         for i in range(len(party)):
                             party[i].procurar()
                         find_bullet = False
@@ -2117,8 +2145,10 @@ def mov_f_3():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(3, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet)
+                              lvl_room=(3, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
                 if rest_count:
+                    rest_cnt += 1
                     if event.key == K_c:
                         for i in range(len(party)):
                             party[i].rest()
@@ -2257,6 +2287,9 @@ def cutscene(cut, fase):
 
             elif cut == cutscene22:
                 fase4 = True
+                party.remove(kenji)
+                party.remove(barbara)
+                party.remove(kazi)
                 trans_state = "fase1"
                 mov_f_1()
 
@@ -2264,6 +2297,7 @@ def cutscene(cut, fase):
                 screen.fill((0, 0, 0))
                 pygame.display.update()
                 # tocar som da arma
+                submmit_score(save_cnt, rest_cnt, bullet_cnt, death_cnt)
 
             else:
                 trans(fase)
@@ -2289,7 +2323,7 @@ def fim_jogo():
 
     fim_de_jogo = True
     selector = True
-    global salas, xpos, rest_c, find_b, loaded_content, fase4
+    global salas, xpos, rest_c, find_b, loaded_content, fase4, save_cnt, rest_cnt, bullet_cnt, death_cnt
     while fim_de_jogo:
         # regras
 
@@ -2382,7 +2416,8 @@ def fim_jogo():
                             rest_c = loaded_data['rest_counter']
                             find_b = loaded_data['find_bullet']
                             loaded_content = True
-                            if len(loaded_data) > 6:
+                            save_cnt, rest_cnt, bullet_cnt, death_cnt = loaded_data['score_conds']
+                            if len(loaded_data) > 7:
                                 fase4 = loaded_data['fase4']
                             trans(loaded_data['lvl_room'][0])
 
@@ -2411,6 +2446,7 @@ def save_game(**dados):
     x_pos -> posição x do jogador
     rest_count -> variável local rest_count
     find_bullet -> variável local find_bullet
+    score_conds -> condições de pontuação
     fase4 -> variável global fase4
     """
 
@@ -2419,6 +2455,7 @@ def save_game(**dados):
     slots = (font_menu_2.render('Slot 1', True, (255, 255, 255)), font_menu_2.render('Slot 2', True, (255, 255, 255)),
              font_menu_2.render('Slot 3', True, (255, 255, 255)))
 
+    global save_cnt
     save_screen = True
     slot_select = 0
 
@@ -2448,6 +2485,8 @@ def save_game(**dados):
                     else:
                         slot_select = 2
                 if event.key == pygame.K_RETURN:
+                    if dados['lvl_room'][0] != 0:
+                        save_cnt += 1
                     save = open(f'save0{slot_select}.txt', 'w')
                     for data in dados:
                         save.write(str(dados[f'{data}']) + '\n')
@@ -2601,9 +2640,14 @@ def string_converter(info):
         find_b = False
     converted_data['find_bullet'] = find_b
 
-    # Converte a sétima linha do arquivo txt (se houver)
-    if len(info) > 6:
-        data = info[6]
+    # Converte a sétima linha do arquivo txt
+    data = info[6][1:-1]
+    scr_conds = list(map(int, data.split(', ')))
+    converted_data['score_conds'] = scr_conds
+
+    # Converte a oitava linha do arquivo txt (se houver)
+    if len(info) > 7:
+        data = info[7]
         if data == 'True':
             fase_quatro = True
         else:
@@ -2611,6 +2655,188 @@ def string_converter(info):
         converted_data['fase4'] = fase_quatro
 
     return converted_data
+
+
+scoreboard = list()
+
+
+def submmit_score(sv_c, rst_c, blt_c, dth_c):
+    res = 5000
+    if sv_c > 4:
+        res -= 500 * (sv_c - 4)
+    if rst_c > 25:
+        res -= 200 * (rst_c - 25)
+    if blt_c > 20:
+        res -= 180 * (rst_c - 20)
+    res -= 800 * dth_c
+    if res < 0:
+        res = 0
+
+    if res >= 4500:
+        rank = 'SS'
+    elif res >= 3500:
+        rank = 'S'
+    elif res >= 2500:
+        rank = 'A'
+    elif res >= 1500:
+        rank = 'B'
+    else:
+        rank = 'C'
+
+    text1 = font_menu_2.render('Digite suas iniciais: ', True, (255, 255, 255))
+    text2 = font_menu_2.render(f'Quantidades de saves: {sv_c}x', True, (255, 255, 255))
+    text3 = font_menu_2.render(f'Recuperações de vida: {rest_cnt}x', True, (255, 255, 255))
+    text4 = font_menu_2.render(f'Recargas de munição: {blt_c}x', True, (255, 255, 255))
+    text5 = font_menu_2.render(f'Mortes em batalha: {dth_c}x', True, (255, 255, 255))
+
+    user_input = ''
+    running = True
+    while running:
+        if len(user_input) < 3:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        user_input += 'Q'
+                    if event.key == pygame.K_w:
+                        user_input += 'W'
+                    if event.key == pygame.K_e:
+                        user_input += 'E'
+                    if event.key == pygame.K_r:
+                        user_input += 'R'
+                    if event.key == pygame.K_t:
+                        user_input += 'T'
+                    if event.key == pygame.K_u:
+                        user_input += 'U'
+                    if event.key == pygame.K_i:
+                        user_input += 'I'
+                    if event.key == pygame.K_o:
+                        user_input += 'O'
+                    if event.key == pygame.K_p:
+                        user_input += 'P'
+                    if event.key == pygame.K_a:
+                        user_input += 'A'
+                    if event.key == pygame.K_s:
+                        user_input += 'S'
+                    if event.key == pygame.K_d:
+                        user_input += 'D'
+                    if event.key == pygame.K_f:
+                        user_input += 'F'
+                    if event.key == pygame.K_g:
+                        user_input += 'G'
+                    if event.key == pygame.K_h:
+                        user_input += 'H'
+                    if event.key == pygame.K_j:
+                        user_input += 'J'
+                    if event.key == pygame.K_k:
+                        user_input += 'K'
+                    if event.key == pygame.K_l:
+                        user_input += 'L'
+                    if event.key == pygame.K_z:
+                        user_input += 'Z'
+                    if event.key == pygame.K_x:
+                        user_input += 'X'
+                    if event.key == pygame.K_c:
+                        user_input += 'C'
+                    if event.key == pygame.K_v:
+                        user_input += 'V'
+                    if event.key == pygame.K_b:
+                        user_input += 'B'
+                    if event.key == pygame.K_n:
+                        user_input += 'N'
+                    if event.key == pygame.K_m:
+                        user_input += 'M'
+        else:
+            running = False
+
+        screen.fill((0, 0, 0))
+        screen.blit(text1, (screen.get_width() // 2 - text1.get_width() // 2, 100))
+        screen.blit(text2, (screen.get_width() // 2 - text2.get_width() // 2, 300))
+        screen.blit(text3, (screen.get_width() // 2 - text3.get_width() // 2, 380))
+        screen.blit(text4, (screen.get_width() // 2 - text4.get_width() // 2, 460))
+        screen.blit(text5, (screen.get_width() // 2 - text5.get_width() // 2, 540))
+        user_name = font_menu_2.render(user_input, True, (255, 255, 255))
+        screen.blit(user_name, (screen.get_width() // 2 - user_name.get_width() // 2, 200))
+        pygame.display.update()
+
+    return scores_screen(user_input, res, rank)
+
+
+def scores_screen(name, result, rank):
+    text1 = font_menu_2.render('LEADERBOARD', True, (255, 255, 255))
+    uploading = True
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        if uploading:
+            start_new_thread(upload_data, ((name, result, rank), ))
+            uploading = False
+
+        screen.fill((0, 0, 0))
+        screen.blit(text1, (screen.get_width() // 2 - text1.get_width() // 2, 20))
+
+        y = 0
+        for info in scoreboard:
+            screen.blit(info, (screen.get_width() // 2 - info.get_width() // 2, 100 + 80 * y))
+            y += 1
+
+        pygame.display.update()
+
+
+def upload_data(scr):
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host = '127.0.0.1'
+    port = 55000
+
+    try:
+        client_socket.connect((host, port))
+    except socket.error as e:
+        print(str(e))
+
+    client_socket.sendall(str(scr).encode('ascii'))
+    while True:
+        try:
+            data = client_socket.recv(1024)
+        except socket.error as e:
+            print(str(e))
+            break
+        else:
+            info = data.decode('ascii')
+
+            scores_list = list()
+            scr_info = info[1:-1]
+            start_point = 0
+            end_point = 0
+            avaiable_info = True
+            while avaiable_info:
+                start = scr_info.find('(', start_point)
+                start_point = start + 1
+                if start == -1:
+                    avaiable_info = False
+                if avaiable_info:
+                    end = scr_info.find(')', end_point)
+                    end_point = end + 1
+                    converted_info = scr_info[start + 1:end].split(', ')
+                    converted_info[0] = converted_info[0][1:-1]
+                    converted_info[2] = converted_info[2][1:-1]
+                    scores_list.append(converted_info)
+            scores_list.sort(key=lambda scr_data: int(scr_data[1]), reverse=True)
+
+            pos = 1
+            scoreboard.clear()
+            for score in range(len(scores_list)):
+                text = f'{pos}. {scores_list[score][0]}: {scores_list[score][1]} pontos ' \
+                       f'(Rank {scores_list[score][2]})'
+                scoreboard.append(font_menu_2.render(text, True, (255, 255, 255)))
+                pos += 1
+    client_socket.close()
 
 
 menu_start()

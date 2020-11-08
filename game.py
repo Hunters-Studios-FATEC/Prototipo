@@ -40,13 +40,16 @@ def upload_data(scr):
                     end_point = end + 1
                     converted_info = scr_info[start + 1:end].split(', ')
                     converted_info[0] = converted_info[0][1:-1]
+                    converted_info[2] = converted_info[2][1:-1]
                     scores_list.append(converted_info)
             scores_list.sort(key=lambda scr_data: scr_data[1], reverse=True)
 
             pos = 1
             scoreboard.clear()
             for score in range(len(scores_list)):
-                text = f'{pos}º lugar: {scores_list[score][0]} - {scores_list[score][1]} pontos'
+                text = f'{pos}º lugar: {scores_list[score][0]} - {scores_list[score][1]} pontos ' \
+                       f'(Rank {scores_list[score][2]})'
+                print(text)
                 scoreboard.append(font.render(text, True, (255, 255, 255)))
                 pos += 1
             print(scoreboard)
@@ -107,6 +110,16 @@ screen = pygame.display.set_mode((largura, altura))
 name = 'AAA'
 result = randint(100, 500)
 uploading = True
+if result >= 400:
+    rank = 'SS'
+elif result >= 300:
+    rank = 'S'
+elif result >= 200:
+    rank = 'A'
+elif result >= 100:
+    rank = 'B'
+else:
+    rank = 'C'
 
 font = pygame.font.SysFont('', 38)
 
@@ -120,7 +133,7 @@ while running:
 
     if uploading:
         start_new_thread(init_server, ())
-        start_new_thread(upload_data, ((name, result), ))
+        start_new_thread(upload_data, ((name, result, rank), ))
         uploading = False
 
     screen.fill((0, 0, 0))

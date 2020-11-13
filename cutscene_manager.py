@@ -90,6 +90,12 @@ class CutSceneManager:
         # Condição para mostrar o diálogo só quando a caixa desenhar
         self.is_dialogue_screen_draw = False
 
+        self.surf = pg.Surface((int(self.screen.get_width()), int(self.window_size)))
+        self.timer = 0
+        self.sound = pg.mixer.Sound("assets/audio/Cutscenes/dialogue.wav")
+        self.sound.set_volume(0.4)
+        self.ch = pg.mixer.Channel(2)
+
     def start_cutscene(self, cutscene):
         if cutscene.name not in self.cutscenes_complete:
             self.cutscenes_complete.append(cutscene.name)
@@ -101,6 +107,13 @@ class CutSceneManager:
         self.cutscene_running = False
 
     def update(self):
+        if self.timer > 0:
+            self.timer -= 1
+
+        if self.timer == 0:
+            self.timer = 10
+            self.ch.play(self.sound)
+
         if self.cutscene_running:
             if self.window_size < self.screen.get_height() * 0.3:
                 self.window_size += 4
@@ -114,18 +127,28 @@ class CutSceneManager:
         if self.cutscene_running:
             # Desenha a caixa. Depois exibe o diálogo. Ela ocupa 1/3 da tela
             if self.window_size < self.screen.get_height() * 0.3:
-                pg.draw.rect(self.screen,
-                        (158, 161, 154), #5F665C. Cor da caixa
-                        (0, 0, self.screen.get_width(),
-                        self.window_size))
+
+                self.surf = pg.Surface((int(self.screen.get_width()), int(self.window_size)))
+                self.surf.fill((158, 161, 154))
+                self.surf.set_alpha(180)
+                self.screen.blit(self.surf, (0, 0))
+                #  pg.draw.rect(self.screen,
+                #        (158, 161, 154), #5F665C. Cor da caixa
+                #       (0, 0, self.screen.get_width(),
+                #      self.window_size))
             else:
                 # Condição de checagem se desenhou completamente a caixa
                 self.is_dialogue_screen_draw = True
 
-                pg.draw.rect(self.screen,
-                        (158, 161, 154), #5F665C
-                        (0, 0, self.screen.get_width(),
-                        self.window_size))
+                self.surf = pg.Surface((int(self.screen.get_width()), int(self.window_size)))
+                self.surf.fill((158, 161, 154))
+                self.surf.set_alpha(180)
+                self.screen.blit(self.surf, (0, 0))
+
+                # pg.draw.rect(self.screen,
+                #        (158, 161, 154), #5F665C
+                #        (0, 0, self.screen.get_width(),
+                #        self.window_size))
 
                 # Desenha o diálogo. indice zero do dicionario da cutscene no json.
                 dialogue_displayed = self.cutscene.dialogue[0:int(self.cutscene.dialogue_position)]

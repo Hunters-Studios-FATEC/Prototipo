@@ -10,6 +10,7 @@ import socket
 
 # init
 pygame.init()
+pygame.mixer.init()
 
 fps = pygame.time.Clock()
 
@@ -17,12 +18,39 @@ fps = pygame.time.Clock()
 SCREEN_H = 720
 SCREEN_W = 1280
 screen = pygame.display.set_mode((1280, 720))
+screen.fill((0, 0, 0))
 
 # fonts
 font_menu = pygame.font.Font("assets/fontes/Very Damaged.ttf", 100)
 font_menu_2 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 50)
 font_menu_3 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 24)
 tfont = pygame.font.Font("assets/fontes/Very Damaged.ttf", 50)
+
+# sfx
+walk = pygame.mixer.Sound("assets/audio/Ambiente/passos.ogg")
+walk_timer = 0
+shot = pygame.mixer.Sound("assets/audio/Combate/pistol.wav")
+melee = pygame.mixer.Sound("assets/audio/Combate/swish_2.wav")
+run = pygame.mixer.Sound("assets/audio/Combate/run.ogg")
+menu_st = pygame.mixer.Sound("assets/audio/Menus/clock_fundo.ogg")
+enter = pygame.mixer.Sound("assets/audio/Menus/Enter.ogg")
+enter.set_volume(0.4)
+select = pygame.mixer.Sound("assets/audio/Menus/select.ogg")
+
+# musica
+musicF1 = pygame.mixer.Sound("assets/audio/Musics/warzone.wav")
+musicF1.set_volume(0.05)
+musicF2 = pygame.mixer.Sound("assets/audio/Musics/wave animada.ogg")
+musicF2.set_volume(0.05)
+musicF3 = pygame.mixer.Sound("assets/audio/Musics/suspense.wav")
+musicF3.set_volume(0.05)
+musicHitler = pygame.mixer.Sound("assets/audio/Musics/hotler.ogg")
+musicHitler.set_volume(0.05)
+count = 0
+
+# channels
+ch1 = pygame.mixer.Channel(0)
+ch2 = pygame.mixer.Channel(1)
 
 # texts
 # text = font.render("Teste", True, (255, 255, 255))
@@ -46,15 +74,12 @@ battle_box = BattleBox(screen)
 battle_log = BattleLog(screen)
 chronos_fase2 = False
 
-# ground
-ground = pygame.Surface((SCREEN_W, 150))
-ground.fill((139, 69, 13))
-
 # player info
+direction = "R"
 xpos = 1
 salas = 0
 party = [jacob]
-chr_list = [jacob, kazi, kenji, barbara]
+chr_list = [jacob, kazi_past, kenji, barbara]
 fase4 = False
 
 # select seta
@@ -88,7 +113,6 @@ cut23 = json.load(open("assets/cutscenes/cut23.json", encoding='utf-8'))
 cut24 = json.load(open("assets/cutscenes/cut24.json", encoding='utf-8'))
 cut25 = json.load(open("assets/cutscenes/cut25.json", encoding='utf-8'))
 
-
 cutscene1 = Cutscene(cut1)
 cutscene2 = Cutscene(cut2)
 cutscene3 = Cutscene(cut3)
@@ -113,8 +137,7 @@ cutscene21 = Cutscene(cut21)
 cutscene22 = Cutscene(cut22)
 cutscene23 = Cutscene(cut23)
 cutscene24 = Cutscene(cut24)
-cutscene25 = Cutscene(cut25) # Pós Créditos
-
+cutscene25 = Cutscene(cut25)  # Pós Créditos
 
 gerenciador = CutSceneManager(screen)
 
@@ -138,10 +161,22 @@ bullet_cnt = 0
 death_cnt = 0
 
 
+def music(count):
+    if count == 0:
+        musicF1.play()
+    elif count == 1:
+        musicF2.play()
+    elif count == 2:
+        musicF3.play()
+    elif count == 3:
+        musicHitler.play()
+
+
 # main menu
 def menu_start():
     menu_select = True
     game_select = False
+    menu_st.play(-1)
     while True:
 
         global screen, salas, xpos, rest_c, find_b, loaded_content, fase4, save_cnt, rest_cnt, bullet_cnt, death_cnt
@@ -158,8 +193,10 @@ def menu_start():
                         pygame.quit()
                         sys.exit()
                 if event.key == pygame.K_s:
+                    select.play()
                     menu_select = not menu_select
                 if event.key == pygame.K_w:
+                    select.play()
                     menu_select = not menu_select
                 if event.key == pygame.K_RETURN:
                     if not game_select:
@@ -169,6 +206,8 @@ def menu_start():
                             pass
                     else:
                         if menu_select:
+                            pygame.mixer.stop()
+                            enter.play()
                             cutscene(cutscene1, "tutorial")
                             game_select = False
                         else:
@@ -190,18 +229,18 @@ def menu_start():
                                         jacob.inc_vida = data[9]
                                         jacob.load_stats()
                                     elif data[3] == 1:
-                                        kazi.vida = data[0]
-                                        kazi.dano_m = data[1]
-                                        kazi.dano_r = data[2]
-                                        kazi.cor = (0, 255, 0)
-                                        kazi.nome = "kazi"
-                                        kazi.level = data[4]
-                                        kazi.xp = data[5]
-                                        kazi.ammo = data[6]
-                                        kazi.inc_mel = data[7]
-                                        kazi.inc_ran = data[8]
-                                        kazi.inc_vida = data[9]
-                                        kazi.load_stats()
+                                        kazi_past.vida = data[0]
+                                        kazi_past.dano_m = data[1]
+                                        kazi_past.dano_r = data[2]
+                                        kazi_past.cor = (0, 255, 0)
+                                        kazi_past.nome = "kazi_past"
+                                        kazi_past.level = data[4]
+                                        kazi_past.xp = data[5]
+                                        kazi_past.ammo = data[6]
+                                        kazi_past.inc_mel = data[7]
+                                        kazi_past.inc_ran = data[8]
+                                        kazi_past.inc_vida = data[9]
+                                        kazi_past.load_stats()
                                     elif data[3] == 2:
                                         kenji.vida = data[0]
                                         kenji.dano_m = data[1]
@@ -229,10 +268,12 @@ def menu_start():
                                         barbara.inc_vida = data[9]
                                         barbara.load_stats()
                                 for character in loaded_data['party'][1:]:
-                                    if character == "kazi":
-                                        party.append(kazi)
+                                    if character == "kazi_past":
+                                        party.append(kazi_past)
                                     elif character == "kenji":
                                         party.append(kenji)
+                                    elif character == "kazi_fut":
+                                        party.append(kazi_fut)
                                     else:
                                         party.append(barbara)
                                 salas = loaded_data['lvl_room'][1]
@@ -272,6 +313,8 @@ def menu_start():
 
 
 def combate_tutorial():
+    jacob.img = jacob.idle
+    bg = pygame.image.load('assets/backgrounds/varsóvia.png')
     party = [jacob]
     global xpos, salas
     xpos -= 1
@@ -280,8 +323,8 @@ def combate_tutorial():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((250 - (80 * i), SCREEN_H - 250))
-        enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
+        allies_pos.append((250 - (80 * i), SCREEN_H))
+        enemy_pos.append((770 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -307,7 +350,7 @@ def combate_tutorial():
     def enemy_gen_tutorial():
         vida = [50, 100, 150]
         dano = [8, 13, 18]
-        cor = [(0, 0, 0), (50, 50, 50), (100, 100, 100)]
+        cor = ['assets/sprites/hitler/hitler.png']
         nomes = ["nazi_melee", "nazi_atirador", "nazi_tank"]
 
         enemy_dict = {}
@@ -334,8 +377,6 @@ def combate_tutorial():
 
     while True:
 
-        screen.fill((0, 255, 255))
-
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
@@ -347,6 +388,7 @@ def combate_tutorial():
                             battle_state = 'action'
                             enemy_select = False
                 if event.key == K_d or event.key == K_a:
+                    select.play()
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo X
                             axisx = not axisx
@@ -356,10 +398,12 @@ def combate_tutorial():
                             if event.key == K_a:
                                 seta_vert_pos -= 1
                 if event.key == K_w or event.key == K_s:
+                    select.play()
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo Y
                             axisy = not axisy
                 if event.key == K_RETURN:
+
                     if player_turn:
                         if party[ally_index].vida > 0:
                             if battle_state == 'action':  # seleciona a ação escolhida
@@ -396,15 +440,6 @@ def combate_tutorial():
                         else:  # checa se o jogador atual está morto ou não
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
-
-        if party[0].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-            screen.blit(party[0].img, allies_pos[0])
-            screen.blit(party[0].barra, (allies_pos[0][0] - 25, allies_pos[0][1] - 20))
-            party[0].life_update()
-        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
-            screen.blit(enemy_list[e].img, enemy_pos[e])
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20))  # barra de vida
-            enemy_list[e].life_update()
 
         for i in range(len(enemy_list)):  # remove da lista de inimigos os que morreram
             if enemy_list[i].vida <= 0:
@@ -484,8 +519,18 @@ def combate_tutorial():
             if seta_vert_pos > len(enemy_list) - 1:
                 seta_vert_pos = 0
 
+        screen.blit(bg, (0, -190))  # background
+
+        if party[0].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
+            screen.blit(party[0].img, (allies_pos[0][0], allies_pos[0][1] - 530))
+            screen.blit(party[0].barra, (allies_pos[0][0] + 60, allies_pos[0][1] - 550))
+            party[0].life_update()
+        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
+            screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            enemy_list[e].life_update()
+
         # desenho do resto das imagens
-        screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
@@ -493,13 +538,15 @@ def combate_tutorial():
             battle_box.update()
             battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
         pygame.display.update()
 
 
 def combate_fase1():
+    bg = pygame.image.load('assets/backgrounds/no man_s land.png')
+    jacob.img = jacob.idle
     global xpos, salas, death_cnt
     xpos -= 1
 
@@ -507,8 +554,8 @@ def combate_fase1():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
-        enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H))
+        enemy_pos.append((770 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -546,7 +593,6 @@ def combate_fase1():
     print(soma_xp)
 
     while True:
-        screen.fill((0, 255, 255))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -559,6 +605,7 @@ def combate_fase1():
                             battle_state = 'action'
                             enemy_select = False
                 if event.key == K_d or event.key == K_a:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo X
                             axisx = not axisx
@@ -568,10 +615,12 @@ def combate_fase1():
                             if event.key == K_a:
                                 seta_vert_pos -= 1
                 if event.key == K_w or event.key == K_s:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo Y
                             axisy = not axisy
                 if event.key == K_RETURN:
+
                     if player_turn:
                         if party[ally_index].vida > 0:
                             if battle_state == 'action':  # seleciona a ação escolhida
@@ -597,6 +646,7 @@ def combate_fase1():
                                         log_text = "SIFODE AE OTARIO"
                                     else:
                                         salas -= 1
+                                        ch1.play(run)
                                         mov_f_1()
 
                             elif enemy_select:  # caso a ação escolhida seja ataque, seleciona o inimigo
@@ -617,16 +667,6 @@ def combate_fase1():
                         else:  # checa se o jogador atual está morto ou não
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
-
-        for i in range(len(party)):
-            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-                screen.blit(party[i].img, allies_pos[i])
-                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
-                party[i].life_update()
-        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
-            screen.blit(enemy_list[e].img, enemy_pos[e])
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20))  # barra de vida
-            enemy_list[e].life_update()
 
         for i in range(len(enemy_list)):  # remove da lista de inimigos os que morreram
             if enemy_list[i].vida <= 0:
@@ -718,16 +758,27 @@ def combate_fase1():
             ally_index = 0
             player_turn = False
 
+        screen.blit(bg, (0, -190))
+
+        for i in range(len(party)):
+            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
+                screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
+                screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
+                party[i].life_update()
+        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
+            screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            enemy_list[e].life_update()
+
         # desenho do resto das imagens
-        screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
+        battle_box.update()
+        battle_box.draw()
         if player_turn:
-            battle_box.update()
-            battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -738,6 +789,10 @@ def combate_fase1():
 
 
 def combate_boss():
+    pygame.mixer.stop()
+    count = 3
+    bg = pygame.image.load('assets/backgrounds/no man_s land.png')
+    jacob.img = jacob.idle
     global xpos, inacio, death_cnt
     xpos -= 1
 
@@ -745,7 +800,7 @@ def combate_boss():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H))
         enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
@@ -774,16 +829,14 @@ def combate_boss():
     else:
         inacio = hitler
 
-    ground_2 = pygame.Surface((SCREEN_W, SCREEN_H * 0.3))
-    ground_2.fill((139, 69, 13))
-
     soma_xp = 0
     soma_xp += inacio.xpdrop
 
     print(soma_xp)
 
     while True:
-        screen.fill((0, 255, 255))
+
+        music(count)
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -796,6 +849,7 @@ def combate_boss():
                             battle_state = 'action'
                             enemy_select = False
                 if event.key == K_d or event.key == K_a:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo X
                             axisx = not axisx
@@ -805,10 +859,12 @@ def combate_boss():
                             if event.key == K_a:
                                 seta_vert_pos -= 1
                 if event.key == K_w or event.key == K_s:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo Y
                             axisy = not axisy
                 if event.key == K_RETURN:
+
                     if player_turn:
                         if party[ally_index].vida > 0:
                             if battle_state == 'action':  # seleciona a ação escolhida
@@ -845,16 +901,6 @@ def combate_boss():
                         else:  # checa se o jogador atual está morto ou não
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
-
-        for i in range(len(party)):
-            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-                screen.blit(party[i].img, allies_pos[i])
-                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
-                party[i].life_update()
-
-        screen.blit(inacio.img, enemy_pos[0])
-        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
-        inacio.life_update()
 
         # action select
         if battle_state == 'action':  # define a posição x da seta de ação
@@ -931,16 +977,26 @@ def combate_boss():
             ally_index = 0
             player_turn = False
 
+        screen.blit(bg, (0, -190))
+
+        for i in range(len(party)):
+            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
+                screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
+                screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
+                party[i].life_update()
+        screen.blit(inacio.img, enemy_pos[0])
+        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
+        inacio.life_update()
+
         # desenho do resto das imagens
-        screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
+        battle_box.update()
+        battle_box.draw()
         if player_turn:
-            battle_box.update()
-            battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -948,6 +1004,8 @@ def combate_boss():
 
 
 def combate_fase2():
+    bg = pygame.image.load('assets/backgrounds/nazi cyberpunk.png')
+    jacob.img = jacob.idle
     global xpos, salas, death_cnt
     xpos -= 1
 
@@ -955,8 +1013,8 @@ def combate_fase2():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
-        enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H))
+        enemy_pos.append((770 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -994,7 +1052,6 @@ def combate_fase2():
     print(soma_xp)
 
     while True:
-        screen.fill((0, 255, 255))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1007,6 +1064,7 @@ def combate_fase2():
                             battle_state = 'action'
                             enemy_select = False
                 if event.key == K_d or event.key == K_a:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo X
                             axisx = not axisx
@@ -1016,10 +1074,12 @@ def combate_fase2():
                             if event.key == K_a:
                                 seta_vert_pos -= 1
                 if event.key == K_w or event.key == K_s:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo Y
                             axisy = not axisy
                 if event.key == K_RETURN:
+
                     if player_turn:
                         if party[ally_index].vida > 0:
                             if battle_state == 'action':  # seleciona a ação escolhida
@@ -1045,6 +1105,7 @@ def combate_fase2():
                                         log_text = "SIFODE AE OTARIO"
                                     else:
                                         salas -= 1
+                                        ch1.play(run)
                                         mov_f_2()
 
                             elif enemy_select:  # caso a ação escolhida seja ataque, seleciona o inimigo
@@ -1065,16 +1126,6 @@ def combate_fase2():
                         else:  # checa se o jogador atual está morto ou não
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
-
-        for i in range(len(party)):
-            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-                screen.blit(party[i].img, allies_pos[i])
-                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
-                party[i].life_update()
-        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
-            screen.blit(enemy_list[e].img, enemy_pos[e])
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20))  # barra de vida
-            enemy_list[e].life_update()
 
         for i in range(len(enemy_list)):  # remove da lista de inimigos os que morreram
             if enemy_list[i].vida <= 0:
@@ -1164,16 +1215,27 @@ def combate_fase2():
             ally_index = 0
             player_turn = False
 
+        screen.blit(bg, (0, -190))
+
+        for i in range(len(party)):
+            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
+                screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
+                screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
+                party[i].life_update()
+        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
+            screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            enemy_list[e].life_update()
+
         # desenho do resto das imagens
-        screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
+        battle_box.update()
+        battle_box.draw()
         if player_turn:
-            battle_box.update()
-            battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1181,6 +1243,8 @@ def combate_fase2():
 
 
 def combate_boss2():
+    bg = pygame.image.load('assets/backgrounds/nazi cyberpunk.png')
+    jacob.img = jacob.idle
     global xpos, inacio, death_cnt
     xpos -= 1
 
@@ -1188,8 +1252,8 @@ def combate_boss2():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
-        enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H))
+        enemy_pos.append((770 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -1223,7 +1287,6 @@ def combate_boss2():
     print(soma_xp)
 
     while True:
-        screen.fill((0, 255, 255))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1236,6 +1299,7 @@ def combate_boss2():
                             battle_state = 'action'
                             enemy_select = False
                 if event.key == K_d or event.key == K_a:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo X
                             axisx = not axisx
@@ -1245,10 +1309,12 @@ def combate_boss2():
                             if event.key == K_a:
                                 seta_vert_pos -= 1
                 if event.key == K_w or event.key == K_s:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo Y
                             axisy = not axisy
                 if event.key == K_RETURN:
+
                     if player_turn:
                         if party[ally_index].vida > 0:
                             if battle_state == 'action':  # seleciona a ação escolhida
@@ -1285,16 +1351,6 @@ def combate_boss2():
                         else:  # checa se o jogador atual está morto ou não
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
-
-        for i in range(len(party)):
-            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-                screen.blit(party[i].img, allies_pos[i])
-                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
-                party[i].life_update()
-
-        screen.blit(inacio.img, enemy_pos[0])
-        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
-        inacio.life_update()
 
         # action select
         if battle_state == 'action':  # define a posição x da seta de ação
@@ -1368,16 +1424,26 @@ def combate_boss2():
             ally_index = 0
             player_turn = False
 
+        screen.blit(bg, (0, -190))
+
+        for i in range(len(party)):
+            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
+                screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
+                screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
+                party[i].life_update()
+        screen.blit(inacio.img, (enemy_pos[0][0], enemy_pos[0][1] - 530))
+        screen.blit(inacio.barra, (enemy_pos[0][0] + 10, enemy_pos[0][1] - 550))  # barra de vida
+        inacio.life_update()
+
         # desenho do resto das imagens
-        screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
+        battle_box.update()
+        battle_box.draw()
         if player_turn:
-            battle_box.update()
-            battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1385,6 +1451,7 @@ def combate_boss2():
 
 
 def combate_boss3():
+    jacob.img = jacob.idle
     global xpos, inacio, chronos_fase2, death_cnt
     xpos -= 1
 
@@ -1392,7 +1459,7 @@ def combate_boss3():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H))
         enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
@@ -1428,7 +1495,6 @@ def combate_boss3():
     print(soma_xp)
 
     while True:
-        screen.fill((0, 255, 255))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1441,6 +1507,7 @@ def combate_boss3():
                             battle_state = 'action'
                             enemy_select = False
                 if event.key == K_d or event.key == K_a:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo X
                             axisx = not axisx
@@ -1450,10 +1517,12 @@ def combate_boss3():
                             if event.key == K_a:
                                 seta_vert_pos -= 1
                 if event.key == K_w or event.key == K_s:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo Y
                             axisy = not axisy
                 if event.key == K_RETURN:
+
                     if player_turn:
                         if party[ally_index].vida > 0:
                             if battle_state == 'action':  # seleciona a ação escolhida
@@ -1490,16 +1559,6 @@ def combate_boss3():
                         else:  # checa se o jogador atual está morto ou não
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
-
-        for i in range(len(party)):
-            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-                screen.blit(party[i].img, allies_pos[i])
-                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
-                party[i].life_update()
-
-        screen.blit(inacio.img, enemy_pos[0])
-        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
-        inacio.life_update()
 
         # action select
         if battle_state == 'action':  # define a posição x da seta de ação
@@ -1580,16 +1639,25 @@ def combate_boss3():
             ally_index = 0
             player_turn = False
 
+        for i in range(len(party)):
+            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
+                screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
+                screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
+                party[i].life_update()
+        screen.blit(inacio.img, enemy_pos[0])
+        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
+        inacio.life_update()
+
         # desenho do resto das imagens
         screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
+        battle_box.update()
+        battle_box.draw()
         if player_turn:
-            battle_box.update()
-            battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1597,6 +1665,7 @@ def combate_boss3():
 
 
 def combate_fase3():
+    jacob.img = jacob.idle
     global xpos, salas, death_cnt
     xpos -= 1
 
@@ -1604,8 +1673,8 @@ def combate_fase3():
     allies_pos = []
     enemy_pos = []
     for i in range(4):
-        allies_pos.append((510 - (150 * i), SCREEN_H - 250))
-        enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
+        allies_pos.append((510 - (150 * i), SCREEN_H))
+        enemy_pos.append((770 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -1643,7 +1712,8 @@ def combate_fase3():
     print(soma_xp)
 
     while True:
-        screen.fill((0, 255, 255))
+
+        screen.fill((130, 130, 130))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1656,6 +1726,7 @@ def combate_fase3():
                             battle_state = 'action'
                             enemy_select = False
                 if event.key == K_d or event.key == K_a:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo X
                             axisx = not axisx
@@ -1665,10 +1736,12 @@ def combate_fase3():
                             if event.key == K_a:
                                 seta_vert_pos -= 1
                 if event.key == K_w or event.key == K_s:
+                    ch1.play(select)
                     if player_turn:
                         if battle_state == 'action':  # muda a seta de escolha de ação no eixo Y
                             axisy = not axisy
                 if event.key == K_RETURN:
+
                     if player_turn:
                         if party[ally_index].vida > 0:
                             if battle_state == 'action':  # seleciona a ação escolhida
@@ -1694,6 +1767,7 @@ def combate_fase3():
                                         log_text = "SIFODE AE OTARIO"
                                     else:
                                         salas -= 1
+                                        ch1.play(run)
                                         mov_f_3()
 
                             elif enemy_select:  # caso a ação escolhida seja ataque, seleciona o inimigo
@@ -1714,16 +1788,6 @@ def combate_fase3():
                         else:  # checa se o jogador atual está morto ou não
                             log_text = "{} está morto".format(party[ally_index].nome)
                             ally_index += 1  # aumenta em 1 a variavel que determina qual aliado ataca
-
-        for i in range(len(party)):
-            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-                screen.blit(party[i].img, allies_pos[i])
-                screen.blit(party[i].barra, (allies_pos[i][0] - 25, allies_pos[i][1] - 20))
-                party[i].life_update()
-        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
-            screen.blit(enemy_list[e].img, enemy_pos[e])
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] - 25, enemy_pos[e][1] - 20))  # barra de vida
-            enemy_list[e].life_update()
 
         for i in range(len(enemy_list)):  # remove da lista de inimigos os que morreram
             if enemy_list[i].vida <= 0:
@@ -1813,16 +1877,26 @@ def combate_fase3():
             ally_index = 0
             player_turn = False
 
+        for i in range(len(party)):
+            if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
+                screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
+                screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
+                party[i].life_update()
+        for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
+            screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            enemy_list[e].life_update()
+
         # desenho do resto das imagens
         screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
+        battle_box.update()
+        battle_box.draw()
         if player_turn:
-            battle_box.update()
-            battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 100))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1830,9 +1904,10 @@ def combate_fase3():
 
 
 def mov_tutorial():
+    bg = pygame.image.load('assets/backgrounds/varsóvia.png')
     rest_count = True
     find_bullet = True
-    global xpos, salas, gerenciador, enemy_list, mov_log_text, loaded_content
+    global xpos, salas, gerenciador, enemy_list, mov_log_text, loaded_content, direction, walk_timer
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -1854,7 +1929,8 @@ def mov_tutorial():
         if salas == 6:
             cutscene(cutscene4, "tutorial")
 
-        screen.fill((0, 255, 255))
+        if walk_timer > 0:
+            walk_timer -= 1
 
         # key events
         for event in pygame.event.get():
@@ -1863,9 +1939,13 @@ def mov_tutorial():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = +1
+                    xchange = +5
+                    jacob.animate()
+                    direction = "R"
                 if event.key == K_a:
-                    xchange = -1
+                    xchange = -5
+                    jacob.animate()
+                    direction = "L"
                 if event.key == K_v:
                     if find_bullet:
                         for i in range(len(party)):
@@ -1889,6 +1969,12 @@ def mov_tutorial():
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
+                    jacob.stop("assets/sprites/jacob/jacob parado.png", direction)
+
+        if xchange != 0:
+            if walk_timer == 0:
+                walk_timer = 28
+                ch1.play(walk)
 
         # player movement
         if xpos >= 1230:
@@ -1899,20 +1985,23 @@ def mov_tutorial():
 
         xpos += xchange
 
-        mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
-
         # draw
-        screen.blit(ground, (0, SCREEN_H - 150))
-        screen.blit(jacob.img, (xpos, SCREEN_H - 200))
+        screen.blit(bg, (0, 0))
+        screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
+        jacob.update(0.25, direction)
+        mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
         screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
 
 def mov_f_1():
+    count = 0
+    bg = pygame.image.load("assets/backgrounds/no man_s land.png")
     rest_count = True
     find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, \
+        rest_cnt, bullet_cnt, direction, walk_timer, ch1
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -1925,6 +2014,10 @@ def mov_f_1():
     salas += 1
 
     while True:
+
+        if walk_timer > 0:
+            walk_timer -= 1
+
         if salas == 5 and not fase4:
             cutscene(cutscene9, "fase1")
 
@@ -1934,12 +2027,6 @@ def mov_f_1():
         if salas == 9 and fase4:
             cutscene(cutscene23, "boss1")
 
-        # if salas == 6:
-        # cutscene(cutscene4)
-        # salas -= 1
-
-        screen.fill((0, 255, 255))
-
         # key events
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1947,9 +2034,13 @@ def mov_f_1():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = +1
+                    xchange = +7
+                    jacob.animate()
+                    direction = "R"
                 if event.key == K_a:
-                    xchange = -1
+                    xchange = -7
+                    jacob.animate()
+                    direction = "L"
                 if event.key == K_SPACE:
                     for i in range(len(party)):
                         print(party[i].xp, party[i].to_next_lvl)
@@ -1978,6 +2069,12 @@ def mov_f_1():
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
+                    jacob.stop("assets/sprites/jacob/jacob parado.png", direction)
+
+        if xchange != 0:
+            if walk_timer == 0:
+                walk_timer = 28
+                ch1.play(walk)
 
         # player movement
         if xpos >= 1230:
@@ -1989,26 +2086,29 @@ def mov_f_1():
         xpos += xchange
 
         # random encounter
-        if ((xpos / 100) % 1) == 0 and xpos is not 0:
+        if ((xpos / 10) % 1) == 0 and xpos is not 0:
             chance = random.randint(1, 30)
             if chance == 1:
                 pygame.time.wait(1000)
                 combate_fase1()
 
-        mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
-
         # draw
-        screen.blit(ground, (0, SCREEN_H - 150))
-        screen.blit(jacob.img, (xpos, SCREEN_H - 200))
+        screen.blit(bg, (0, 0))
+        screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
+        jacob.update(0.25, direction)
+        mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
         screen.blit(mov_log, (0, 0))
+        music(count)
         pygame.display.update()
 
 
 def mov_f_2():
+    count = 1
+    bg = pygame.image.load("assets/backgrounds/nazi cyberpunk.png")
     rest_count = True
     find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt, direction, walk_timer
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -2022,12 +2122,15 @@ def mov_f_2():
     print(trans_state)
 
     while True:
+        music(count)
+
+        if walk_timer > 0:
+            walk_timer -= 1
+
         if salas == 5:
             cutscene(cutscene14, "fase2")
         elif salas == 9:
             cutscene(cutscene15, "boss2")
-
-        screen.fill((0, 255, 255))
 
         # key events
         for event in pygame.event.get():
@@ -2036,9 +2139,13 @@ def mov_f_2():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = +1
+                    xchange = +7
+                    jacob.animate()
+                    direction = "R"
                 if event.key == K_a:
-                    xchange = -1
+                    xchange = -7
+                    jacob.animate()
+                    direction = "L"
                 if event.key == K_SPACE:
                     for i in range(len(party)):
                         print(party[i].xp, party[i].to_next_lvl)
@@ -2067,6 +2174,12 @@ def mov_f_2():
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
+                    jacob.stop("assets/sprites/jacob/jacob parado.png", direction)
+
+        if xchange != 0:
+            if walk_timer == 0:
+                walk_timer = 28
+                ch1.play(walk)
 
         # player movement
         if xpos >= 1230:
@@ -2078,7 +2191,7 @@ def mov_f_2():
         xpos += xchange
 
         # random encounter
-        if ((xpos / 100) % 1) == 0 and xpos is not 0:
+        if ((xpos / 10) % 1) == 0 and xpos is not 0:
             chance = random.randint(1, 30)
             if chance == 1:
                 pygame.time.wait(1000)
@@ -2087,17 +2200,19 @@ def mov_f_2():
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
 
         # draw
-        screen.blit(ground, (0, SCREEN_H - 150))
-        screen.blit(jacob.img, (xpos, SCREEN_H - 200))
+        screen.blit(bg, (0, 0))
+        screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
+        jacob.update(0.25, direction)
         screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
 
 def mov_f_3():
+    count = 2
     rest_count = True
     find_bullet = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt, direction, walk_timer
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -2111,13 +2226,16 @@ def mov_f_3():
     print(trans_state)
 
     while True:
+        music(count)
+
+        if walk_timer > 0:
+            walk_timer -= 1
+
         if salas == 5:
             cutscene(cutscene18, "fase3")
 
         if salas == 9:
             cutscene(cutscene19, "fase3")
-
-        screen.fill((0, 255, 255))
 
         # key events
         for event in pygame.event.get():
@@ -2126,9 +2244,13 @@ def mov_f_3():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = +1
+                    xchange = + 7
+                    jacob.animate()
+                    direction = "R"
                 if event.key == K_a:
-                    xchange = -1
+                    xchange = - 7
+                    jacob.animate()
+                    direction = "L"
                 if event.key == K_SPACE:
                     for i in range(len(party)):
                         print(party[i].xp, party[i].to_next_lvl)
@@ -2157,6 +2279,12 @@ def mov_f_3():
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
+                    jacob.stop("assets/sprites/jacob/jacob parado.png", direction)
+
+        if xchange != 0:
+            if walk_timer == 0:
+                walk_timer = 28
+                ch1.play(walk)
 
         # player movement
         if xpos >= 1230:
@@ -2168,7 +2296,7 @@ def mov_f_3():
         xpos += xchange
 
         # random encounter
-        if ((xpos / 100) % 1) == 0 and xpos is not 0:
+        if ((xpos / 10) % 1) == 0 and xpos is not 0:
             chance = random.randint(1, 30)
             if chance == 1:
                 pygame.time.wait(1000)
@@ -2177,13 +2305,15 @@ def mov_f_3():
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
 
         # draw
-        screen.blit(ground, (0, SCREEN_H - 150))
-        screen.blit(jacob.img, (xpos, SCREEN_H - 200))
+        screen.blit(bg, (0, 0))
+        screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
+        jacob.update(0.25, direction)
         screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
 
 def trans(fase):
+    menu_st.stop()
     screen.fill((20, 20, 20))
     texto = tfont.render("Carregando...", True, (230, 230, 230))
     texto_rect = texto.get_rect()
@@ -2196,6 +2326,7 @@ def trans(fase):
 
         screen.blit(texto, texto_rect)
         pygame.display.update()
+        ch1.play(run)
         pygame.time.wait(1500)
         if fase == "tutorial":
             mov_tutorial()
@@ -2214,7 +2345,7 @@ def trans(fase):
 
 
 def cutscene(cut, fase):
-    global salas, trans_state, fase4
+    global salas, trans_state, fase4, dialogue_timer
     bg = pygame.image.load('assets/backgrounds/cut1.jpeg')
     while True:
         fps.tick(60)
@@ -2228,6 +2359,9 @@ def cutscene(cut, fase):
         gerenciador.draw()
         gerenciador.update()
         pygame.display.update()
+
+        if not (int(cut.dialogue_position) < len(cut.dialogue)):
+            gerenciador.sound.stop()
 
         if not gerenciador.cutscene_running:
             if cut == cutscene4:
@@ -2244,10 +2378,12 @@ def cutscene(cut, fase):
 
             elif cut == cutscene8:
                 trans_state = "fase1"
+                jacob.vida += jacob.vida_total
+                pygame.mixer.stop()
                 mov_f_1()
 
             elif cut == cutscene9:
-                party.append(kazi)
+                party.append(kazi_past)
                 combate_fase1()
 
             elif cut == cutscene11:
@@ -2260,11 +2396,16 @@ def cutscene(cut, fase):
                 trans_state = "fase2"
                 party.pop(1)
                 party.append(kenji)
+                for i in range(len(party)):
+                    party[i].vida = party[i].vida_total
+                    party[i].ammo = 10
+                pygame.mixer.stop()
                 mov_f_2()
 
             elif cut == cutscene14:
                 party.append(barbara)
-                party.append(kazi)
+                kazi_past.vida = kazi_past.vida_total
+                party.append(kazi_fut)
                 trans(fase)
 
             elif cut == cutscene15:
@@ -2275,6 +2416,10 @@ def cutscene(cut, fase):
 
             elif cut == cutscene17:
                 trans_state = "fase3"
+                for i in range(len(party)):
+                    party[i].vida = party[i].vida_total
+                    party[i].ammo = 10
+                pygame.mixer.stop()
                 mov_f_3()
 
             elif cut == cutscene19:
@@ -2290,8 +2435,12 @@ def cutscene(cut, fase):
                 fase4 = True
                 party.remove(kenji)
                 party.remove(barbara)
-                party.remove(kazi)
+                party.remove(kazi_past)
                 trans_state = "fase1"
+                for i in range(len(party)):
+                    party[i].vida = party[i].vida_total
+                    party[i].ammo = 10
+                pygame.mixer.stop()
                 mov_f_1()
 
             elif cut == cutscene24:
@@ -2345,6 +2494,7 @@ def fim_jogo():
                     selector = True
 
                 if e.key == pygame.K_RETURN:
+
                     if not selector:
                         menu_start()
                     else:
@@ -2367,18 +2517,18 @@ def fim_jogo():
                                     jacob.load_stats()
                                     party[0] = jacob
                                 elif data[3] == 1:
-                                    kazi.vida = data[0]
-                                    kazi.dano_m = data[1]
-                                    kazi.dano_r = data[2]
-                                    kazi.cor = (0, 255, 0)
-                                    kazi.nome = "kazi"
-                                    kazi.level = data[4]
-                                    kazi.xp = data[5]
-                                    kazi.ammo = data[6]
-                                    kazi.inc_mel = data[7]
-                                    kazi.inc_ran = data[8]
-                                    kazi.inc_vida = data[9]
-                                    kazi.load_stats()
+                                    kazi_past.vida = data[0]
+                                    kazi_past.dano_m = data[1]
+                                    kazi_past.dano_r = data[2]
+                                    kazi_past.cor = (0, 255, 0)
+                                    kazi_past.nome = "kazi_past"
+                                    kazi_past.level = data[4]
+                                    kazi_past.xp = data[5]
+                                    kazi_past.ammo = data[6]
+                                    kazi_past.inc_mel = data[7]
+                                    kazi_past.inc_ran = data[8]
+                                    kazi_past.inc_vida = data[9]
+                                    kazi_past.load_stats()
                                 elif data[3] == 2:
                                     kenji.vida = data[0]
                                     kenji.dano_m = data[1]
@@ -2406,8 +2556,8 @@ def fim_jogo():
                                     barbara.inc_vida = data[9]
                                     barbara.load_stats()
                             for character in loaded_data['party'][1:]:
-                                if character == "kazi":
-                                    party.append(kazi)
+                                if character == "kazi_past":
+                                    party.append(kazi_past)
                                 elif character == "kenji":
                                     party.append(kenji)
                                 else:
@@ -2486,6 +2636,7 @@ def save_game(**dados):
                     else:
                         slot_select = 2
                 if event.key == pygame.K_RETURN:
+
                     if dados['lvl_room'][0] != 0:
                         save_cnt += 1
                     save = open(f'save0{slot_select}.txt', 'w')
@@ -2536,6 +2687,7 @@ def load_file():
                 if event.key == pygame.K_ESCAPE:
                     return None
                 if event.key == pygame.K_s:
+                    select.play()
                     if slot_select < 2:
                         slot_select += 1
                     else:
@@ -2543,6 +2695,7 @@ def load_file():
                     if show_text:
                         show_text = False
                 if event.key == pygame.K_w:
+                    select.play()
                     if slot_select > 0:
                         slot_select -= 1
                     else:
@@ -2550,6 +2703,7 @@ def load_file():
                     if show_text:
                         show_text = False
                 if event.key == pygame.K_RETURN:
+                    enter.play()
                     try:
                         save = open(f'save0{slot_select}.txt', 'r')
                     except FileNotFoundError:
@@ -2777,7 +2931,7 @@ def scores_screen(name, result, rank):
                 sys.exit()
 
         if uploading:
-            start_new_thread(upload_data, ((name, result, rank), ))
+            start_new_thread(upload_data, ((name, result, rank),))
             uploading = False
 
         screen.fill((0, 0, 0))

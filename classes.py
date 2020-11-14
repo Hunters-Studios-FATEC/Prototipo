@@ -138,14 +138,11 @@ jacob = Allies(200, 50, 30, "assets/sprites/jacob/jacob parado.png", "jacob",
                1, 0, 20, 4, 2, 50, animations_jacobR, animations_jacobL)
 barbara = Allies(200, 15, 35, "assets/sprites/gotica/barbara gótica.png", "barbara",
                  1, 0, 20, 2, 4, 30, animations_jacobR, animations_jacobL)
-kazi_past = Allies(200, 20, 30, "assets/sprites/peter/peter.png", "kazi", 1, 0, 20,
+kazi = Allies(200, 20, 30, "assets/sprites/peter/peter.png", "kazi", 1, 0, 20,
               3, 5, 30, animations_jacobR, animations_jacobL)
-kazi_fut = Allies(kazi_past.vida, kazi_past.dano_m, kazi_past.dano_r,
-            "assets/sprites/peter/david.png", "kazi", kazi_past.level, kazi_past.xp, kazi_past.ammo,
-            kazi_past.inc_mel, kazi_past.inc_ran, kazi_past.inc_vida, animations_jacobR, animations_jacobL)
 kenji = Allies(200, 25, 25, "assets/sprites/kenji/kenji futuro.png", "kenji", 1, 0, 20,
                5, 2, 40, animations_jacobR, animations_jacobL)
-party = [jacob, kazi_past, kenji, barbara]
+party = [jacob, kazi, kenji, barbara]
 
 
 class Enemy:

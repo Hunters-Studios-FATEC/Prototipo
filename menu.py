@@ -38,14 +38,14 @@ enter.set_volume(0.4)
 select = pygame.mixer.Sound("assets/audio/Menus/select.ogg")
 
 # musica
-musicF1 = pygame.mixer.Sound("assets/audio/Musics/warzone.wav")
-musicF1.set_volume(0.05)
-musicF2 = pygame.mixer.Sound("assets/audio/Musics/wave animada.ogg")
-musicF2.set_volume(0.05)
-musicF3 = pygame.mixer.Sound("assets/audio/Musics/suspense.wav")
-musicF3.set_volume(0.05)
-musicHitler = pygame.mixer.Sound("assets/audio/Musics/hotler.ogg")
-musicHitler.set_volume(0.05)
+#musicF1 = pygame.mixer.Sound("assets/audio/Musics/warzone.wav")
+#musicF1.set_volume(0.05)
+#musicF2 = pygame.mixer.Sound("assets/audio/Musics/wave animada.ogg")
+#musicF2.set_volume(0.05)
+#musicF3 = pygame.mixer.Sound("assets/audio/Musics/suspense.wav")
+#musicF3.set_volume(0.05)
+#musicHitler = pygame.mixer.Sound("assets/audio/Musics/hotler.ogg")
+#musicHitler.set_volume(0.05)
 count = 0
 
 # channels
@@ -79,7 +79,7 @@ direction = "R"
 xpos = 1
 salas = 0
 party = [jacob]
-chr_list = [jacob, kazi_past, kenji, barbara]
+chr_list = [jacob, kazi, kenji, barbara]
 fase4 = False
 
 # select seta
@@ -160,16 +160,25 @@ rest_cnt = 0
 bullet_cnt = 0
 death_cnt = 0
 
+# music is playing condition
+music_is_playing = False
+
 
 def music(count):
     if count == 0:
-        musicF1.play()
+        #musicF1.play(-1)
+        pygame.mixer.music.load("assets/audio/Musics/warzone.wav")
     elif count == 1:
-        musicF2.play()
+        #musicF2.play(-1)
+        pygame.mixer.music.load("assets/audio/Musics/wave animada.ogg")
     elif count == 2:
-        musicF3.play()
+        #musicF3.play(-1)
+        pygame.mixer.music.load("assets/audio/Musics/suspense.wav")
     elif count == 3:
-        musicHitler.play()
+        #musicHitler.play(-1)
+        pygame.mixer.music.load("assets/audio/Musics/hotler.ogg")
+    pygame.mixer.music.set_volume(0.05)
+    pygame.mixer.music.play(-1)
 
 
 # main menu
@@ -219,7 +228,6 @@ def menu_start():
                                         jacob.vida = data[0]
                                         jacob.dano_m = data[1]
                                         jacob.dano_r = data[2]
-                                        jacob.cor = (255, 0, 0)
                                         jacob.nome = "jacob"
                                         jacob.level = data[4]
                                         jacob.xp = data[5]
@@ -229,23 +237,21 @@ def menu_start():
                                         jacob.inc_vida = data[9]
                                         jacob.load_stats()
                                     elif data[3] == 1:
-                                        kazi_past.vida = data[0]
-                                        kazi_past.dano_m = data[1]
-                                        kazi_past.dano_r = data[2]
-                                        kazi_past.cor = (0, 255, 0)
-                                        kazi_past.nome = "kazi_past"
-                                        kazi_past.level = data[4]
-                                        kazi_past.xp = data[5]
-                                        kazi_past.ammo = data[6]
-                                        kazi_past.inc_mel = data[7]
-                                        kazi_past.inc_ran = data[8]
-                                        kazi_past.inc_vida = data[9]
-                                        kazi_past.load_stats()
+                                        kazi.vida = data[0]
+                                        kazi.dano_m = data[1]
+                                        kazi.dano_r = data[2]
+                                        kazi.nome = "kazi"
+                                        kazi.level = data[4]
+                                        kazi.xp = data[5]
+                                        kazi.ammo = data[6]
+                                        kazi.inc_mel = data[7]
+                                        kazi.inc_ran = data[8]
+                                        kazi.inc_vida = data[9]
+                                        kazi.load_stats()
                                     elif data[3] == 2:
                                         kenji.vida = data[0]
                                         kenji.dano_m = data[1]
                                         kenji.dano_r = data[2]
-                                        kenji.cor = (255, 150, 0)
                                         kenji.nome = "kenji"
                                         kenji.level = data[4]
                                         kenji.xp = data[5]
@@ -258,7 +264,6 @@ def menu_start():
                                         barbara.vida = data[0]
                                         barbara.dano_m = data[1]
                                         barbara.dano_r = data[2]
-                                        barbara.cor = (0, 0, 255)
                                         barbara.nome = "barbara"
                                         barbara.level = data[4]
                                         barbara.xp = data[5]
@@ -268,14 +273,14 @@ def menu_start():
                                         barbara.inc_vida = data[9]
                                         barbara.load_stats()
                                 for character in loaded_data['party'][1:]:
-                                    if character == "kazi_past":
-                                        party.append(kazi_past)
+                                    if character == "kazi":
+                                        party.append(kazi)
                                     elif character == "kenji":
                                         party.append(kenji)
-                                    elif character == "kazi_fut":
-                                        party.append(kazi_fut)
                                     else:
                                         party.append(barbara)
+                                if loaded_data['lvl_room'][0] == 'fase2' or loaded_data['lvl_room'][0] == 'fase3':
+                                    kazi.img = pygame.image.load("assets/sprites/peter/david.png")
                                 salas = loaded_data['lvl_room'][1]
                                 xpos = loaded_data['x_pos']
                                 rest_c = loaded_data['rest_counter']
@@ -793,7 +798,7 @@ def combate_boss():
     count = 3
     bg = pygame.image.load('assets/backgrounds/no man_s land.png')
     jacob.img = jacob.idle
-    global xpos, inacio, death_cnt
+    global xpos, inacio, death_cnt, music_is_playing
     xpos -= 1
 
     # enemy/player list and positioning
@@ -835,8 +840,9 @@ def combate_boss():
     print(soma_xp)
 
     while True:
-
-        music(count)
+        if not music_is_playing:
+            start_new_thread(music, (count, ))
+            music_is_playing = True
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1999,9 +2005,10 @@ def mov_f_1():
     bg = pygame.image.load("assets/backgrounds/no man_s land.png")
     rest_count = True
     find_bullet = True
+    blit_bg = True
     enemy_list.clear()
     global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, \
-        rest_cnt, bullet_cnt, direction, walk_timer, ch1
+        rest_cnt, bullet_cnt, direction, walk_timer, ch1, music_is_playing
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -2014,6 +2021,9 @@ def mov_f_1():
     salas += 1
 
     while True:
+        if not music_is_playing:
+            start_new_thread(music, (count,))
+            music_is_playing = True
 
         if walk_timer > 0:
             walk_timer -= 1
@@ -2059,6 +2069,7 @@ def mov_f_1():
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
                               lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
                               score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt), fase4=fase4)
+                    blit_bg = True
                 if rest_count:
                     if event.key == K_c:
                         rest_cnt += 1
@@ -2093,12 +2104,17 @@ def mov_f_1():
                 combate_fase1()
 
         # draw
-        screen.blit(bg, (0, 0))
+        if blit_bg:
+            screen.blit(bg, (0, 0))
+            blit_bg = False
+        else:
+            screen.blit(bg, (xpos - 30, SCREEN_H - jacob.img.get_height()),
+                        (xpos - 30, SCREEN_H - jacob.img.get_height(),
+                         jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
         screen.blit(mov_log, (0, 0))
-        music(count)
         pygame.display.update()
 
 
@@ -2107,8 +2123,10 @@ def mov_f_2():
     bg = pygame.image.load("assets/backgrounds/nazi cyberpunk.png")
     rest_count = True
     find_bullet = True
+    blit_bg = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt, direction, walk_timer
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt, direction, walk_timer, \
+        music_is_playing
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -2122,7 +2140,9 @@ def mov_f_2():
     print(trans_state)
 
     while True:
-        music(count)
+        if not music_is_playing:
+            start_new_thread(music, (count,))
+            music_is_playing = True
 
         if walk_timer > 0:
             walk_timer -= 1
@@ -2164,6 +2184,7 @@ def mov_f_2():
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
                               lvl_room=(2, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
                               score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
+                    blit_bg = True
                 if rest_count:
                     if event.key == K_c:
                         rest_cnt += 1
@@ -2200,7 +2221,13 @@ def mov_f_2():
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
 
         # draw
-        screen.blit(bg, (0, 0))
+        if blit_bg:
+            screen.blit(bg, (0, 0))
+            blit_bg = False
+        else:
+            screen.blit(bg, (xpos - 30, SCREEN_H - jacob.img.get_height()),
+                        (xpos - 30, SCREEN_H - jacob.img.get_height(),
+                         jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
         screen.blit(mov_log, (0, 0))
@@ -2211,8 +2238,10 @@ def mov_f_3():
     count = 2
     rest_count = True
     find_bullet = True
+    blit_bg = True
     enemy_list.clear()
-    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt, direction, walk_timer
+    global xpos, salas, gerenciador, trans_state, mov_log_text, loaded_content, rest_cnt, bullet_cnt, direction, walk_timer, \
+        music_is_playing
     if loaded_content:
         rest_count = rest_c
         find_bullet = find_b
@@ -2226,7 +2255,9 @@ def mov_f_3():
     print(trans_state)
 
     while True:
-        music(count)
+        if not music_is_playing:
+            start_new_thread(music, (count,))
+            music_is_playing = True
 
         if walk_timer > 0:
             walk_timer -= 1
@@ -2269,6 +2300,7 @@ def mov_f_3():
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
                               lvl_room=(3, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
                               score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
+                    blit_bg = True
                 if rest_count:
                     rest_cnt += 1
                     if event.key == K_c:
@@ -2305,7 +2337,13 @@ def mov_f_3():
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
 
         # draw
-        screen.blit(bg, (0, 0))
+        if blit_bg:
+            screen.blit(bg, (0, 0))
+            blit_bg = False
+        else:
+            screen.blit(bg, (xpos - 30, SCREEN_H - jacob.img.get_height()),
+                        (xpos - 30, SCREEN_H - jacob.img.get_height(),
+                         jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
         screen.blit(mov_log, (0, 0))
@@ -2345,8 +2383,10 @@ def trans(fase):
 
 
 def cutscene(cut, fase):
-    global salas, trans_state, fase4, dialogue_timer
+    global salas, trans_state, fase4, dialogue_timer, music_is_playing
     bg = pygame.image.load('assets/backgrounds/cut1.jpeg')
+    blit_bg = True
+    pygame.mixer.music.stop()
     while True:
         fps.tick(60)
         for event in pygame.event.get():
@@ -2354,7 +2394,11 @@ def cutscene(cut, fase):
                 pygame.quit()
                 sys.exit()
 
-        screen.blit(bg, (0, 0))
+        if blit_bg:
+            screen.blit(bg, (0, 0))
+            blit_bg = False
+        else:
+            screen.blit(bg, (0, 0), (0, 0, SCREEN_W, SCREEN_H * 0.3))
         gerenciador.start_cutscene(cut)
         gerenciador.draw()
         gerenciador.update()
@@ -2383,10 +2427,12 @@ def cutscene(cut, fase):
                 mov_f_1()
 
             elif cut == cutscene9:
-                party.append(kazi_past)
+                party.append(kazi)
+                start_new_thread(music, (0, ))
                 combate_fase1()
 
             elif cut == cutscene11:
+                music_is_playing = False
                 combate_boss()
 
             elif cut == cutscene12:
@@ -2400,15 +2446,19 @@ def cutscene(cut, fase):
                     party[i].vida = party[i].vida_total
                     party[i].ammo = 10
                 pygame.mixer.stop()
+                music_is_playing = False
                 mov_f_2()
 
             elif cut == cutscene14:
                 party.append(barbara)
-                kazi_past.vida = kazi_past.vida_total
-                party.append(kazi_fut)
+                party.append(kazi)
+                kazi.vida = kazi.vida_total
+                kazi.img = pygame.image.load("assets/sprites/peter/david.png")
+                music_is_playing = False
                 trans(fase)
 
             elif cut == cutscene15:
+                music_is_playing = False
                 combate_boss2()
 
             elif cut == cutscene16:
@@ -2420,12 +2470,15 @@ def cutscene(cut, fase):
                     party[i].vida = party[i].vida_total
                     party[i].ammo = 10
                 pygame.mixer.stop()
+                music_is_playing = False
                 mov_f_3()
 
             elif cut == cutscene19:
+                music_is_playing = False
                 combate_boss3()
 
             elif cut == cutscene20:
+                music_is_playing = False
                 combate_boss3()
 
             elif cut == cutscene21:
@@ -2435,12 +2488,13 @@ def cutscene(cut, fase):
                 fase4 = True
                 party.remove(kenji)
                 party.remove(barbara)
-                party.remove(kazi_past)
+                party.remove(kazi)
                 trans_state = "fase1"
                 for i in range(len(party)):
                     party[i].vida = party[i].vida_total
                     party[i].ammo = 10
                 pygame.mixer.stop()
+                music_is_playing = False
                 mov_f_1()
 
             elif cut == cutscene24:
@@ -2450,6 +2504,7 @@ def cutscene(cut, fase):
                 submmit_score(save_cnt, rest_cnt, bullet_cnt, death_cnt)
 
             else:
+                music_is_playing = False
                 trans(fase)
 
 
@@ -2506,7 +2561,6 @@ def fim_jogo():
                                     jacob.vida = data[0]
                                     jacob.dano_m = data[1]
                                     jacob.dano_r = data[2]
-                                    jacob.cor = (255, 0, 0)
                                     jacob.nome = "jacob"
                                     jacob.level = data[4]
                                     jacob.xp = data[5]
@@ -2517,23 +2571,21 @@ def fim_jogo():
                                     jacob.load_stats()
                                     party[0] = jacob
                                 elif data[3] == 1:
-                                    kazi_past.vida = data[0]
-                                    kazi_past.dano_m = data[1]
-                                    kazi_past.dano_r = data[2]
-                                    kazi_past.cor = (0, 255, 0)
-                                    kazi_past.nome = "kazi_past"
-                                    kazi_past.level = data[4]
-                                    kazi_past.xp = data[5]
-                                    kazi_past.ammo = data[6]
-                                    kazi_past.inc_mel = data[7]
-                                    kazi_past.inc_ran = data[8]
-                                    kazi_past.inc_vida = data[9]
-                                    kazi_past.load_stats()
+                                    kazi.vida = data[0]
+                                    kazi.dano_m = data[1]
+                                    kazi.dano_r = data[2]
+                                    kazi.nome = "kazi_past"
+                                    kazi.level = data[4]
+                                    kazi.xp = data[5]
+                                    kazi.ammo = data[6]
+                                    kazi.inc_mel = data[7]
+                                    kazi.inc_ran = data[8]
+                                    kazi.inc_vida = data[9]
+                                    kazi.load_stats()
                                 elif data[3] == 2:
                                     kenji.vida = data[0]
                                     kenji.dano_m = data[1]
                                     kenji.dano_r = data[2]
-                                    kenji.cor = (255, 150, 0)
                                     kenji.nome = "kenji"
                                     kenji.level = data[4]
                                     kenji.xp = data[5]
@@ -2546,7 +2598,6 @@ def fim_jogo():
                                     barbara.vida = data[0]
                                     barbara.dano_m = data[1]
                                     barbara.dano_r = data[2]
-                                    barbara.cor = (0, 0, 255)
                                     barbara.nome = "barbara"
                                     barbara.level = data[4]
                                     barbara.xp = data[5]
@@ -2556,12 +2607,14 @@ def fim_jogo():
                                     barbara.inc_vida = data[9]
                                     barbara.load_stats()
                             for character in loaded_data['party'][1:]:
-                                if character == "kazi_past":
-                                    party.append(kazi_past)
+                                if character == "kazi":
+                                    party.append(kazi)
                                 elif character == "kenji":
                                     party.append(kenji)
                                 else:
                                     party.append(barbara)
+                            if loaded_data['lvl_room'][0] == 'fase2' or loaded_data['lvl_room'][0] == 'fase3':
+                                kazi.img = pygame.image.load("assets/sprites/peter/david.png")
                             salas = loaded_data['lvl_room'][1]
                             xpos = loaded_data['x_pos']
                             rest_c = loaded_data['rest_counter']

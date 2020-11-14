@@ -1913,6 +1913,7 @@ def mov_tutorial():
     bg = pygame.image.load('assets/backgrounds/varsóvia.png')
     rest_count = True
     find_bullet = True
+    blit_bg = True
     global xpos, salas, gerenciador, enemy_list, mov_log_text, loaded_content, direction, walk_timer
     if loaded_content:
         rest_count = rest_c
@@ -1966,6 +1967,7 @@ def mov_tutorial():
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
                               lvl_room=(0, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
                               score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
+                    blit_bg = True
                 if rest_count:
                     if event.key == K_c:
                         for i in range(len(party)):
@@ -1992,10 +1994,17 @@ def mov_tutorial():
         xpos += xchange
 
         # draw
-        screen.blit(bg, (0, 0))
+        if blit_bg:
+            screen.blit(bg, (0, 0))
+            blit_bg = False
+        else:
+            screen.blit(bg, (xpos - 30, SCREEN_H - jacob.img.get_height()),
+                        (xpos - 30, SCREEN_H - jacob.img.get_height(),
+                         jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
+        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
@@ -2114,6 +2123,7 @@ def mov_f_1():
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
+        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
@@ -2230,6 +2240,7 @@ def mov_f_2():
                          jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
+        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         pygame.display.update()
 
@@ -2346,6 +2357,7 @@ def mov_f_3():
                          jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
+        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         pygame.display.update()
 

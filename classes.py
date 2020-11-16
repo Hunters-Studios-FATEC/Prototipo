@@ -200,18 +200,18 @@ class Boss:
         self.barra.fill(VERMELHO)
 
 
-hitler = Boss(400, 30, 'assets/sprites/antonius/antonius.png', "Hitler", 0)
+hitler = Boss(400, 30, 'assets/sprites/hitler/hitler.png', "Hitler", 0)
 hitler2 = Boss(450, 40, 'assets/sprites/antonius/antonius.png', "TRUE HITLER: INACIO", 500)
 antonio = Boss(500, 10, 'assets/sprites/antonius/antonius.png', "Mussolinius", 0)
-chronos = Boss(550, 30, 'assets/sprites/antonius/antonius.png', "Cronos", 0)
-chronos2 = Boss(600, 30, 'assets/sprites/antonius/antonius.png', "Cronos", 9999)
+chronos = Boss(550, 30, 'assets/sprites/cronos/cronos.png', "Cronos", 0)
+chronos2 = Boss(600, 30, 'assets/sprites/cronos/cronos.png', "Cronos", 9999)
 
 
 def enemy_gen(vidas, danos):
     vida = vidas
     dano = danos
-    cor = ['assets/sprites/hitler/hitler.png']
-    nomes = ["nazi caréca", "nazi bigodudo", "nazi manco"]
+    cor = ['assets/sprites/inimigos/nazi1.png', 'assets/sprites/inimigos/nazi2.png']
+    nomes = ["nazista", "nazista", "nazista"]
 
     enemy_dict = {}
     for i in range(random.randint(1, 4)):

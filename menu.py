@@ -38,14 +38,14 @@ enter.set_volume(0.4)
 select = pygame.mixer.Sound("assets/audio/Menus/select.ogg")
 
 # musica
-#musicF1 = pygame.mixer.Sound("assets/audio/Musics/warzone.wav")
-#musicF1.set_volume(0.05)
-#musicF2 = pygame.mixer.Sound("assets/audio/Musics/wave animada.ogg")
-#musicF2.set_volume(0.05)
-#musicF3 = pygame.mixer.Sound("assets/audio/Musics/suspense.wav")
-#musicF3.set_volume(0.05)
-#musicHitler = pygame.mixer.Sound("assets/audio/Musics/hotler.ogg")
-#musicHitler.set_volume(0.05)
+# musicF1 = pygame.mixer.Sound("assets/audio/Musics/warzone.wav")
+# musicF1.set_volume(0.05)
+# musicF2 = pygame.mixer.Sound("assets/audio/Musics/wave animada.ogg")
+# musicF2.set_volume(0.05)
+# musicF3 = pygame.mixer.Sound("assets/audio/Musics/suspense.wav")
+# musicF3.set_volume(0.05)
+# musicHitler = pygame.mixer.Sound("assets/audio/Musics/hotler.ogg")
+# musicHitler.set_volume(0.05)
 count = 0
 
 # channels
@@ -166,17 +166,23 @@ music_is_playing = False
 
 def music(count):
     if count == 0:
-        #musicF1.play(-1)
+        # musicF1.play(-1)
         pygame.mixer.music.load("assets/audio/Musics/warzone.wav")
     elif count == 1:
-        #musicF2.play(-1)
+        # musicF2.play(-1)
         pygame.mixer.music.load("assets/audio/Musics/wave animada.ogg")
     elif count == 2:
-        #musicF3.play(-1)
+        # musicF3.play(-1)
         pygame.mixer.music.load("assets/audio/Musics/suspense.wav")
     elif count == 3:
-        #musicHitler.play(-1)
+        # musicHitler.play(-1)
         pygame.mixer.music.load("assets/audio/Musics/hotler.ogg")
+    elif count == 4:
+        # musicHitler.play(-1)
+        pygame.mixer.music.load("assets/audio/Musics/wave malvadeza.ogg")
+    elif count == 5:
+        # musicHitler.play(-1)
+        pygame.mixer.music.load("assets/audio/Musics/epic.ogg")
     pygame.mixer.music.set_volume(0.05)
     pygame.mixer.music.play(-1)
 
@@ -329,7 +335,7 @@ def combate_tutorial():
     enemy_pos = []
     for i in range(4):
         allies_pos.append((250 - (80 * i), SCREEN_H))
-        enemy_pos.append((770 + (150 * i), SCREEN_H))
+        enemy_pos.append((700 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -355,8 +361,8 @@ def combate_tutorial():
     def enemy_gen_tutorial():
         vida = [50, 100, 150]
         dano = [8, 13, 18]
-        cor = ['assets/sprites/hitler/hitler.png']
-        nomes = ["nazi_melee", "nazi_atirador", "nazi_tank"]
+        cor = ['assets/sprites/inimigos/nazi1.png', 'assets/sprites/inimigos/nazi2.png']
+        nomes = ["nazista", "nazista", "nazista"]
 
         enemy_dict = {}
         for i in range(2):
@@ -532,7 +538,7 @@ def combate_tutorial():
             party[0].life_update()
         for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
             screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] + 80, enemy_pos[e][1] - 540))  # barra de vida
             enemy_list[e].life_update()
 
         # desenho do resto das imagens
@@ -543,7 +549,7 @@ def combate_tutorial():
             battle_box.update()
             battle_box.draw()
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 100, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
         pygame.display.update()
@@ -560,7 +566,7 @@ def combate_fase1():
     enemy_pos = []
     for i in range(4):
         allies_pos.append((510 - (150 * i), SCREEN_H))
-        enemy_pos.append((770 + (150 * i), SCREEN_H))
+        enemy_pos.append((700 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -767,12 +773,12 @@ def combate_fase1():
 
         for i in range(len(party)):
             if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
-                screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
+                screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
                 screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
                 party[i].life_update()
         for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
             screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] + 80, enemy_pos[e][1] - 540))  # barra de vida
             enemy_list[e].life_update()
 
         # desenho do resto das imagens
@@ -783,7 +789,7 @@ def combate_fase1():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 100, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -841,7 +847,7 @@ def combate_boss():
 
     while True:
         if not music_is_playing:
-            start_new_thread(music, (count, ))
+            start_new_thread(music, (count,))
             music_is_playing = True
 
         for event in pygame.event.get():
@@ -1020,7 +1026,7 @@ def combate_fase2():
     enemy_pos = []
     for i in range(4):
         allies_pos.append((510 - (150 * i), SCREEN_H))
-        enemy_pos.append((770 + (150 * i), SCREEN_H))
+        enemy_pos.append((700 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -1230,7 +1236,7 @@ def combate_fase2():
                 party[i].life_update()
         for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
             screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] + 80, enemy_pos[e][1] - 540))  # barra de vida
             enemy_list[e].life_update()
 
         # desenho do resto das imagens
@@ -1241,7 +1247,7 @@ def combate_fase2():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 100, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1249,9 +1255,11 @@ def combate_fase2():
 
 
 def combate_boss2():
+    pygame.mixer.stop()
     bg = pygame.image.load('assets/backgrounds/nazi cyberpunk.png')
     jacob.img = jacob.idle
-    global xpos, inacio, death_cnt
+    global xpos, inacio, death_cnt, music_is_playing
+    count = 4
     xpos -= 1
 
     # enemy/player list and positioning
@@ -1259,7 +1267,7 @@ def combate_boss2():
     enemy_pos = []
     for i in range(4):
         allies_pos.append((510 - (150 * i), SCREEN_H))
-        enemy_pos.append((770 + (150 * i), SCREEN_H))
+        enemy_pos.append((700 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -1293,6 +1301,10 @@ def combate_boss2():
     print(soma_xp)
 
     while True:
+
+        if not music_is_playing:
+            start_new_thread(music, (count,))
+            music_is_playing = True
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1458,7 +1470,8 @@ def combate_boss2():
 
 def combate_boss3():
     jacob.img = jacob.idle
-    global xpos, inacio, chronos_fase2, death_cnt
+    global xpos, inacio, chronos_fase2, death_cnt, music_is_playing
+    count = 5
     xpos -= 1
 
     # enemy/player list and positioning
@@ -1501,6 +1514,10 @@ def combate_boss3():
     print(soma_xp)
 
     while True:
+
+        if not music_is_playing:
+            start_new_thread(music, (count,))
+            music_is_playing = True
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -1680,7 +1697,7 @@ def combate_fase3():
     enemy_pos = []
     for i in range(4):
         allies_pos.append((510 - (150 * i), SCREEN_H))
-        enemy_pos.append((770 + (150 * i), SCREEN_H))
+        enemy_pos.append((700 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -1890,7 +1907,7 @@ def combate_fase3():
                 party[i].life_update()
         for e in range(len(enemy_list)):  # desenha a imagem dos inimigos caso estejam vivos
             screen.blit(enemy_list[e].img, (enemy_pos[e][0], enemy_pos[e][1] - 530))
-            screen.blit(enemy_list[e].barra, (enemy_pos[e][0], enemy_pos[e][1] - 540))  # barra de vida
+            screen.blit(enemy_list[e].barra, (enemy_pos[e][0] + 80, enemy_pos[e][1] - 540))  # barra de vida
             enemy_list[e].life_update()
 
         # desenho do resto das imagens
@@ -1902,7 +1919,7 @@ def combate_fase3():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 100, enemy_pos[seta_vert_pos][1] - 630))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1946,11 +1963,11 @@ def mov_tutorial():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = +5
+                    xchange = +4.5
                     jacob.animate()
                     direction = "R"
                 if event.key == K_a:
-                    xchange = -5
+                    xchange = -4.5
                     jacob.animate()
                     direction = "L"
                 if event.key == K_v:
@@ -2006,6 +2023,7 @@ def mov_tutorial():
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
         screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
+        fps.tick(60)
         pygame.display.update()
 
 
@@ -2053,11 +2071,11 @@ def mov_f_1():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = +7
+                    xchange = +4.5
                     jacob.animate()
                     direction = "R"
                 if event.key == K_a:
-                    xchange = -7
+                    xchange = -4.5
                     jacob.animate()
                     direction = "L"
                 if event.key == K_SPACE:
@@ -2125,6 +2143,7 @@ def mov_f_1():
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
         screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
+        fps.tick(60)
         pygame.display.update()
 
 
@@ -2169,11 +2188,11 @@ def mov_f_2():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = +7
+                    xchange = +4.5
                     jacob.animate()
                     direction = "R"
                 if event.key == K_a:
-                    xchange = -7
+                    xchange = -4.5
                     jacob.animate()
                     direction = "L"
                 if event.key == K_SPACE:
@@ -2242,6 +2261,7 @@ def mov_f_2():
         jacob.update(0.25, direction)
         screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
+        fps.tick(60)
         pygame.display.update()
 
 
@@ -2286,11 +2306,11 @@ def mov_f_3():
                 sys.exit()
             if event.type == KEYDOWN:
                 if event.key == K_d:
-                    xchange = + 7
+                    xchange = + 4.5
                     jacob.animate()
                     direction = "R"
                 if event.key == K_a:
-                    xchange = - 7
+                    xchange = - 4.5
                     jacob.animate()
                     direction = "L"
                 if event.key == K_SPACE:
@@ -2359,6 +2379,7 @@ def mov_f_3():
         jacob.update(0.25, direction)
         screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
+        fps.tick(60)
         pygame.display.update()
 
 
@@ -2434,13 +2455,13 @@ def cutscene(cut, fase):
 
             elif cut == cutscene8:
                 trans_state = "fase1"
-                jacob.vida += jacob.vida_total
+                jacob.vida += jacob.vida_total - jacob.vida
                 pygame.mixer.stop()
                 mov_f_1()
 
             elif cut == cutscene9:
                 party.append(kazi)
-                start_new_thread(music, (0, ))
+                start_new_thread(music, (0,))
                 combate_fase1()
 
             elif cut == cutscene11:
@@ -2455,7 +2476,7 @@ def cutscene(cut, fase):
                 party.pop(1)
                 party.append(kenji)
                 for i in range(len(party)):
-                    party[i].vida = party[i].vida_total
+                    party[i].vida = party[i].vida_total - party[i].vida
                     party[i].ammo = 10
                 pygame.mixer.stop()
                 music_is_playing = False
@@ -2464,7 +2485,7 @@ def cutscene(cut, fase):
             elif cut == cutscene14:
                 party.append(barbara)
                 party.append(kazi)
-                kazi.vida = kazi.vida_total
+                kazi.vida = kazi.vida_total - kazi.vida
                 kazi.img = pygame.image.load("assets/sprites/peter/david.png")
                 music_is_playing = False
                 trans(fase)
@@ -2479,7 +2500,7 @@ def cutscene(cut, fase):
             elif cut == cutscene17:
                 trans_state = "fase3"
                 for i in range(len(party)):
-                    party[i].vida = party[i].vida_total
+                    party[i].vida = party[i].vida_total - party[i].vida
                     party[i].ammo = 10
                 pygame.mixer.stop()
                 music_is_playing = False
@@ -2503,7 +2524,7 @@ def cutscene(cut, fase):
                 party.remove(kazi)
                 trans_state = "fase1"
                 for i in range(len(party)):
-                    party[i].vida = party[i].vida_total
+                    party[i].vida = party[i].vida_total - party[i].vida
                     party[i].ammo = 10
                 pygame.mixer.stop()
                 music_is_playing = False
@@ -2841,7 +2862,7 @@ def string_converter(info):
 
     # Converte a quarta linha do arquivo txt
     data = info[3]
-    x_position = int(data)
+    x_position = int(float(data))
     converted_data['x_pos'] = x_position
 
     # Converte a quinta linha do arquivo txt

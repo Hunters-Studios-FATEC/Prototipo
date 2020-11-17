@@ -163,6 +163,12 @@ death_cnt = 0
 # music is playing condition
 music_is_playing = False
 
+# Enemy gen lists and names
+prmg_images = ['assets/sprites/inimigos/primeiraguerran1.png', 'assets/sprites/inimigos/primeiraguerran2.png']
+prmg_names = ['soldado', 'cabo', 'atirador']
+fut_images = ['assets/sprites/inimigos/nazi1.png', 'assets/sprites/inimigos/nazi2.png']
+fut_names = ['nazista', 'nazista', 'nazista']
+
 
 def music(count):
     if count == 0:
@@ -286,7 +292,7 @@ def menu_start():
                                     else:
                                         party.append(barbara)
                                 if loaded_data['lvl_room'][0] == 'fase2' or loaded_data['lvl_room'][0] == 'fase3':
-                                    kazi.img = pygame.image.load("assets/sprites/peter/david.png")
+                                    kazi.img = pygame.image.load("assets/sprites/peter/davidcombate.png")
                                 salas = loaded_data['lvl_room'][1]
                                 xpos = loaded_data['x_pos']
                                 rest_c = loaded_data['rest_counter']
@@ -324,8 +330,8 @@ def menu_start():
 
 
 def combate_tutorial():
-    jacob.img = jacob.idle
-    bg = pygame.image.load('assets/backgrounds/varsóvia.png')
+    jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
+    bg = pygame.image.load('assets/backgrounds/placa_para_auschwitz.jpg')
     party = [jacob]
     global xpos, salas
     xpos -= 1
@@ -557,7 +563,7 @@ def combate_tutorial():
 
 def combate_fase1():
     bg = pygame.image.load('assets/backgrounds/no man_s land.png')
-    jacob.img = jacob.idle
+    jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, salas, death_cnt
     xpos -= 1
 
@@ -588,7 +594,7 @@ def combate_fase1():
     chosen_player = 0
 
     # random enemy generator
-    enemy_gen([10, 20, 30], [5, 7, 10])
+    enemy_gen([10, 20, 30], [5, 7, 10], prmg_images, prmg_names)
 
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
@@ -803,7 +809,7 @@ def combate_boss():
     pygame.mixer.stop()
     count = 3
     bg = pygame.image.load('assets/backgrounds/no man_s land.png')
-    jacob.img = jacob.idle
+    jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, inacio, death_cnt, music_is_playing
     xpos -= 1
 
@@ -812,7 +818,7 @@ def combate_boss():
     enemy_pos = []
     for i in range(4):
         allies_pos.append((510 - (150 * i), SCREEN_H))
-        enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
+        enemy_pos.append((700 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -996,8 +1002,8 @@ def combate_boss():
                 screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
                 screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
                 party[i].life_update()
-        screen.blit(inacio.img, enemy_pos[0])
-        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
+        screen.blit(inacio.img,(enemy_pos[0][0], enemy_pos[0][1] - 530))
+        screen.blit(inacio.barra, (enemy_pos[0][0] + 90, enemy_pos[0][1] - 550))  # barra de vida
         inacio.life_update()
 
         # desenho do resto das imagens
@@ -1017,7 +1023,7 @@ def combate_boss():
 
 def combate_fase2():
     bg = pygame.image.load('assets/backgrounds/nazi cyberpunk.png')
-    jacob.img = jacob.idle
+    jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, salas, death_cnt
     xpos -= 1
 
@@ -1048,7 +1054,7 @@ def combate_fase2():
     chosen_player = 0
 
     # random enemy generator
-    enemy_gen([10, 20, 30], [5, 7, 10])
+    enemy_gen([10, 20, 30], [5, 7, 10], fut_images, fut_names)
 
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
@@ -1257,7 +1263,7 @@ def combate_fase2():
 def combate_boss2():
     pygame.mixer.stop()
     bg = pygame.image.load('assets/backgrounds/nazi cyberpunk.png')
-    jacob.img = jacob.idle
+    jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, inacio, death_cnt, music_is_playing
     count = 4
     xpos -= 1
@@ -1447,10 +1453,10 @@ def combate_boss2():
         for i in range(len(party)):
             if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
                 screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
-                screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
+                screen.blit(party[i].barra, (allies_pos[i][0] + 50, allies_pos[i][1] - 550))
                 party[i].life_update()
         screen.blit(inacio.img, (enemy_pos[0][0], enemy_pos[0][1] - 530))
-        screen.blit(inacio.barra, (enemy_pos[0][0] + 10, enemy_pos[0][1] - 550))  # barra de vida
+        screen.blit(inacio.barra, (enemy_pos[0][0] + 150, enemy_pos[0][1] - 550))  # barra de vida
         inacio.life_update()
 
         # desenho do resto das imagens
@@ -1469,7 +1475,7 @@ def combate_boss2():
 
 
 def combate_boss3():
-    jacob.img = jacob.idle
+    jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, inacio, chronos_fase2, death_cnt, music_is_playing
     count = 5
     xpos -= 1
@@ -1479,7 +1485,7 @@ def combate_boss3():
     enemy_pos = []
     for i in range(4):
         allies_pos.append((510 - (150 * i), SCREEN_H))
-        enemy_pos.append((770 + (150 * i), SCREEN_H - 250))
+        enemy_pos.append((700 + (150 * i), SCREEN_H))
 
     # index na lista de inimigos/posição da seta da seleção de inimigos
     seta_vert_pos = 0
@@ -1667,8 +1673,8 @@ def combate_boss3():
                 screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
                 screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
                 party[i].life_update()
-        screen.blit(inacio.img, enemy_pos[0])
-        screen.blit(inacio.barra, (enemy_pos[0][0] - 25, enemy_pos[0][1] - 20))  # barra de vida
+        screen.blit(inacio.img, (enemy_pos[0][0], enemy_pos[0][1] - 530))
+        screen.blit(inacio.barra, (enemy_pos[0][0] + 90, enemy_pos[0][1] - 550))  # barra de vida
         inacio.life_update()
 
         # desenho do resto das imagens
@@ -1688,7 +1694,7 @@ def combate_boss3():
 
 
 def combate_fase3():
-    jacob.img = jacob.idle
+    jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, salas, death_cnt
     xpos -= 1
 
@@ -1719,7 +1725,7 @@ def combate_fase3():
     chosen_player = 0
 
     # random enemy generator
-    enemy_gen([10, 20, 30], [5, 7, 10])
+    enemy_gen([10, 20, 30], [5, 7, 10], fut_images, fut_names)
 
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
@@ -2486,7 +2492,7 @@ def cutscene(cut, fase):
                 party.append(barbara)
                 party.append(kazi)
                 kazi.vida = kazi.vida_total - kazi.vida
-                kazi.img = pygame.image.load("assets/sprites/peter/david.png")
+                kazi.img = pygame.image.load("assets/sprites/peter/davidcombate.png")
                 music_is_playing = False
                 trans(fase)
 
@@ -2647,7 +2653,7 @@ def fim_jogo():
                                 else:
                                     party.append(barbara)
                             if loaded_data['lvl_room'][0] == 'fase2' or loaded_data['lvl_room'][0] == 'fase3':
-                                kazi.img = pygame.image.load("assets/sprites/peter/david.png")
+                                kazi.img = pygame.image.load("assets/sprites/peter/davidcombate.png")
                             salas = loaded_data['lvl_room'][1]
                             xpos = loaded_data['x_pos']
                             rest_c = loaded_data['rest_counter']

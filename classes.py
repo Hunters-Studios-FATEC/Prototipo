@@ -136,11 +136,11 @@ class Allies:
 
 jacob = Allies(200, 50, 30, "assets/sprites/jacob/jacob parado.png", "jacob",
                1, 0, 20, 4, 2, 50, animations_jacobR, animations_jacobL)
-barbara = Allies(200, 15, 35, "assets/sprites/gotica/barbara gótica.png", "barbara",
+barbara = Allies(200, 15, 35, "assets/sprites/gotica/barbaraatirando.png", "barbara",
                  1, 0, 20, 2, 4, 30, animations_jacobR, animations_jacobL)
-kazi = Allies(200, 20, 30, "assets/sprites/peter/peter.png", "kazi", 1, 0, 20,
+kazi = Allies(200, 20, 30, "assets/sprites/peter/petercombate.png", "kazi", 1, 0, 20,
               3, 5, 30, animations_jacobR, animations_jacobL)
-kenji = Allies(200, 25, 25, "assets/sprites/kenji/kenji futuro.png", "kenji", 1, 0, 20,
+kenji = Allies(200, 25, 25, "assets/sprites/kenji/kenjiatirando.png", "kenji", 1, 0, 20,
                5, 2, 40, animations_jacobR, animations_jacobL)
 party = [jacob, kazi, kenji, barbara]
 
@@ -200,18 +200,18 @@ class Boss:
         self.barra.fill(VERMELHO)
 
 
-hitler = Boss(400, 30, 'assets/sprites/hitler/hitler.png', "Hitler", 0)
-hitler2 = Boss(450, 40, 'assets/sprites/antonius/antonius.png', "TRUE HITLER: INACIO", 500)
-antonio = Boss(500, 10, 'assets/sprites/antonius/antonius.png', "Mussolinius", 0)
+hitler = Boss(400, 30, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 0)
+hitler2 = Boss(450, 40, 'assets/sprites/hitler/hitleratirando.png', "TRUE HITLER: INACIO", 500)
+antonio = Boss(500, 10, 'assets/sprites/antonius/antonioatirando.png', "Mussolinius", 0)
 chronos = Boss(550, 30, 'assets/sprites/cronos/cronos.png', "Cronos", 0)
-chronos2 = Boss(600, 30, 'assets/sprites/cronos/cronos.png', "Cronos", 9999)
+chronos2 = Boss(600, 30, 'assets/sprites/cronos/cronocombate.png', "Cronos", 9999)
 
 
-def enemy_gen(vidas, danos):
+def enemy_gen(vidas, danos, cor_list, name_list):
     vida = vidas
     dano = danos
-    cor = ['assets/sprites/inimigos/nazi1.png', 'assets/sprites/inimigos/nazi2.png']
-    nomes = ["nazista", "nazista", "nazista"]
+    cor = cor_list
+    nomes = name_list
 
     enemy_dict = {}
     for i in range(random.randint(1, 4)):

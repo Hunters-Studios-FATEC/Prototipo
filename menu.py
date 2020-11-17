@@ -659,7 +659,7 @@ def combate_fase1():
                                     battle_log.draw_text(log_text, screen)
                                     ally_index += 1
                                 else:
-                                    if salas == 5:
+                                    if salas == 5 and not fase4:
                                         log_text = "SIFODE AE OTARIO"
                                     else:
                                         salas -= 1
@@ -716,7 +716,7 @@ def combate_fase1():
             party_life += party[i].vida  # cria uma variavel da vida total da party
 
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
-            if salas == 5:
+            if salas == 5 and not fase4:
                 cutscene(cutscene10, "fase1")
 
             salas -= 1
@@ -2461,7 +2461,7 @@ def cutscene(cut, fase):
 
             elif cut == cutscene8:
                 trans_state = "fase1"
-                jacob.vida += jacob.vida_total - jacob.vida
+                jacob.vida = jacob.vida_total
                 pygame.mixer.stop()
                 mov_f_1()
 
@@ -2482,7 +2482,7 @@ def cutscene(cut, fase):
                 party.pop(1)
                 party.append(kenji)
                 for i in range(len(party)):
-                    party[i].vida = party[i].vida_total - party[i].vida
+                    party[i].vida = party[i].vida_total
                     party[i].ammo = 10
                 pygame.mixer.stop()
                 music_is_playing = False
@@ -2491,7 +2491,7 @@ def cutscene(cut, fase):
             elif cut == cutscene14:
                 party.append(barbara)
                 party.append(kazi)
-                kazi.vida = kazi.vida_total - kazi.vida
+                kazi.vida = kazi.vida_total
                 kazi.img = pygame.image.load("assets/sprites/peter/davidcombate.png")
                 music_is_playing = False
                 trans(fase)
@@ -2506,7 +2506,7 @@ def cutscene(cut, fase):
             elif cut == cutscene17:
                 trans_state = "fase3"
                 for i in range(len(party)):
-                    party[i].vida = party[i].vida_total - party[i].vida
+                    party[i].vida = party[i].vida_total
                     party[i].ammo = 10
                 pygame.mixer.stop()
                 music_is_playing = False
@@ -2530,7 +2530,7 @@ def cutscene(cut, fase):
                 party.remove(kazi)
                 trans_state = "fase1"
                 for i in range(len(party)):
-                    party[i].vida = party[i].vida_total - party[i].vida
+                    party[i].vida = party[i].vida_total
                     party[i].ammo = 10
                 pygame.mixer.stop()
                 music_is_playing = False

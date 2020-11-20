@@ -179,6 +179,7 @@ bg_cut4 = pygame.image.load('assets/backgrounds/cut4.png')
 bg_cut5 = pygame.image.load('assets/backgrounds/cut1.jpeg')
 bg_cut6 = pygame.image.load('assets/backgrounds/cut6.png')
 bg_cut7 = pygame.image.load('assets/backgrounds/cut7.png')
+bg_cut7_2 = pygame.image.load('assets/backgrounds/cut7_2.png')
 bg_cut8 = pygame.image.load('assets/backgrounds/cut8.png')
 bg_cut8_2 = pygame.image.load('assets/backgrounds/cut8_2.png')
 bg_cut9 = pygame.image.load('assets/backgrounds/cut9.png')
@@ -747,20 +748,17 @@ def combate_fase1():
             party_life += party[i].vida  # cria uma variavel da vida total da party
 
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
-<<<<<<< Updated upstream
             if salas == 5 and not fase4:
                 cutscene(cutscene10, "fase1")
-=======
+
             if salas == 5:
                 cutscene(cutscene10, "fase1", bg_cut10)
->>>>>>> Stashed changes
-
             salas -= 1
-
             for i in range(len(party)):
                 party[i].lvl_up(soma_xp)
 
             mov_f_1()
+
         elif party_life <= 0:
             fim_jogo()
 
@@ -2485,6 +2483,11 @@ def cutscene(cut, fase, background):
                 screen.blit(bg, (0, 0))
             elif cutscene1.cur_step == 8:
                 bg = bg_cut1_3
+                screen.blit(bg, (0, 0))
+
+        elif cut == cutscene7:
+            if cutscene7.cur_step == 21:
+                bg = bg_cut7_2
                 screen.blit(bg, (0, 0))
 
         elif cut == cutscene8:

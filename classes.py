@@ -12,34 +12,28 @@ FUCHSIA = (255, 0, 255)
 
 animations_jacobL = []
 animations_jacobR = [pygame.image.load('assets/sprites/jacob/jacobandando0001.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0002.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0003.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0004.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0005.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0006.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0007.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0008.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0009.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0010.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0011.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0012.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0013.png'),
-                   pygame.image.load('assets/sprites/jacob/jacobandando0014.png')]
+                     pygame.image.load('assets/sprites/jacob/jacobandando0002.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0003.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0004.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0005.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0006.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0007.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0008.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0009.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0010.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0011.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0012.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0013.png'),
+                     pygame.image.load('assets/sprites/jacob/jacobandando0014.png')]
 for i in animations_jacobR:
     animations_jacobL.append(pygame.transform.flip(i, True, False))
 
+
 class Allies:
     def __init__(self, vida, dano_m, dano_r, img, nome, lvl, xp, ammo, inc_mel, inc_ran, inc_vida, spritesR, spritesL):
-        self.vida = vida
-        self.vida_total = vida
-        self.dano_recebido = 1
-        self.barra = pygame.Surface((100 * self.dano_recebido, 10))
-        self.barra.fill((255, 0, 0))
         self.ammo = ammo
         self.level = lvl
         self.nome = nome
-        self.dano_m = dano_m
-        self.dano_r = dano_r
         self.idle = pygame.image.load(img)
         self.img = pygame.image.load(img)
         self.dmg_red = 1
@@ -49,6 +43,14 @@ class Allies:
         self.inc_mel = inc_mel
         self.inc_ran = inc_ran
         self.inc_vida = inc_vida
+
+        self.vida = vida
+        self.vida_total = vida
+        self.dano_recebido = 1
+        self.barra = pygame.Surface((100 * self.dano_recebido, 10))
+        self.barra.fill((255, 0, 0))
+        self.dano_m = dano_m
+        self.dano_r = dano_r
 
         self.is_animating = False
         self.current_sprite = 0
@@ -62,25 +64,33 @@ class Allies:
     def attack(self, enemy):
         self.atk_sound.play()
         self.hit2.play()
-        enemy.vida -= self.dano_m * enemy.dmg_red_e
+        if random.randint(1, 100) <= 5:
+            enemy.vida -= self.dano_m * 2
+        else:
+            enemy.vida -= self.dano_m * enemy.dmg_red_e
 
     def skill(self, enemy):
         self.gun_sound.play()
         self.hit2.play()
-        enemy.vida -= self.dano_r * enemy.dmg_red_e
+        if random.randint(1, 100) <= 5:
+            enemy.vida -= self.dano_r * 2
+        else:
+            enemy.vida -= self.dano_r * enemy.dmg_red_e
         self.ammo -= 1
 
     def lvl_up(self, soma):
         self.xp += soma
 
-        if self.xp >= self.to_next_lvl:
+        while self.xp >= self.to_next_lvl:
             self.level += 1
             self.xp = self.xp - self.to_next_lvl
             self.to_next_lvl = round(self.to_next_lvl * 1.5)
 
-            self.vida_total += self.inc_vida
-            self.dano_m += self.inc_mel
-            self.dano_r += self.inc_ran
+            self.vida_total = self.vida_total + self.inc_vida
+            self.dano_m = self.dano_m + self.inc_mel
+            self.dano_r = self.dano_r + self.inc_ran
+
+            self.vida += self.vida_total - self.vida
 
             print("-------------LEVEL UP!-------------")
             print("{} foi para o nivel {}".format(self.nome, self.level))
@@ -95,7 +105,7 @@ class Allies:
         self.barra.fill((255, 0, 0))
 
     def rest(self):
-        self.vida += 50
+        self.vida += 30 * self.level
         if self.vida > self.vida_total:
             self.vida = self.vida_total
 
@@ -134,33 +144,31 @@ class Allies:
                 self.img = self.spritesL[int(self.current_sprite)]
 
 
-jacob = Allies(200, 50, 30, "assets/sprites/jacob/jacob parado.png", "jacob",
+jacob = Allies(200, 40, 30, "assets/sprites/jacob/jacob parado.png", "jacob",
                1, 0, 20, 4, 2, 50, animations_jacobR, animations_jacobL)
-barbara = Allies(200, 15, 35, "assets/sprites/gotica/barbaraatirando.png", "barbara",
-                 1, 0, 20, 2, 4, 30, animations_jacobR, animations_jacobL)
-kazi = Allies(200, 20, 30, "assets/sprites/peter/petercombate.png", "kazi", 1, 0, 20,
+barbara = Allies(320, 23, 51, "assets/sprites/gotica/barbaraatirando.png", "barbara",
+                 5, 0, 20, 2, 4, 30, animations_jacobR, animations_jacobL)
+kazi = Allies(260, 26, 40, "assets/sprites/peter/petercombate.png", "kazi", 3, 0, 20,
               3, 5, 30, animations_jacobR, animations_jacobL)
-kenji = Allies(200, 25, 25, "assets/sprites/kenji/kenjiatirando.png", "kenji", 1, 0, 20,
+kenji = Allies(360, 45, 38, "assets/sprites/kenji/kenjiatirando.png", "kenji", 5, 0, 20,
                5, 2, 40, animations_jacobR, animations_jacobL)
 party = [jacob, kazi, kenji, barbara]
 
 
 class Enemy:
     def __init__(self, vida, dano, img, nome, xp_drop):
-        self.multiplier = jacob.level
-        self.vida = vida + (50 * self.multiplier)
-        self.vida_total = vida + (50 * self.multiplier)
+        self.vida = vida
+        self.vida_total = vida
         self.dano_recebido = 1
         self.barra = pygame.Surface((100 * self.dano_recebido, 10))
         self.barra.fill((255, 0, 0))
-        self.dano = dano + (2 * jacob.level)
+        self.dano = dano
         self.img = pygame.image.load(img)
         self.dmg_red_e = 1
         self.nome = nome
         self.xp_drop = xp_drop
 
         self.gun_sound = pygame.mixer.Sound("assets/audio/Combate/pistol.wav")
-
 
     def ataque(self, player):
         self.gun_sound.play()
@@ -200,23 +208,23 @@ class Boss:
         self.barra.fill(VERMELHO)
 
 
-hitler = Boss(400, 30, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 0)
-hitler2 = Boss(450, 40, 'assets/sprites/hitler/hitleratirando.png', "TRUE HITLER: INACIO", 500)
-antonio = Boss(500, 10, 'assets/sprites/antonius/antonioatirando.png', "Mussolinius", 0)
-chronos = Boss(550, 30, 'assets/sprites/cronos/cronos.png', "Cronos", 0)
-chronos2 = Boss(600, 30, 'assets/sprites/cronos/cronocombate.png', "Cronos", 9999)
+hitler = Boss(776, 50, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 30)
+hitler2 = Boss(532, 70, 'assets/sprites/hitler/hitleratirando.png', "TRUE HITLER: INACIO", 500)
+antonio = Boss(1760, 100, 'assets/sprites/antonius/antonioatirando.png', "Mussolinius", 50)
+chronos = Boss(2048, 140, 'assets/sprites/cronos/cronos.png', "Cronos", 150)
+chronos2 = Boss(2248, 150, 'assets/sprites/cronos/cronocombate.png', "Cronos", 200)
 
 
-def enemy_gen(vidas, danos, cor_list, name_list):
+def enemy_gen(vidas, danos, cor_list, name_list, xp1, xp2):
     vida = vidas
     dano = danos
     cor = cor_list
     nomes = name_list
 
     enemy_dict = {}
-    for i in range(random.randint(1, 4)):
+    for i in range(random.randint(1, 3)):
         enemy_dict["enemy{0}".format(i)] = Enemy(random.choice(vida), random.choice(dano), random.choice(cor),
-                                                 random.choice(nomes), random.randint(6, 10))
+                                                 random.choice(nomes), random.randint(xp1, xp2))
     for enemy in range(len(enemy_dict)):
         enemy_list.append(enemy_dict["enemy{0}".format(enemy)])
 

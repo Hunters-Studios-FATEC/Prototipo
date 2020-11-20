@@ -1704,8 +1704,8 @@ def combate_boss3():
                 screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
                 screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
                 party[i].life_update()
-        screen.blit(inacio.img, (enemy_pos[0][0], enemy_pos[0][1] - 530))
-        screen.blit(inacio.barra, (enemy_pos[0][0] + 90, enemy_pos[0][1] - 550))  # barra de vida
+        screen.blit(inacio.img, (enemy_pos[0][0], enemy_pos[0][1] - 625))
+        screen.blit(inacio.barra, (enemy_pos[0][0] + 90, enemy_pos[0][1] - 625))  # barra de vida
         inacio.life_update()
 
         # desenho do resto das imagens
@@ -1717,7 +1717,7 @@ def combate_boss3():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 115, enemy_pos[seta_vert_pos][1] - 650))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 115, enemy_pos[seta_vert_pos][1] - 720))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 

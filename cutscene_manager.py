@@ -11,12 +11,10 @@ def draw_text(screen, text, size, color, x, y):
 
 
 class Cutscene:
-
     def __init__(self, cutscene_metadata):
         # Armazena o metadado json na classe
         self.cutscene = cutscene_metadata
 
-        self.timer = pg.time.get_ticks()
         self.name = self.cutscene['name']
 
         # passos (steps) de cada cutscene. Cada passo é uma fala. Inicia no 0.
@@ -38,6 +36,9 @@ class Cutscene:
 
         # Coloca o step atual de fala na cutscene, iniciando no 0
         self.__set_dialogue(self.cur_step)
+
+        # Quantidade de caracteres exibidos
+        self.chr_displayed = -3
 
     def __set_dialogue(self, cur_step):
         # Extraindo o dado do metadado e armazenando na memoria
@@ -72,9 +73,11 @@ class Cutscene:
                     self.cutscene_running = False
                 else:
                     self.cur_step += 1
+                    self.chr_displayed = -3
                     self.__set_dialogue(self.cur_step)
 
         return self.cutscene_running
+
 
 class CutSceneManager:
 
@@ -91,7 +94,8 @@ class CutSceneManager:
         self.is_dialogue_screen_draw = False
 
         self.surf = pg.Surface((int(self.screen.get_width()), int(self.window_size)))
-        self.timer = 0
+
+        # Som
         self.sound = pg.mixer.Sound("assets/audio/Cutscenes/dialogue.wav")
         self.sound.set_volume(0.4)
         self.ch = pg.mixer.Channel(2)
@@ -107,13 +111,6 @@ class CutSceneManager:
         self.cutscene_running = False
 
     def update(self):
-        if self.timer > 0:
-            self.timer -= 1
-
-        if self.timer == 0:
-            self.timer = 10
-            self.ch.play(self.sound)
-
         if self.cutscene_running:
             if self.window_size < self.screen.get_height() * 0.3:
                 self.window_size += 4
@@ -152,6 +149,10 @@ class CutSceneManager:
 
                 # Desenha o diálogo. indice zero do dicionario da cutscene no json.
                 dialogue_displayed = self.cutscene.dialogue[0:int(self.cutscene.dialogue_position)]
+
+                if int(self.cutscene.dialogue_position) >= self.cutscene.chr_displayed + 4:
+                    self.ch.play(self.sound)
+                    self.cutscene.chr_displayed += 4
 
                 # Linha de teste para testar velocidade do diálogo e posição. Ignorar.
                 # print(self.window_size, self.cutscene.dialogue_position, dialogue_displayed)

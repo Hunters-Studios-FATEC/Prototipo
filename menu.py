@@ -749,9 +749,6 @@ def combate_fase1():
 
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
             if salas == 5 and not fase4:
-                cutscene(cutscene10, "fase1")
-
-            if salas == 5:
                 cutscene(cutscene10, "fase1", bg_cut10)
             salas -= 1
             for i in range(len(party)):
@@ -2480,28 +2477,25 @@ def cutscene(cut, fase, background):
         if cut == cutscene1:
             if cutscene1.cur_step == 7:
                 bg = bg_cut1_2
-                screen.blit(bg, (0, 0))
+                blit_bg = True
             elif cutscene1.cur_step == 8:
                 bg = bg_cut1_3
-                screen.blit(bg, (0, 0))
+                blit_bg = True
 
         elif cut == cutscene7:
             if cutscene7.cur_step == 21:
                 bg = bg_cut7_2
-                screen.blit(bg, (0, 0))
+                blit_bg = True
 
         elif cut == cutscene8:
             if cutscene8.cur_step == 2:
                 bg = bg_cut8_2
-                screen.blit(bg, (0, 0))
+                blit_bg = True
 
         elif cut == cutscene13:
             if cutscene13.cur_step == 10:
                 bg = bg_cut13_2
-                screen.blit(bg, (0, 0))
-
-        if not (int(cut.dialogue_position) < len(cut.dialogue)):
-            gerenciador.sound.stop()
+                blit_bg = True
 
         if not gerenciador.cutscene_running:
             if cut == cutscene4:

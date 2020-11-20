@@ -22,16 +22,16 @@
     },
     {
       "step": 2,
-      "text": "Jacob: Não importa. Agora preciso achar e matar Hitler.",
+      "text": "Jacob olha para o relógio e vê marcando 15 de outubro de 1918.",
       "speed": 0.4,
       "size": 40,
-      "rgb_color": [0, 0, 0],
+      "rgb_color": [237, 237, 237],
       "pos_x": 50,
       "pos_y": 50
     },
     {
       "step": 3,
-      "text": "Jacob: Se me lembro bem, ele foi hospitalizado aqui no final da guerra.",
+      "text": "Jacob: Deu certo!",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [0, 0, 0],
@@ -40,6 +40,24 @@
     },
     {
       "step": 4,
+      "text": "Jacob: Agora preciso achar e matar Hitler.",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 5,
+      "text": "Jacob: Se me lembro bem, ele foi hospitalizado aqui no final da guerra.",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [0, 0, 0],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 6,
       "text": "Jacob: Finalmente a humanidade não sentirá os horrores desse monstro...",
       "speed": 0.4,
       "size": 40,

@@ -169,6 +169,37 @@ prmg_names = ['soldado', 'cabo', 'atirador']
 fut_images = ['assets/sprites/inimigos/nazi1.png', 'assets/sprites/inimigos/nazi2.png']
 fut_names = ['nazista', 'nazista', 'nazista']
 
+# Cutscene backgrounds
+bg_cut1 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut1_2 = pygame.image.load('assets/backgrounds/cut1_2.png')
+bg_cut1_3 = pygame.image.load('assets/backgrounds/cut1_3.png')
+bg_cut2 = pygame.image.load('assets/backgrounds/cut2.png')
+bg_cut3 = pygame.image.load('assets/backgrounds/cut3.png')
+bg_cut4 = pygame.image.load('assets/backgrounds/cut4.png')
+bg_cut5 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut6 = pygame.image.load('assets/backgrounds/cut6.png')
+bg_cut7 = pygame.image.load('assets/backgrounds/cut7.png')
+bg_cut8 = pygame.image.load('assets/backgrounds/cut8.png')
+bg_cut8_2 = pygame.image.load('assets/backgrounds/cut8_2.png')
+bg_cut9 = pygame.image.load('assets/backgrounds/cut9.png')
+bg_cut10 = pygame.image.load('assets/backgrounds/cut10.png')
+bg_cut11 = pygame.image.load('assets/backgrounds/cut11.png')
+bg_cut12 = pygame.image.load('assets/backgrounds/cut12.png')
+bg_cut13 = pygame.image.load('assets/backgrounds/cut13f1.png')
+bg_cut13_2 = pygame.image.load('assets/backgrounds/cut13f2.png')
+bg_cut14 = pygame.image.load('assets/backgrounds/cut14.png')
+bg_cut15 = pygame.image.load('assets/backgrounds/cut15.png')
+bg_cut16 = pygame.image.load('assets/backgrounds/cut16.png')
+bg_cut17 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut18 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut19 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut20 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut21 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut22 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut23 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut24 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut25 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+
 
 def music(count):
     if count == 0:
@@ -229,7 +260,7 @@ def menu_start():
                         if menu_select:
                             pygame.mixer.stop()
                             enter.play()
-                            cutscene(cutscene1, "tutorial")
+                            cutscene(cutscene1, "tutorial", bg_cut1)
                             game_select = False
                         else:
                             loaded_data = load_file()
@@ -491,7 +522,7 @@ def combate_tutorial():
             party_life += party[0].vida  # cria uma variavel da vida total da party
 
         if jacob.vida <= jacob.vida_total / 2:  # retorna ao movimento em caso de vitória ou derrota
-            cutscene(cutscene5, "fase1")
+            cutscene(cutscene5, "fase1", bg_cut5)
 
             for i in range(len(party)):
                 party[0].lvl_up(soma_xp)
@@ -716,8 +747,13 @@ def combate_fase1():
             party_life += party[i].vida  # cria uma variavel da vida total da party
 
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
+<<<<<<< Updated upstream
             if salas == 5 and not fase4:
                 cutscene(cutscene10, "fase1")
+=======
+            if salas == 5:
+                cutscene(cutscene10, "fase1", bg_cut10)
+>>>>>>> Stashed changes
 
             salas -= 1
 
@@ -800,7 +836,7 @@ def combate_fase1():
                 screen.blit(seta, (setax, setay))
 
         if salas == 5 and enemy_life == 0:
-            cutscene(cutscene10, "fase1")
+            cutscene(cutscene10, "fase1", bg_cut10)
 
         pygame.display.update()
 
@@ -948,10 +984,10 @@ def combate_boss():
         if enemy_life <= 0 and not fase4:  # retorna ao movimento em caso de vitória ou derrota
             for i in range(len(party)):
                 party[i].lvl_up(soma_xp)
-            cutscene(cutscene12, "fase2")
+            cutscene(cutscene12, "fase2", bg_cut12)
 
         if enemy_life <= 0 and fase4:  # retorna ao movimento em caso de vitória ou derrota
-            cutscene(cutscene24, "boss4")
+            cutscene(cutscene24, "boss4", bg_cut24)
 
         if party_life <= 0:
             fim_jogo()
@@ -1014,7 +1050,7 @@ def combate_boss():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 100, enemy_pos[seta_vert_pos][1] - 650))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1404,7 +1440,7 @@ def combate_boss2():
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
             for i in range(len(party)):
                 party[i].lvl_up(soma_xp)
-            cutscene(cutscene16, "fase3")
+            cutscene(cutscene16, "fase3", bg_cut16)
 
         if party_life <= 0:
             fim_jogo()
@@ -1467,7 +1503,7 @@ def combate_boss2():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 150, enemy_pos[seta_vert_pos][1] - 650))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1618,13 +1654,13 @@ def combate_boss3():
             if enemy_life <= inacio.vida_total / 2:
                 inacio = chronos2
                 chronos_fase2 = True
-                cutscene(cutscene20, "boss3")
+                cutscene(cutscene20, "boss3", bg_cut20)
 
         if inacio == chronos2:
             if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
                 for i in range(len(party)):
                     party[i].lvl_up(soma_xp)
-                cutscene(cutscene21, "fase4")
+                cutscene(cutscene21, "fase4", bg_cut21)
 
         if party_life <= 0:
             fim_jogo()
@@ -1686,7 +1722,7 @@ def combate_boss3():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 5, enemy_pos[seta_vert_pos][1] - 630))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 115, enemy_pos[seta_vert_pos][1] - 650))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1949,15 +1985,15 @@ def mov_tutorial():
 
     while True:
         if salas == 1:
-            cutscene(cutscene2, "tutorial")
+            cutscene(cutscene2, "tutorial", bg_cut2)
             salas -= 1
 
         if salas == 4:
-            cutscene(cutscene3, "tutorial")
+            cutscene(cutscene3, "tutorial", bg_cut3)
             salas -= 1
 
         if salas == 6:
-            cutscene(cutscene4, "tutorial")
+            cutscene(cutscene4, "tutorial", bg_cut4)
 
         if walk_timer > 0:
             walk_timer -= 1
@@ -2062,13 +2098,13 @@ def mov_f_1():
             walk_timer -= 1
 
         if salas == 5 and not fase4:
-            cutscene(cutscene9, "fase1")
+            cutscene(cutscene9, "fase1", bg_cut9)
 
         if salas == 9 and not fase4:
-            cutscene(cutscene11, "fase1")
+            cutscene(cutscene11, "fase1", bg_cut11)
 
         if salas == 9 and fase4:
-            cutscene(cutscene23, "boss1")
+            cutscene(cutscene23, "boss1", bg_cut23)
 
         # key events
         for event in pygame.event.get():
@@ -2183,9 +2219,9 @@ def mov_f_2():
             walk_timer -= 1
 
         if salas == 5:
-            cutscene(cutscene14, "fase2")
+            cutscene(cutscene14, "fase2", bg_cut14)
         elif salas == 9:
-            cutscene(cutscene15, "boss2")
+            cutscene(cutscene15, "boss2", bg_cut15)
 
         # key events
         for event in pygame.event.get():
@@ -2300,10 +2336,10 @@ def mov_f_3():
             walk_timer -= 1
 
         if salas == 5:
-            cutscene(cutscene18, "fase3")
+            cutscene(cutscene18, "fase3", bg_cut18)
 
         if salas == 9:
-            cutscene(cutscene19, "fase3")
+            cutscene(cutscene19, "fase3", bg_cut19)
 
         # key events
         for event in pygame.event.get():
@@ -2421,9 +2457,9 @@ def trans(fase):
             combate_boss3()
 
 
-def cutscene(cut, fase):
+def cutscene(cut, fase, background):
     global salas, trans_state, fase4, dialogue_timer, music_is_playing
-    bg = pygame.image.load('assets/backgrounds/cut1.jpeg')
+    bg = background
     blit_bg = True
     pygame.mixer.music.stop()
     while True:
@@ -2443,6 +2479,24 @@ def cutscene(cut, fase):
         gerenciador.update()
         pygame.display.update()
 
+        if cut == cutscene1:
+            if cutscene1.cur_step == 7:
+                bg = bg_cut1_2
+                screen.blit(bg, (0, 0))
+            elif cutscene1.cur_step == 8:
+                bg = bg_cut1_3
+                screen.blit(bg, (0, 0))
+
+        elif cut == cutscene8:
+            if cutscene8.cur_step == 2:
+                bg = bg_cut8_2
+                screen.blit(bg, (0, 0))
+
+        elif cut == cutscene13:
+            if cutscene13.cur_step == 10:
+                bg = bg_cut13_2
+                screen.blit(bg, (0, 0))
+
         if not (int(cut.dialogue_position) < len(cut.dialogue)):
             gerenciador.sound.stop()
 
@@ -2451,13 +2505,13 @@ def cutscene(cut, fase):
                 combate_tutorial()
 
             elif cut == cutscene5:
-                cutscene(cutscene6, "fase1")
+                cutscene(cutscene6, "fase1", bg_cut6)
 
             elif cut == cutscene6:
-                cutscene(cutscene7, "fase1")
+                cutscene(cutscene7, "fase1", bg_cut7)
 
             elif cut == cutscene7:
-                cutscene(cutscene8, "fase1")
+                cutscene(cutscene8, "fase1", bg_cut8)
 
             elif cut == cutscene8:
                 trans_state = "fase1"
@@ -2475,7 +2529,7 @@ def cutscene(cut, fase):
                 combate_boss()
 
             elif cut == cutscene12:
-                cutscene(cutscene13, "fase2")
+                cutscene(cutscene13, "fase2", bg_cut13)
 
             elif cut == cutscene13:
                 trans_state = "fase2"
@@ -2501,7 +2555,7 @@ def cutscene(cut, fase):
                 combate_boss2()
 
             elif cut == cutscene16:
-                cutscene(cutscene17, "fase3")
+                cutscene(cutscene17, "fase3", bg_cut17)
 
             elif cut == cutscene17:
                 trans_state = "fase3"
@@ -2521,7 +2575,7 @@ def cutscene(cut, fase):
                 combate_boss3()
 
             elif cut == cutscene21:
-                cutscene(cutscene22, "fase1")
+                cutscene(cutscene22, "fase1", bg_cut22)
 
             elif cut == cutscene22:
                 fase4 = True

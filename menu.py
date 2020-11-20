@@ -221,7 +221,7 @@ def music(count):
     elif count == 5:
         # musicHitler.play(-1)
         pygame.mixer.music.load("assets/audio/Musics/epic.ogg")
-    pygame.mixer.music.set_volume(0.05)
+    pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
 
 
@@ -397,10 +397,10 @@ def combate_tutorial():
     # enemy generator
 
     def enemy_gen_tutorial():
-        vida = [50, 100, 150]
-        dano = [8, 13, 18]
+        vida = [200]
+        dano = [20]
         cor = ['assets/sprites/inimigos/nazi1.png', 'assets/sprites/inimigos/nazi2.png']
-        nomes = ["nazista", "nazista", "nazista"]
+        nomes = ["nazista"]
 
         enemy_dict = {}
         for i in range(2):
@@ -464,7 +464,7 @@ def combate_tutorial():
                                         battle_state = 'skill'
                                         enemy_select = True
                                     else:
-                                        log_text = "{} está sem munnição".format(party[ally_index])
+                                        log_text = "{} está sem munnição".format(party[ally_index].nome)
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -626,7 +626,7 @@ def combate_fase1():
     chosen_player = 0
 
     # random enemy generator
-    enemy_gen([10, 20, 30], [5, 7, 10], prmg_images, prmg_names)
+    enemy_gen([100, 90], [25, 20], prmg_images, prmg_names, 6, 10)
 
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
@@ -681,7 +681,7 @@ def combate_fase1():
                                         battle_state = 'skill'
                                         enemy_select = True
                                     else:
-                                        log_text = "{} está sem munnição".format(party[ally_index])
+                                        log_text = "{} está sem munnição".format(party[ally_index].nome)
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -749,6 +749,9 @@ def combate_fase1():
 
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
             if salas == 5 and not fase4:
+                cutscene(cutscene10, "fase1", bg_cut1)
+
+            if salas == 5:
                 cutscene(cutscene10, "fase1", bg_cut10)
             salas -= 1
             for i in range(len(party)):
@@ -1085,7 +1088,7 @@ def combate_fase2():
     chosen_player = 0
 
     # random enemy generator
-    enemy_gen([10, 20, 30], [5, 7, 10], fut_images, fut_names)
+    enemy_gen([220, 200, 280], [45, 60, 55], fut_images, fut_names, 15, 20)
 
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
@@ -1140,7 +1143,7 @@ def combate_fase2():
                                         battle_state = 'skill'
                                         enemy_select = True
                                     else:
-                                        log_text = "{} está sem munnição".format(party[ally_index])
+                                        log_text = "{} está sem munnição".format(party[ally_index].nome)
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -1381,7 +1384,7 @@ def combate_boss2():
                                         battle_state = 'skill'
                                         enemy_select = True
                                     else:
-                                        log_text = "{} está sem munnição".format(party[ally_index])
+                                        log_text = "{} está sem munnição".format(party[ally_index].nome)
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -1510,6 +1513,7 @@ def combate_boss3():
     global xpos, inacio, chronos_fase2, death_cnt, music_is_playing
     count = 5
     xpos -= 1
+    bg = pygame.image.load("assets/backgrounds/fenda.png")
 
     # enemy/player list and positioning
     allies_pos = []
@@ -1594,7 +1598,7 @@ def combate_boss3():
                                         battle_state = 'skill'
                                         enemy_select = True
                                     else:
-                                        log_text = "{} está sem munnição".format(party[ally_index])
+                                        log_text = "{} está sem munnição".format(party[ally_index].nome)
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -1699,6 +1703,8 @@ def combate_boss3():
             ally_index = 0
             player_turn = False
 
+        screen.blit(bg, (0, -190))
+
         for i in range(len(party)):
             if party[i].vida > 0:  # desenha a imagem dos aliados caso estejam vivos
                 screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
@@ -1709,7 +1715,6 @@ def combate_boss3():
         inacio.life_update()
 
         # desenho do resto das imagens
-        screen.blit(ground_2, (0, SCREEN_H - 200))
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
@@ -1756,7 +1761,7 @@ def combate_fase3():
     chosen_player = 0
 
     # random enemy generator
-    enemy_gen([10, 20, 30], [5, 7, 10], fut_images, fut_names)
+    enemy_gen([300, 330, 380], [75, 80, 85], fut_images, fut_names, 30, 45)
 
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
@@ -1813,7 +1818,7 @@ def combate_fase3():
                                         battle_state = 'skill'
                                         enemy_select = True
                                     else:
-                                        log_text = "{} está sem munnição".format(party[ally_index])
+                                        log_text = "{} está sem munnição".format(party[ally_index].nome)
                                 elif not axisx and axisy:
                                     party[ally_index].dmg_red = 0.5
                                     log_text = "{} defende".format(party[ally_index].nome)
@@ -2027,7 +2032,7 @@ def mov_tutorial():
                         for i in range(len(party)):
                             party[i].rest()
                         rest_count = False
-                        mov_log_text = "o grupo recuperou 50 de vida"
+                        mov_log_text = "o grupo recuperou vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -2140,7 +2145,7 @@ def mov_f_1():
                         for i in range(len(party)):
                             party[i].rest()
                         rest_count = False
-                        mov_log_text = "o grupo recuperou 50 de vida"
+                        mov_log_text = "o grupo recuperou vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -2162,7 +2167,7 @@ def mov_f_1():
 
         # random encounter
         if ((xpos / 10) % 1) == 0 and xpos is not 0:
-            chance = random.randint(1, 30)
+            chance = random.randint(1, 15)
             if chance == 1:
                 pygame.time.wait(1000)
                 combate_fase1()
@@ -2257,7 +2262,7 @@ def mov_f_2():
                         for i in range(len(party)):
                             party[i].rest()
                         rest_count = False
-                        mov_log_text = "o grupo recuperou 50 de vida"
+                        mov_log_text = "o grupo recuperou vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -2279,7 +2284,7 @@ def mov_f_2():
 
         # random encounter
         if ((xpos / 10) % 1) == 0 and xpos is not 0:
-            chance = random.randint(1, 30)
+            chance = random.randint(1, 15)
             if chance == 1:
                 pygame.time.wait(1000)
                 combate_fase2()
@@ -2375,7 +2380,7 @@ def mov_f_3():
                         for i in range(len(party)):
                             party[i].rest()
                         rest_count = False
-                        mov_log_text = "o grupo recuperou 50 de vida"
+                        mov_log_text = "o grupo recuperou vida"
             if event.type == KEYUP:
                 if event.key == K_a or K_d:
                     xchange = 0
@@ -2397,7 +2402,7 @@ def mov_f_3():
 
         # random encounter
         if ((xpos / 10) % 1) == 0 and xpos is not 0:
-            chance = random.randint(1, 30)
+            chance = random.randint(1, 15)
             if chance == 1:
                 pygame.time.wait(1000)
                 combate_fase3()
@@ -2599,6 +2604,7 @@ def cutscene(cut, fase, background):
 
 
 def fim_jogo():
+    pygame.mixer.stop()
     PRETO = (0, 0, 0)
     BRANCO = (255, 255, 255)
 

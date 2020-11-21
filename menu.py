@@ -174,9 +174,10 @@ bg_cut1 = pygame.image.load('assets/backgrounds/cut1.jpeg')
 bg_cut1_2 = pygame.image.load('assets/backgrounds/cut1_2.png')
 bg_cut1_3 = pygame.image.load('assets/backgrounds/cut1_3.png')
 bg_cut2 = pygame.image.load('assets/backgrounds/cut2.png')
+bg_cut2_2 = pygame.image.load('assets/backgrounds/cut2_2.png')
 bg_cut3 = pygame.image.load('assets/backgrounds/cut3.png')
 bg_cut4 = pygame.image.load('assets/backgrounds/cut4.png')
-bg_cut5 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut5 = pygame.image.load('assets/backgrounds/cut4.png')
 bg_cut6 = pygame.image.load('assets/backgrounds/cut6.png')
 bg_cut7 = pygame.image.load('assets/backgrounds/cut7.png')
 bg_cut7_2 = pygame.image.load('assets/backgrounds/cut7_2.png')
@@ -842,7 +843,7 @@ def combate_fase1():
 def combate_boss():
     pygame.mixer.stop()
     count = 3
-    bg = pygame.image.load('assets/backgrounds/no man_s land.png')
+    bg = pygame.image.load('assets/backgrounds/hospital.png')
     jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, inacio, death_cnt, music_is_playing
     xpos -= 1
@@ -1296,7 +1297,7 @@ def combate_fase2():
 
 def combate_boss2():
     pygame.mixer.stop()
-    bg = pygame.image.load('assets/backgrounds/nazi cyberpunk.png')
+    bg = pygame.image.load('assets/backgrounds/ponte do castelo.png')
     jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, inacio, death_cnt, music_is_playing
     count = 4
@@ -2485,6 +2486,11 @@ def cutscene(cut, fase, background):
                 blit_bg = True
             elif cutscene1.cur_step == 8:
                 bg = bg_cut1_3
+                blit_bg = True
+
+        elif cut == cutscene2:
+            if cutscene2.cur_step == 12:
+                bg = bg_cut2_2
                 blit_bg = True
 
         elif cut == cutscene7:

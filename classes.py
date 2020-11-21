@@ -3,7 +3,6 @@ import random
 
 pygame.mixer.init()
 
-# Costante de cor
 VERMELHO = (255, 0, 0)
 PRETO = (0, 0, 0)
 BRANCO = (255, 255, 255)

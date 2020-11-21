@@ -645,7 +645,7 @@ def combate_fase1():
                                     ally_index += 1
                                 else:
                                     if salas == 5 and not fase4:
-                                        log_text = "SIFODE AE OTARIO"
+                                        log_text = "Não pode correr"
                                     else:
                                         salas -= 1
                                         ch1.play(run)
@@ -875,7 +875,7 @@ def combate_boss():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
-                                    log_text = "SIFUDEU KKK"
+                                    log_text = "Não pode correr"
                             elif enemy_select:
                                 if battle_state == 'attack':
                                     party[ally_index].attack(inacio)
@@ -1085,7 +1085,7 @@ def combate_fase2():
                                     ally_index += 1
                                 else:
                                     if salas == 5:
-                                        log_text = "SIFODE AE OTARIO"
+                                        log_text = "Não pode correr"
                                     else:
                                         salas -= 1
                                         ch1.play(run)
@@ -1311,7 +1311,7 @@ def combate_boss2():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
-                                    log_text = "SIFUDEU KKK"
+                                    log_text = "Não pode correr"
                             elif enemy_select:
                                 if battle_state == 'attack':
                                     party[ally_index].attack(inacio)
@@ -1516,7 +1516,7 @@ def combate_boss3():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
-                                    log_text = "SIFUDEU KKK"
+                                    log_text = "Não pode correr"
                             elif enemy_select:
                                 if battle_state == 'attack':
                                     party[ally_index].attack(inacio)
@@ -1732,7 +1732,7 @@ def combate_fase3():
                                     ally_index += 1
                                 else:
                                     if salas == 5:
-                                        log_text = "SIFODE AE OTARIO"
+                                        log_text = "Não pode correr"
                                     else:
                                         salas -= 1
                                         ch1.play(run)

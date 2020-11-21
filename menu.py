@@ -172,9 +172,9 @@ bg_cut19_2 = pygame.image.load('assets/backgrounds/cut19_2.png')
 bg_cut20 = pygame.image.load('assets/backgrounds/cut19_2.png')
 bg_cut21 = pygame.image.load('assets/backgrounds/cut21.png')
 bg_cut21_2 = pygame.image.load('assets/backgrounds/cut21_2.png')
-bg_cut22 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut23 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut24 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut22 = pygame.image.load('assets/backgrounds/cut8.png')
+bg_cut23 = pygame.image.load('assets/backgrounds/cut23.png')
+bg_cut24 = pygame.image.load('assets/backgrounds/cut24.png')
 bg_cut25 = pygame.image.load('assets/backgrounds/cut1.jpeg')
 
 
@@ -2384,6 +2384,11 @@ def cutscene(cut, fase, background):
         elif cut == cutscene13:
             if cutscene13.cur_step == 10:
                 bg = bg_cut13_2
+                blit_bg = True
+
+        elif cut == cutscene21:
+            if cutscene21.cur_step == 9:
+                bg = bg_cut21_2
                 blit_bg = True
 
         if not gerenciador.cutscene_running:

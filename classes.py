@@ -212,7 +212,7 @@ class Boss:
 hitler = Boss(776, 50, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 30)
 hitler2 = Boss(532, 70, 'assets/sprites/hitler/hitleratirando.png', "TRUE HITLER: INACIO", 500)
 antonio = Boss(1760, 100, 'assets/sprites/antonius/antonioatirando.png', "Mussolinius", 50)
-chronos = Boss(1848, 125, 'assets/sprites/cronos/cronos.png', "Cronos", 150)
+chronos = Boss(1848, 125, 'assets/sprites/cronos/shadowcronos.png', "???", 150)
 chronos2 = Boss(2048, 130, 'assets/sprites/cronos/cronocombate.png', "Cronos", 200)
 
 

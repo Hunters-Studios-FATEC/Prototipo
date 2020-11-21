@@ -172,8 +172,7 @@ bg_cut16 = pygame.image.load('assets/backgrounds/cut16.png')
 bg_cut17 = pygame.image.load('assets/backgrounds/cut17.png')
 bg_cut18 = pygame.image.load('assets/backgrounds/cut18.png')
 bg_cut19 = pygame.image.load('assets/backgrounds/cut19.png')
-bg_cut19_2 = pygame.image.load('assets/backgrounds/cut19_2.png')
-bg_cut20 = pygame.image.load('assets/backgrounds/cut19_2.png')
+bg_cut20 = pygame.image.load('assets/backgrounds/cut20.png')
 bg_cut21 = pygame.image.load('assets/backgrounds/cut21.png')
 bg_cut21_2 = pygame.image.load('assets/backgrounds/cut21_2.png')
 bg_cut22 = pygame.image.load('assets/backgrounds/cut8.png')
@@ -1432,7 +1431,7 @@ def combate_boss3():
     global xpos, inacio, chronos_fase2, death_cnt, music_is_playing
     count = 5
     xpos -= 1
-    bg = pygame.image.load("assets/backgrounds/fenda.png")
+    bg = pygame.image.load("assets/backgrounds/sala final.png")
     chronos.vida = 1848
     chronos2.vida = 2048
 
@@ -1621,8 +1620,8 @@ def combate_boss3():
                 screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
                 screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
                 party[i].life_update()
-        screen.blit(inacio.img, (enemy_pos[0][0], enemy_pos[0][1] - 625))
-        screen.blit(inacio.barra, (enemy_pos[0][0] + 90, enemy_pos[0][1] - 625))
+        screen.blit(inacio.img, (enemy_pos[0][0] + 50, enemy_pos[0][1] - 625))
+        screen.blit(inacio.barra, (enemy_pos[0][0] + 110, enemy_pos[0][1] - 625))
         inacio.life_update()
 
         battle_log.update()
@@ -1632,7 +1631,7 @@ def combate_boss3():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 115, enemy_pos[seta_vert_pos][1] - 720))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 135, enemy_pos[seta_vert_pos][1] - 720))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1640,9 +1639,9 @@ def combate_boss3():
 
 
 def combate_fase3():
-    bg = pygame.image.load('assets/backgrounds/saguao.png')
     jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, salas, death_cnt
+    bg = pygame.image.load('assets/backgrounds/saguao.png')
     xpos -= 1
 
     allies_pos = []
@@ -1844,6 +1843,8 @@ def combate_fase3():
             ally_index = 0
             player_turn = False
 
+        screen.blit(bg, (0, -190))
+
         for i in range(len(party)):
             if party[i].vida > 0:
                 screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
@@ -1854,7 +1855,7 @@ def combate_fase3():
             screen.blit(enemy_list[e].barra, (enemy_pos[e][0] + 80, enemy_pos[e][1] - 540))
             enemy_list[e].life_update()
 
-        screen.blit(ground_2, (0, SCREEN_H - 200))
+
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)

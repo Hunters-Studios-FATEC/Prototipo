@@ -20,6 +20,10 @@ SCREEN_W = 1280
 screen = pygame.display.set_mode((1280, 720))
 screen.fill((0, 0, 0))
 
+pygame.display.set_caption("Out of Time")
+icone = pygame.image.load("assets/icone.png")
+pygame.display.set_icon(icone)
+
 font_menu = pygame.font.Font("assets/fontes/Very Damaged.ttf", 100)
 font_menu_2 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 50)
 font_menu_3 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 24)

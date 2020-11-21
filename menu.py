@@ -165,11 +165,13 @@ bg_cut13_2 = pygame.image.load('assets/backgrounds/cut13f2.png')
 bg_cut14 = pygame.image.load('assets/backgrounds/cut14.png')
 bg_cut15 = pygame.image.load('assets/backgrounds/cut15.png')
 bg_cut16 = pygame.image.load('assets/backgrounds/cut16.png')
-bg_cut17 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut18 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut19 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut20 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut21 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut17 = pygame.image.load('assets/backgrounds/cut17.png')
+bg_cut18 = pygame.image.load('assets/backgrounds/cut18.png')
+bg_cut19 = pygame.image.load('assets/backgrounds/cut19.png')
+bg_cut19_2 = pygame.image.load('assets/backgrounds/cut19_2.png')
+bg_cut20 = pygame.image.load('assets/backgrounds/cut19_2.png')
+bg_cut21 = pygame.image.load('assets/backgrounds/cut21.png')
+bg_cut21_2 = pygame.image.load('assets/backgrounds/cut21_2.png')
 bg_cut22 = pygame.image.load('assets/backgrounds/cut1.jpeg')
 bg_cut23 = pygame.image.load('assets/backgrounds/cut1.jpeg')
 bg_cut24 = pygame.image.load('assets/backgrounds/cut1.jpeg')
@@ -1634,6 +1636,7 @@ def combate_boss3():
 
 
 def combate_fase3():
+    bg = pygame.image.load('assets/backgrounds/saguao.png')
     jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, salas, death_cnt
     xpos -= 1
@@ -2189,6 +2192,7 @@ def mov_f_2():
 
 def mov_f_3():
     count = 2
+    bg = pygame.image.load("assets/backgrounds/saguao.png")
     rest_count = True
     find_bullet = True
     blit_bg = True

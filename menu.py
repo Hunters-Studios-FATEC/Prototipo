@@ -38,6 +38,7 @@ menu_st = pygame.mixer.Sound("assets/audio/Menus/clock_fundo.ogg")
 enter = pygame.mixer.Sound("assets/audio/Menus/Enter.ogg")
 enter.set_volume(0.4)
 select = pygame.mixer.Sound("assets/audio/Menus/select.ogg")
+gun = pygame.mixer.Sound("assets/audio/Combate/pistol.wav")
 
 count = 0
 
@@ -2489,7 +2490,11 @@ def cutscene(cut, fase, background):
             elif cut == cutscene24:
                 screen.fill((0, 0, 0))
                 pygame.display.update()
+                creditos()
+
+            elif cut == cutscene25:
                 submmit_score(save_cnt, rest_cnt, bullet_cnt, death_cnt)
+                menu_start()
 
             else:
                 music_is_playing = False
@@ -2990,6 +2995,42 @@ def upload_data(scr):
                 scoreboard.append(font_menu_2.render(text, True, (255, 255, 255)))
                 pos += 1
     client_socket.close()
+
+
+def creditos():
+    cred = pygame.image.load("assets/backgrounds/créditos.png")
+    cred_y = 1
+    y_change = -1
+    screen.fill((0, 0, 0))
+
+    ch1.play(gun)
+    pygame.time.wait(1500)
+
+    while True:
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    submmit_score(save_cnt, rest_cnt, bullet_cnt, death_cnt)
+                    menu_start()
+                if event.key == K_SPACE:
+                    y_change = -5
+            if event.type == KEYUP:
+                if event.key == K_SPACE:
+                    y_change = -1
+
+        cred_y += y_change
+
+        if cred_y <= -3849:
+            cutscene(cutscene25, "fim", pygame.Surface((1280, 720)))
+
+        screen.blit(cred, (0, cred_y))
+        pygame.display.update()
+        fps.tick(60)
+
 
 
 menu_start()

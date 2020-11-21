@@ -209,7 +209,7 @@ def music(count):
         pygame.mixer.music.load("assets/audio/Musics/warzone.wav")
     elif count == 1:
         # musicF2.play(-1)
-        pygame.mixer.music.load("assets/audio/Musics/wave animada.ogg")
+        pygame.mixer.music.load("assets/audio/Musics/Neon - Scott Buckley.wav")
     elif count == 2:
         # musicF3.play(-1)
         pygame.mixer.music.load("assets/audio/Musics/suspense.wav")

@@ -319,11 +319,14 @@ def menu_start():
                                         barbara.load_stats()
                                 for character in loaded_data['party'][1:]:
                                     if character == "kazi":
-                                        party.append(kazi)
+                                        if kazi not in party:
+                                            party.append(kazi)
                                     elif character == "kenji":
-                                        party.append(kenji)
+                                        if kenji not in party:
+                                            party.append(kenji)
                                     else:
-                                        party.append(barbara)
+                                        if barbara not in party:
+                                            party.append(barbara)
                                 if loaded_data['lvl_room'][0] == 'fase2' or loaded_data['lvl_room'][0] == 'fase3':
                                     kazi.img = pygame.image.load("assets/sprites/peter/davidcombate.png")
                                 salas = loaded_data['lvl_room'][1]
@@ -877,8 +880,10 @@ def combate_boss():
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
     if fase4:
+        hitler2 = Boss(532, 70, 'assets/sprites/hitler/hitleratirando.png', "TRUE HITLER: INACIO", 500)
         inacio = hitler2
     else:
+        hitler = Boss(776, 50, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 30)
         inacio = hitler
 
     soma_xp = 0
@@ -1331,6 +1336,7 @@ def combate_boss2():
 
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
+    antonio = Boss(1760, 100, 'assets/sprites/antonius/antonioatirando.png', "Mussolinius", 50)
     inacio = antonio
 
     ground_2 = pygame.Surface((SCREEN_W, SCREEN_H * 0.3))
@@ -1545,6 +1551,7 @@ def combate_boss3():
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
     if not chronos_fase2:
+        chronos = Boss(2048, 140, 'assets/sprites/cronos/cronos.png', "Cronos", 150)
         inacio = chronos
 
     ground_2 = pygame.Surface((SCREEN_W, SCREEN_H * 0.3))
@@ -1652,6 +1659,7 @@ def combate_boss3():
 
         if inacio == chronos:
             if enemy_life <= inacio.vida_total / 2:
+                chronos2 = Boss(2248, 150, 'assets/sprites/cronos/cronocombate.png', "Cronos", 200)
                 inacio = chronos2
                 chronos_fase2 = True
                 cutscene(cutscene20, "boss3", bg_cut20)
@@ -2610,7 +2618,7 @@ def cutscene(cut, fase, background):
 
 
 def fim_jogo():
-    pygame.mixer.stop()
+    pygame.mixer.music.stop()
     PRETO = (0, 0, 0)
     BRANCO = (255, 255, 255)
 
@@ -2710,11 +2718,14 @@ def fim_jogo():
                                     barbara.load_stats()
                             for character in loaded_data['party'][1:]:
                                 if character == "kazi":
-                                    party.append(kazi)
+                                    if kazi not in party:
+                                        party.append(kazi)
                                 elif character == "kenji":
-                                    party.append(kenji)
+                                    if kenji not in party:
+                                        party.append(kenji)
                                 else:
-                                    party.append(barbara)
+                                    if barbara not in party:
+                                        party.append(barbara)
                             if loaded_data['lvl_room'][0] == 'fase2' or loaded_data['lvl_room'][0] == 'fase3':
                                 kazi.img = pygame.image.load("assets/sprites/peter/davidcombate.png")
                             salas = loaded_data['lvl_room'][1]

@@ -195,8 +195,10 @@ class Boss:
         self.dmg_red_e = 1
         self.nome = nome
         self.xpdrop = xpdrop
+        self.gun_sound = pygame.mixer.Sound("assets/audio/Combate/pistol.wav")
 
     def ataque(self, player):
+        self.gun_sound.play()
         player.vida -= self.dano * player.dmg_red
 
     def enemy_def(self):

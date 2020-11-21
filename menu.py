@@ -753,9 +753,6 @@ def combate_fase1():
 
         if enemy_life <= 0:  # retorna ao movimento em caso de vitória ou derrota
             if salas == 5 and not fase4:
-                cutscene(cutscene10, "fase1", bg_cut1)
-
-            if salas == 5:
                 cutscene(cutscene10, "fase1", bg_cut10)
             salas -= 1
             for i in range(len(party)):

@@ -1521,6 +1521,8 @@ def combate_boss3():
     count = 5
     xpos -= 1
     bg = pygame.image.load("assets/backgrounds/fenda.png")
+    chronos.vida = 1848
+    chronos2.vida = 2048
 
     # enemy/player list and positioning
     allies_pos = []
@@ -1551,7 +1553,6 @@ def combate_boss3():
     # texto que aparece na caixa de log, é mudado a cada ação
     log_text = None
     if not chronos_fase2:
-        chronos = Boss(2048, 140, 'assets/sprites/cronos/cronos.png', "Cronos", 150)
         inacio = chronos
 
     ground_2 = pygame.Surface((SCREEN_W, SCREEN_H * 0.3))
@@ -1659,7 +1660,6 @@ def combate_boss3():
 
         if inacio == chronos:
             if enemy_life <= inacio.vida_total / 2:
-                chronos2 = Boss(2248, 150, 'assets/sprites/cronos/cronocombate.png', "Cronos", 200)
                 inacio = chronos2
                 chronos_fase2 = True
                 cutscene(cutscene20, "boss3", bg_cut20)

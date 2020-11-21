@@ -172,7 +172,7 @@ class Enemy:
 
     def ataque(self, player):
         self.gun_sound.play()
-        player.vida -= self.dano * player.dmg_red
+        player.vida -= round(self.dano * player.dmg_red)
 
     def enemy_def(self):
         self.dmg_red_e = 0.5
@@ -199,7 +199,7 @@ class Boss:
 
     def ataque(self, player):
         self.gun_sound.play()
-        player.vida -= self.dano * player.dmg_red
+        player.vida -= round(self.dano * player.dmg_red)
 
     def enemy_def(self):
         self.dmg_red_e = 0.5
@@ -213,8 +213,8 @@ class Boss:
 hitler = Boss(776, 50, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 30)
 hitler2 = Boss(532, 70, 'assets/sprites/hitler/hitleratirando.png', "TRUE HITLER: INACIO", 500)
 antonio = Boss(1760, 100, 'assets/sprites/antonius/antonioatirando.png', "Mussolinius", 50)
-chronos = Boss(2048, 140, 'assets/sprites/cronos/cronos.png', "Cronos", 150)
-chronos2 = Boss(2248, 150, 'assets/sprites/cronos/cronocombate.png', "Cronos", 200)
+chronos = Boss(1848, 125, 'assets/sprites/cronos/cronos.png', "Cronos", 150)
+chronos2 = Boss(2048, 130, 'assets/sprites/cronos/cronocombate.png', "Cronos", 200)
 
 
 def enemy_gen(vidas, danos, cor_list, name_list, xp1, xp2):

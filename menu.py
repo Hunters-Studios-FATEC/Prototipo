@@ -1943,8 +1943,8 @@ def mov_tutorial():
         if xpos >= 1230:
             xpos = 1
             trans("tutorial")
-        if xpos <= 0:
-            xpos = 0
+        if xpos <= 1:
+            xpos = 1
 
         xpos += xchange
 
@@ -2052,8 +2052,8 @@ def mov_f_1():
         if xpos >= 1230:
             xpos = 1
             trans("fase1")
-        if xpos <= 0:
-            xpos = 0
+        if xpos <= 1:
+            xpos = 1
 
         xpos += xchange
 
@@ -2164,8 +2164,8 @@ def mov_f_2():
         if xpos >= 1230:
             xpos = 1
             trans("fase2")
-        if xpos <= 0:
-            xpos = 0
+        if xpos <= 1:
+            xpos = 1
 
         xpos += xchange
 
@@ -2259,8 +2259,8 @@ def mov_f_3():
                               score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
                     blit_bg = True
                 if rest_count:
-                    rest_cnt += 1
                     if event.key == K_c:
+                        rest_cnt += 1
                         for i in range(len(party)):
                             party[i].rest()
                         rest_count = False
@@ -2278,8 +2278,8 @@ def mov_f_3():
         if xpos >= 1230:
             xpos = 1
             trans("fase3")
-        if xpos <= 0:
-            xpos = 0
+        if xpos <= 1:
+            xpos = 1
 
         xpos += xchange
 
@@ -2775,7 +2775,7 @@ def string_converter(info):
     converted_data['lvl_room'] = lvl_room
 
     data = info[3]
-    x_position = int(float(data))
+    x_position = float(data)
     converted_data['x_pos'] = x_position
 
     data = info[4]
@@ -2858,10 +2858,10 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
     res = 5000
     if sv_c > 4:
         res -= 500 * (sv_c - 4)
-    if rst_c > 25:
-        res -= 200 * (rst_c - 25)
+    if rst_c > 10:
+        res -= 150 * (rst_c - 10)
     if blt_c > 20:
-        res -= 180 * (rst_c - 20)
+        res -= 100 * (blt_c - 20)
     res -= 800 * dth_c
     if res < 0:
         res = 0
@@ -2895,6 +2895,8 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
     text3 = font_menu_2.render(f'Recuperações de vida: {rst_c}x', True, (255, 255, 255))
     text4 = font_menu_2.render(f'Recargas de munição: {blt_c}x', True, (255, 255, 255))
     text5 = font_menu_2.render(f'Mortes em batalha: {dth_c}x', True, (255, 255, 255))
+    text6 = font_menu_2.render(f'Resultado: {res2} pontos', True, (255, 255, 255))
+    text7 = font_menu_2.render(f'Rank: {rank}', True, (255, 255, 255))
 
     user_input = ''
     running = True
@@ -2962,10 +2964,12 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
 
         screen.fill((0, 0, 0))
         screen.blit(text1, (screen.get_width() // 2 - text1.get_width() // 2, 100))
-        screen.blit(text2, (screen.get_width() // 2 - text2.get_width() // 2, 300))
-        screen.blit(text3, (screen.get_width() // 2 - text3.get_width() // 2, 380))
-        screen.blit(text4, (screen.get_width() // 2 - text4.get_width() // 2, 460))
-        screen.blit(text5, (screen.get_width() // 2 - text5.get_width() // 2, 540))
+        screen.blit(text2, (50, 300))
+        screen.blit(text3, (50, 380))
+        screen.blit(text4, (50, 460))
+        screen.blit(text5, (50, 540))
+        screen.blit(text6, (732, 300))
+        screen.blit(text7, (732, 380))
         user_name = font_menu_2.render(user_input, True, (255, 255, 255))
         screen.blit(user_name, (screen.get_width() // 2 - user_name.get_width() // 2, 200))
         pygame.display.update()

@@ -20,6 +20,10 @@ SCREEN_W = 1280
 screen = pygame.display.set_mode((1280, 720))
 screen.fill((0, 0, 0))
 
+pygame.display.set_caption("Out of Time")
+icone = pygame.image.load("assets/icone.png")
+pygame.display.set_icon(icone)
+
 font_menu = pygame.font.Font("assets/fontes/Very Damaged.ttf", 100)
 font_menu_2 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 50)
 font_menu_3 = pygame.font.Font("assets/fontes/Very Damaged.ttf", 24)
@@ -34,6 +38,7 @@ menu_st = pygame.mixer.Sound("assets/audio/Menus/clock_fundo.ogg")
 enter = pygame.mixer.Sound("assets/audio/Menus/Enter.ogg")
 enter.set_volume(0.4)
 select = pygame.mixer.Sound("assets/audio/Menus/select.ogg")
+gun = pygame.mixer.Sound("assets/audio/Combate/pistol.wav")
 
 count = 0
 
@@ -168,13 +173,12 @@ bg_cut16 = pygame.image.load('assets/backgrounds/cut16.png')
 bg_cut17 = pygame.image.load('assets/backgrounds/cut17.png')
 bg_cut18 = pygame.image.load('assets/backgrounds/cut18.png')
 bg_cut19 = pygame.image.load('assets/backgrounds/cut19.png')
-bg_cut19_2 = pygame.image.load('assets/backgrounds/cut19_2.png')
-bg_cut20 = pygame.image.load('assets/backgrounds/cut19_2.png')
+bg_cut20 = pygame.image.load('assets/backgrounds/cut20.png')
 bg_cut21 = pygame.image.load('assets/backgrounds/cut21.png')
 bg_cut21_2 = pygame.image.load('assets/backgrounds/cut21_2.png')
-bg_cut22 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut23 = pygame.image.load('assets/backgrounds/cut1.jpeg')
-bg_cut24 = pygame.image.load('assets/backgrounds/cut1.jpeg')
+bg_cut22 = pygame.image.load('assets/backgrounds/cut8.png')
+bg_cut23 = pygame.image.load('assets/backgrounds/cut23.png')
+bg_cut24 = pygame.image.load('assets/backgrounds/cut24.png')
 bg_cut25 = pygame.image.load('assets/backgrounds/cut1.jpeg')
 
 
@@ -637,7 +641,7 @@ def combate_fase1():
                                     ally_index += 1
                                 else:
                                     if salas == 5 and not fase4:
-                                        log_text = "SIFODE AE OTARIO"
+                                        log_text = "Não pode correr"
                                     else:
                                         salas -= 1
                                         ch1.play(run)
@@ -867,7 +871,7 @@ def combate_boss():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
-                                    log_text = "SIFUDEU KKK"
+                                    log_text = "Não pode correr"
                             elif enemy_select:
                                 if battle_state == 'attack':
                                     party[ally_index].attack(inacio)
@@ -1077,7 +1081,7 @@ def combate_fase2():
                                     ally_index += 1
                                 else:
                                     if salas == 5:
-                                        log_text = "SIFODE AE OTARIO"
+                                        log_text = "Não pode correr"
                                     else:
                                         salas -= 1
                                         ch1.play(run)
@@ -1303,7 +1307,7 @@ def combate_boss2():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
-                                    log_text = "SIFUDEU KKK"
+                                    log_text = "Não pode correr"
                             elif enemy_select:
                                 if battle_state == 'attack':
                                     party[ally_index].attack(inacio)
@@ -1424,7 +1428,7 @@ def combate_boss3():
     global xpos, inacio, chronos_fase2, death_cnt, music_is_playing
     count = 5
     xpos -= 1
-    bg = pygame.image.load("assets/backgrounds/fenda.png")
+    bg = pygame.image.load("assets/backgrounds/sala final.png")
     chronos.vida = 1848
     chronos2.vida = 2048
 
@@ -1508,7 +1512,7 @@ def combate_boss3():
                                     log_text = "{} defende".format(party[ally_index].nome)
                                     ally_index += 1
                                 else:
-                                    log_text = "SIFUDEU KKK"
+                                    log_text = "Não pode correr"
                             elif enemy_select:
                                 if battle_state == 'attack':
                                     party[ally_index].attack(inacio)
@@ -1613,8 +1617,8 @@ def combate_boss3():
                 screen.blit(party[i].img, (allies_pos[i][0], allies_pos[i][1] - 530))
                 screen.blit(party[i].barra, (allies_pos[i][0] + 60, allies_pos[i][1] - 550))
                 party[i].life_update()
-        screen.blit(inacio.img, (enemy_pos[0][0], enemy_pos[0][1] - 625))
-        screen.blit(inacio.barra, (enemy_pos[0][0] + 90, enemy_pos[0][1] - 625))
+        screen.blit(inacio.img, (enemy_pos[0][0] + 50, enemy_pos[0][1] - 625))
+        screen.blit(inacio.barra, (enemy_pos[0][0] + 110, enemy_pos[0][1] - 625))
         inacio.life_update()
 
         battle_log.update()
@@ -1624,7 +1628,7 @@ def combate_boss3():
         battle_box.draw()
         if player_turn:
             if enemy_select:
-                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 115, enemy_pos[seta_vert_pos][1] - 720))
+                screen.blit(seta_vert, (enemy_pos[seta_vert_pos][0] + 135, enemy_pos[seta_vert_pos][1] - 720))
             if battle_state == 'action':
                 screen.blit(seta, (setax, setay))
 
@@ -1632,9 +1636,9 @@ def combate_boss3():
 
 
 def combate_fase3():
-    bg = pygame.image.load('assets/backgrounds/saguao.png')
     jacob.img = pygame.image.load('assets/sprites/jacob/jacobcombate.png')
     global xpos, salas, death_cnt
+    bg = pygame.image.load('assets/backgrounds/saguao.png')
     xpos -= 1
 
     allies_pos = []
@@ -1724,7 +1728,7 @@ def combate_fase3():
                                     ally_index += 1
                                 else:
                                     if salas == 5:
-                                        log_text = "SIFODE AE OTARIO"
+                                        log_text = "Não pode correr"
                                     else:
                                         salas -= 1
                                         ch1.play(run)
@@ -1836,6 +1840,8 @@ def combate_fase3():
             ally_index = 0
             player_turn = False
 
+        screen.blit(bg, (0, -190))
+
         for i in range(len(party)):
             if party[i].vida > 0:
                 screen.blit(party[i].img, ((allies_pos[i][0], allies_pos[i][1] - 530)))
@@ -1846,7 +1852,7 @@ def combate_fase3():
             screen.blit(enemy_list[e].barra, (enemy_pos[e][0] + 80, enemy_pos[e][1] - 540))
             enemy_list[e].life_update()
 
-        screen.blit(ground_2, (0, SCREEN_H - 200))
+
         battle_log.update()
         battle_log.draw()
         battle_log.draw_text(log_text, screen)
@@ -2382,6 +2388,11 @@ def cutscene(cut, fase, background):
                 bg = bg_cut13_2
                 blit_bg = True
 
+        elif cut == cutscene21:
+            if cutscene21.cur_step == 9:
+                bg = bg_cut21_2
+                blit_bg = True
+
         if not gerenciador.cutscene_running:
             if cut == cutscene4:
                 combate_tutorial()
@@ -2475,7 +2486,11 @@ def cutscene(cut, fase, background):
             elif cut == cutscene24:
                 screen.fill((0, 0, 0))
                 pygame.display.update()
+                creditos()
+
+            elif cut == cutscene25:
                 submmit_score(save_cnt, rest_cnt, bullet_cnt, death_cnt)
+                menu_start()
 
             else:
                 music_is_playing = False
@@ -3037,6 +3052,42 @@ def upload_data(scr):
                        f'(Rank {scores_list[score][2]})'
                 scoreboard.append(font_menu_2.render(text, True, (255, 255, 255)))
                 pos += 1
+
+
+def creditos():
+    cred = pygame.image.load("assets/backgrounds/créditos.png")
+    cred_y = 1
+    y_change = -1
+    screen.fill((0, 0, 0))
+
+    ch1.play(gun)
+    pygame.time.wait(1500)
+
+    while True:
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    submmit_score(save_cnt, rest_cnt, bullet_cnt, death_cnt)
+                    menu_start()
+                if event.key == K_SPACE:
+                    y_change = -5
+            if event.type == KEYUP:
+                if event.key == K_SPACE:
+                    y_change = -1
+
+        cred_y += y_change
+
+        if cred_y <= -3849:
+            cutscene(cutscene25, "fim", pygame.Surface((1280, 720)))
+
+        screen.blit(cred, (0, cred_y))
+        pygame.display.update()
+        fps.tick(60)
+
 
 
 menu_start()

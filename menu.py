@@ -240,7 +240,6 @@ def menu_start():
                                         jacob.vida = data[0]
                                         jacob.dano_m = data[1]
                                         jacob.dano_r = data[2]
-                                        jacob.nome = "jacob"
                                         jacob.level = data[4]
                                         jacob.xp = data[5]
                                         jacob.ammo = data[6]
@@ -252,7 +251,6 @@ def menu_start():
                                         kazi.vida = data[0]
                                         kazi.dano_m = data[1]
                                         kazi.dano_r = data[2]
-                                        kazi.nome = "kazi"
                                         kazi.level = data[4]
                                         kazi.xp = data[5]
                                         kazi.ammo = data[6]
@@ -264,7 +262,6 @@ def menu_start():
                                         kenji.vida = data[0]
                                         kenji.dano_m = data[1]
                                         kenji.dano_r = data[2]
-                                        kenji.nome = "kenji"
                                         kenji.level = data[4]
                                         kenji.xp = data[5]
                                         kenji.ammo = data[6]
@@ -276,7 +273,6 @@ def menu_start():
                                         barbara.vida = data[0]
                                         barbara.dano_m = data[1]
                                         barbara.dano_r = data[2]
-                                        barbara.nome = "barbara"
                                         barbara.level = data[4]
                                         barbara.xp = data[5]
                                         barbara.ammo = data[6]
@@ -1956,7 +1952,7 @@ def mov_tutorial():
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
-        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
+        screen.blit(bg, (0, 0), (0, 0, 319, mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         fps.tick(60)
         pygame.display.update()
@@ -2071,7 +2067,7 @@ def mov_f_1():
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
         mov_log = font_menu_3.render(mov_log_text, True, (0, 0, 0))
-        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
+        screen.blit(bg, (0, 0), (0, 0, 319, mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         fps.tick(60)
         pygame.display.update()
@@ -2184,7 +2180,7 @@ def mov_f_2():
                          jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
-        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
+        screen.blit(bg, (0, 0), (0, 0, 319, mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         fps.tick(60)
         pygame.display.update()
@@ -2298,7 +2294,7 @@ def mov_f_3():
                          jacob.img.get_width() + 50, jacob.img.get_height()))
         screen.blit(jacob.img, (xpos, SCREEN_H - jacob.img.get_height()))
         jacob.update(0.25, direction)
-        screen.blit(bg, (0, 0), (0, 0, mov_log.get_width(), mov_log.get_height()))
+        screen.blit(bg, (0, 0), (0, 0, 319, mov_log.get_height()))
         screen.blit(mov_log, (0, 0))
         fps.tick(60)
         pygame.display.update()
@@ -2534,7 +2530,6 @@ def fim_jogo():
                                     jacob.vida = data[0]
                                     jacob.dano_m = data[1]
                                     jacob.dano_r = data[2]
-                                    jacob.nome = "jacob"
                                     jacob.level = data[4]
                                     jacob.xp = data[5]
                                     jacob.ammo = data[6]
@@ -2547,7 +2542,6 @@ def fim_jogo():
                                     kazi.vida = data[0]
                                     kazi.dano_m = data[1]
                                     kazi.dano_r = data[2]
-                                    kazi.nome = "kazi_past"
                                     kazi.level = data[4]
                                     kazi.xp = data[5]
                                     kazi.ammo = data[6]
@@ -2559,7 +2553,6 @@ def fim_jogo():
                                     kenji.vida = data[0]
                                     kenji.dano_m = data[1]
                                     kenji.dano_r = data[2]
-                                    kenji.nome = "kenji"
                                     kenji.level = data[4]
                                     kenji.xp = data[5]
                                     kenji.ammo = data[6]
@@ -2571,7 +2564,6 @@ def fim_jogo():
                                     barbara.vida = data[0]
                                     barbara.dano_m = data[1]
                                     barbara.dano_r = data[2]
-                                    barbara.nome = "barbara"
                                     barbara.level = data[4]
                                     barbara.xp = data[5]
                                     barbara.ammo = data[6]
@@ -2801,6 +2793,50 @@ def string_converter(info):
 
 
 scoreboard = list()
+points = ["('GKY', '4500', 'SS')", "('ABB', '3500', 'S')", "('PHK', '2500', 'A')",
+          "('BLS', '1500', 'B')", "('ACR', '1000', 'C')"]
+clientes = list()
+socket_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+connected_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+
+def init_server():
+    host = '127.0.0.1'
+    port = 55000
+
+    try:
+        socket_server.bind((host, port))
+    except socket.error:
+        pass
+    else:
+        socket_server.listen(5)
+
+        while True:
+            try:
+                client, address = socket_server.accept()
+            except socket.error:
+                break
+            else:
+                start_new_thread(threaded_client, (client, ))
+
+
+def threaded_client(connection):
+    global connected_client
+
+    while True:
+        try:
+            data = connection.recv(1024)
+        except socket.error:
+            break
+        else:
+            if connection not in clientes:
+                clientes.append(connection)
+                connected_client = connection
+
+            info = data.decode('ascii')
+            points.append(info)
+            for c in clientes:
+                c.sendall(str(points).encode('ascii'))
 
 
 def submmit_score(sv_c, rst_c, blt_c, dth_c):
@@ -2823,12 +2859,25 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
         rank = 'A'
     elif res >= 1500:
         rank = 'B'
-    else:
+    elif res >= 1000:
         rank = 'C'
+    elif res > 0:
+        rank = 'D'
+    else:
+        rank = 'F'
+
+    res2 = ''
+    res2 += str(res // 1000)
+    res %= 1000
+    res2 += str(res // 100)
+    res %= 100
+    res2 += str(res // 10)
+    res %= 10
+    res2 += str(res)
 
     text1 = font_menu_2.render('Digite suas iniciais: ', True, (255, 255, 255))
     text2 = font_menu_2.render(f'Quantidades de saves: {sv_c}x', True, (255, 255, 255))
-    text3 = font_menu_2.render(f'Recuperações de vida: {rest_cnt}x', True, (255, 255, 255))
+    text3 = font_menu_2.render(f'Recuperações de vida: {rst_c}x', True, (255, 255, 255))
     text4 = font_menu_2.render(f'Recargas de munição: {blt_c}x', True, (255, 255, 255))
     text5 = font_menu_2.render(f'Mortes em batalha: {dth_c}x', True, (255, 255, 255))
 
@@ -2851,6 +2900,8 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
                         user_input += 'R'
                     if event.key == pygame.K_t:
                         user_input += 'T'
+                    if event.key == pygame.K_y:
+                        user_input += 'Y'
                     if event.key == pygame.K_u:
                         user_input += 'U'
                     if event.key == pygame.K_i:
@@ -2904,7 +2955,7 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
         screen.blit(user_name, (screen.get_width() // 2 - user_name.get_width() // 2, 200))
         pygame.display.update()
 
-    return scores_screen(user_input, res, rank)
+    return scores_screen(user_input, res2, rank)
 
 
 def scores_screen(name, result, rank):
@@ -2915,10 +2966,18 @@ def scores_screen(name, result, rank):
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                socket_server.close()
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    connected_client.close()
+                    if len(clientes) > 0:
+                        clientes.remove(connected_client)
+                    menu_start()
 
         if uploading:
+            start_new_thread(init_server, ())
             start_new_thread(upload_data, ((name, result, rank),))
             uploading = False
 
@@ -2927,7 +2986,7 @@ def scores_screen(name, result, rank):
 
         y = 0
         for info in scoreboard:
-            screen.blit(info, (screen.get_width() // 2 - info.get_width() // 2, 100 + 80 * y))
+            screen.blit(info, (322, 100 + 80 * y))
             y += 1
 
         pygame.display.update()
@@ -2940,19 +2999,17 @@ def upload_data(scr):
 
     try:
         client_socket.connect((host, port))
-    except socket.error as e:
-        print(str(e))
+    except socket.error:
+        pass
 
     client_socket.sendall(str(scr).encode('ascii'))
     while True:
         try:
             data = client_socket.recv(1024)
-        except socket.error as e:
-            print(str(e))
+        except socket.error:
             break
         else:
             info = data.decode('ascii')
-
             scores_list = list()
             scr_info = info[1:-1]
             start_point = 0
@@ -2968,6 +3025,7 @@ def upload_data(scr):
                     end_point = end + 1
                     converted_info = scr_info[start + 1:end].split(', ')
                     converted_info[0] = converted_info[0][1:-1]
+                    converted_info[1] = converted_info[1][1:-1]
                     converted_info[2] = converted_info[2][1:-1]
                     scores_list.append(converted_info)
             scores_list.sort(key=lambda scr_data: int(scr_data[1]), reverse=True)
@@ -2979,7 +3037,6 @@ def upload_data(scr):
                        f'(Rank {scores_list[score][2]})'
                 scoreboard.append(font_menu_2.render(text, True, (255, 255, 255)))
                 pos += 1
-    client_socket.close()
 
 
 menu_start()

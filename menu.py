@@ -9,7 +9,6 @@ from scripts.classes import *
 from scripts.battle_ui import BattleBox, Button, BattleLog
 from _thread import start_new_thread
 import socket
-from assets.cutscenes.compressor import *
 
 pygame.init()
 pygame.mixer.init()
@@ -73,8 +72,6 @@ fase4 = False
 
 seta = pygame.image.load("assets/sprites/SETA1.png")
 seta_vert = pygame.image.load("assets/sprites/SETA1_vert.png")
-
-decompress()
 
 cut1 = json.load(open("assets/cutscenes/cut1.json", encoding='utf-8'))
 cut2 = json.load(open("assets/cutscenes/cut2.json", encoding='utf-8'))
@@ -208,8 +205,6 @@ def controles():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -231,8 +226,6 @@ def menu_start():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -240,8 +233,6 @@ def menu_start():
                     if game_select:
                         game_select = False
                     else:
-                        os.chdir('assets/cutscenes')
-                        compress()
                         pygame.quit()
                         sys.exit()
                 if event.key == pygame.K_s:
@@ -413,8 +404,6 @@ def combate_tutorial():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -622,8 +611,6 @@ def combate_fase1():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -859,8 +846,6 @@ def combate_boss():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -1066,8 +1051,6 @@ def combate_fase2():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -1299,8 +1282,6 @@ def combate_boss2():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -1506,8 +1487,6 @@ def combate_boss3():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -1719,8 +1698,6 @@ def combate_fase3():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -1939,8 +1916,6 @@ def mov_tutorial():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -2045,8 +2020,6 @@ def mov_f_1():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -2159,8 +2132,6 @@ def mov_f_2():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -2275,8 +2246,6 @@ def mov_f_3():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
@@ -2363,8 +2332,6 @@ def trans(fase):
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
 
@@ -2397,8 +2364,6 @@ def cutscene(cut, fase, background):
         fps.tick(60)
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
 
@@ -2575,8 +2540,6 @@ def fim_jogo():
 
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
 
@@ -2694,8 +2657,6 @@ def save_game(**dados):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -2749,8 +2710,6 @@ def load_file():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -2962,8 +2921,6 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
         if len(user_input) < 3:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    os.chdir('assets/cutscenes')
-                    compress()
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
@@ -3045,8 +3002,6 @@ def scores_screen(name, result, rank):
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 socket_server.close()
                 pygame.quit()
                 sys.exit()
@@ -3133,8 +3088,6 @@ def creditos():
 
         for event in pygame.event.get():
             if event.type == QUIT:
-                os.chdir('assets/cutscenes')
-                compress()
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:

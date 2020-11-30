@@ -46,24 +46,6 @@
       "rgb_color": [0, 0, 0],
       "pos_x": 50,
       "pos_y": 50
-    },
-    {
-      "step": 5,
-      "text": "Jacob: Se me lembro bem, ele foi hospitalizado aqui no final da guerra.",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
-    },
-    {
-      "step": 6,
-      "text": "Jacob: Finalmente a humanidade não sentirá os horrores desse monstro...",
-      "speed": 0.4,
-      "size": 40,
-      "rgb_color": [0, 0, 0],
-      "pos_x": 50,
-      "pos_y": 50
     }
   ]
 }

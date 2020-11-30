@@ -1,6 +1,6 @@
 {
   "name": "Cutscene 5",
-  "final_step": 3,
+  "final_step": 4,
   "events": [
     {
       "step": 0,
@@ -31,6 +31,15 @@
     },
     {
       "step": 3,
+      "text": "Rapidamente, Jacob coloca a data '10 de outubro de 1918' em seu relógio, e o ativa",
+      "speed": 0.4,
+      "size": 40,
+      "rgb_color": [237, 237, 237],
+      "pos_x": 50,
+      "pos_y": 50
+    },
+    {
+      "step": 4,
       "text": "Nazista 1: Mas que diab...",
       "speed": 0.4,
       "size": 40,
@@ -38,6 +47,5 @@
       "pos_x": 50,
       "pos_y": 50
     }
-
   ]
 }

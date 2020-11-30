@@ -58,7 +58,7 @@
     },
     {
       "step": 6,
-      "text": "De repente, uma movimentação incomum próxima toma sua atenção.",
+      "text": "De repente, uma movimentação incomum toma sua atenção.",
       "speed": 0.4,
       "size": 40,
       "rgb_color": [237, 237, 237],
@@ -94,7 +94,7 @@
     },
     {
       "step": 10,
-      "text": "Jacob pega, sem jeito, o relógio de pulso.",
+      "text": "Jacob pega, sem jeito, o relógio.",
       "speed": 0.6,
       "size": 40,
       "rgb_color": [237, 237, 237],

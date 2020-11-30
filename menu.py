@@ -3,10 +3,10 @@ import sys
 import random
 from pygame.locals import *
 from assets.cutscenes import *
-from cutscene_manager import CutSceneManager, Cutscene
+from scripts.cutscene_manager import CutSceneManager, Cutscene
 import json
-from classes import *
-from battle_ui import BattleBox, Button, BattleLog
+from scripts.classes import *
+from scripts.battle_ui import BattleBox, Button, BattleLog
 from _thread import start_new_thread
 import socket
 
@@ -46,12 +46,12 @@ ch1 = pygame.mixer.Channel(0)
 ch2 = pygame.mixer.Channel(1)
 
 play = font_menu_2.render("Play", True, (255, 255, 255))
-options = font_menu_2.render("Options", True, (255, 255, 255))
+options = font_menu_2.render("Controles", True, (255, 255, 255))
 new_game = font_menu_2.render('New Game', True, (255, 255, 255))
 load_game = font_menu_2.render('Load Game', True, (255, 255, 255))
 X = font_menu_2.render("X", True, (0, 0, 0))
 gam = font_menu.render("Game", True, (255, 255, 255))
-opt = font_menu.render("Options", True, (255, 255, 255))
+opt = font_menu.render("Controles", True, (255, 255, 255))
 save_text = font_menu_2.render('Choose a slot:', True, (255, 255, 255))
 slots = (font_menu_2.render('Slot 1', True, (255, 255, 255)), font_menu_2.render('Slot 2', True, (255, 255, 255)),
          font_menu_2.render('Slot 3', True, (255, 255, 255)))
@@ -199,9 +199,26 @@ def music(count):
     pygame.mixer.music.play(-1)
 
 
+def controles():
+    bg = pygame.image.load("assets/backgrounds/controles.png")
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    menu_start()
+
+        screen.blit(bg, (0, 0))
+        pygame.display.update()
+
+
 def menu_start():
     menu_select = True
     game_select = False
+    control_select = False
     menu_st.play(-1)
     while True:
 
@@ -229,7 +246,7 @@ def menu_start():
                         if menu_select:
                             game_select = True
                         else:
-                            pass
+                            controles()
                     else:
                         if menu_select:
                             pygame.mixer.stop()
@@ -811,7 +828,7 @@ def combate_boss():
 
     log_text = None
     if fase4:
-        hitler2 = Boss(532, 70, 'assets/sprites/hitler/hitleratirando.png', "TRUE HITLER: INACIO", 500)
+        hitler2 = Boss(532, 70, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 500)
         inacio = hitler2
     else:
         hitler = Boss(776, 50, 'assets/sprites/hitler/hitleratirando.png', "Hitler", 30)

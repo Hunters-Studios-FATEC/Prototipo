@@ -23,32 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0e1bda3-55a2-4d0d-93c0-82e416655e6a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/cutscenes/compressor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut10.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut11.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut12.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut13.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut14.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut15.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut17.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut18.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut19.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut20.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut21.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut22.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut23.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut24.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut25.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut5.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut6.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut7.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut8.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cut9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/cutscenes/cutscenes.zip" beforeDir="false" afterPath="$PROJECT_DIR$/assets/cutscenes/cutscenes.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,8 +49,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.ChangelistConflict" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gustavo\PycharmProjects\JogoSMAUG-2\Prototipo\scripts" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.menu">
     <configuration name="compressor (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -161,6 +143,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="save_compressor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Prototipo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/save_compressor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sonic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Prototipo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,14 +188,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.menu" />
+        <item itemvalue="Python.save_compressor" />
         <item itemvalue="Python.compressor (1)" />
         <item itemvalue="Python.compressor" />
         <item itemvalue="Python.compressor" />
-        <item itemvalue="Python.sonic" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a0e1bda3-55a2-4d0d-93c0-82e416655e6a" name="Default Changelist" comment="" />
@@ -228,21 +234,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606762487589" />
-    <state width="1899" height="279" key="GridCell.Tab.0.bottom" timestamp="1606766150056">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1344" height="167" key="GridCell.Tab.0.bottom" timestamp="1606794812635">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1344" height="167" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606794812635" />
     <state width="1899" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606766150056" />
-    <state width="1899" height="279" key="GridCell.Tab.0.center" timestamp="1606766150056">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1344" height="167" key="GridCell.Tab.0.center" timestamp="1606794812635">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1344" height="167" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606794812635" />
     <state width="1899" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606766150056" />
-    <state width="1899" height="279" key="GridCell.Tab.0.left" timestamp="1606766150056">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1344" height="167" key="GridCell.Tab.0.left" timestamp="1606794812635">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1344" height="167" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606794812635" />
     <state width="1899" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606766150056" />
-    <state width="1899" height="279" key="GridCell.Tab.0.right" timestamp="1606766150056">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1344" height="167" key="GridCell.Tab.0.right" timestamp="1606794812635">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1344" height="167" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606794812635" />
     <state width="1899" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606766150056" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1606764569911">
       <screen x="0" y="0" width="1920" height="1040" />

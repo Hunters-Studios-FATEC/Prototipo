@@ -10,6 +10,7 @@ from scripts.battle_ui import BattleBox, Button, BattleLog
 from _thread import start_new_thread
 import socket
 from assets.cutscenes.compressor import *
+from scripts.save_compressor import *
 
 pygame.init()
 pygame.mixer.init()
@@ -75,6 +76,7 @@ seta = pygame.image.load("assets/sprites/SETA1.png")
 seta_vert = pygame.image.load("assets/sprites/SETA1_vert.png")
 
 decompress()
+decompress_save()
 
 cut1 = json.load(open("assets/cutscenes/cut1.json", encoding='utf-8'))
 cut2 = json.load(open("assets/cutscenes/cut2.json", encoding='utf-8'))
@@ -208,6 +210,7 @@ def controles():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -231,6 +234,7 @@ def menu_start():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -240,6 +244,7 @@ def menu_start():
                     if game_select:
                         game_select = False
                     else:
+                        compress_save()
                         os.chdir('assets/cutscenes')
                         compress()
                         pygame.quit()
@@ -413,6 +418,7 @@ def combate_tutorial():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -622,6 +628,7 @@ def combate_fase1():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -859,6 +866,7 @@ def combate_boss():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -1066,6 +1074,7 @@ def combate_fase2():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -1299,6 +1308,7 @@ def combate_boss2():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -1506,6 +1516,7 @@ def combate_boss3():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -1719,6 +1730,7 @@ def combate_fase3():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -1939,6 +1951,7 @@ def mov_tutorial():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -1963,8 +1976,8 @@ def mov_tutorial():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(0, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
-                              score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
+                              lvl_room=(0, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
+                              find_bullet=find_bullet, score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2045,6 +2058,7 @@ def mov_f_1():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2073,8 +2087,9 @@ def mov_f_1():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
-                              score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt), fase4=fase4)
+                              lvl_room=(1, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
+                              find_bullet=find_bullet, score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt),
+                              fase4=fase4)
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2159,6 +2174,7 @@ def mov_f_2():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2187,8 +2203,8 @@ def mov_f_2():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(2, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
-                              score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
+                              lvl_room=(2, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
+                              find_bullet=find_bullet, score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2275,6 +2291,7 @@ def mov_f_3():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2303,8 +2320,8 @@ def mov_f_3():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(3, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
-                              score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
+                              lvl_room=(3, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
+                              find_bullet=find_bullet, score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2363,6 +2380,7 @@ def trans(fase):
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2397,6 +2415,7 @@ def cutscene(cut, fase, background):
         fps.tick(60)
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2568,13 +2587,14 @@ def fim_jogo():
 
     fim_de_jogo = True
     selector = True
-    global salas, xpos, rest_c, find_b, loaded_content, fase4, save_cnt, rest_cnt, bullet_cnt, death_cnt
+    global salas, xpos, rest_c, find_b, loaded_content, fase4, save_cnt, rest_cnt, bullet_cnt, death_cnt, music_is_playing
     while fim_de_jogo:
 
         screen.fill(PRETO)
 
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2660,6 +2680,7 @@ def fim_jogo():
                             save_cnt, rest_cnt, bullet_cnt, death_cnt = loaded_data['score_conds']
                             if len(loaded_data) > 7:
                                 fase4 = loaded_data['fase4']
+                            music_is_playing = False
                             trans(loaded_data['lvl_room'][0])
 
         screen.blit(game_over, (screen.get_width() / 2 - game_over.get_rect().width / 2, 100))
@@ -2694,6 +2715,7 @@ def save_game(**dados):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2749,6 +2771,7 @@ def load_file():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()
@@ -2962,6 +2985,7 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
         if len(user_input) < 3:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    compress_save()
                     os.chdir('assets/cutscenes')
                     compress()
                     pygame.quit()
@@ -3038,6 +3062,8 @@ def submmit_score(sv_c, rst_c, blt_c, dth_c):
 
 
 def scores_screen(name, result, rank):
+    global salas, music_is_playing
+
     text1 = font_menu_2.render('LEADERBOARD', True, (255, 255, 255))
     uploading = True
 
@@ -3045,6 +3071,7 @@ def scores_screen(name, result, rank):
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 socket_server.close()
@@ -3055,6 +3082,8 @@ def scores_screen(name, result, rank):
                     connected_client.close()
                     if len(clientes) > 0:
                         clientes.remove(connected_client)
+                    music_is_playing = False
+                    salas = 0
                     menu_start()
 
         if uploading:
@@ -3133,6 +3162,7 @@ def creditos():
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
                 pygame.quit()

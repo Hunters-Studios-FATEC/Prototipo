@@ -1976,8 +1976,8 @@ def mov_tutorial():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(0, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
-                              find_bullet=find_bullet, score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
+                              lvl_room=(0, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2087,9 +2087,8 @@ def mov_f_1():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(1, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
-                              find_bullet=find_bullet, score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt),
-                              fase4=fase4)
+                              lvl_room=(1, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt), fase4=fase4)
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2203,8 +2202,8 @@ def mov_f_2():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(2, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
-                              find_bullet=find_bullet, score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
+                              lvl_room=(2, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2320,8 +2319,8 @@ def mov_f_3():
                                       stats, chr_list[stats].level, chr_list[stats].xp, chr_list[stats].ammo,
                                       chr_list[stats].inc_mel, chr_list[stats].inc_ran, chr_list[stats].inc_vida)
                                      for stats in range(len(chr_list))], party=[character.nome for character in party],
-                              lvl_room=(3, salas - 1), x_pos=float(int(xpos)), rest_count=rest_count,
-                              find_bullet=find_bullet, score_conds=(save_cnt + 1, rest_cnt, bullet_cnt, death_cnt))
+                              lvl_room=(3, salas - 1), x_pos=xpos, rest_count=rest_count, find_bullet=find_bullet,
+                              score_conds=(save_cnt, rest_cnt, bullet_cnt, death_cnt))
                     blit_bg = True
                 if rest_count:
                     if event.key == K_c:
@@ -2892,7 +2891,7 @@ scoreboard = list()
 points = ["('GKY', '4500', 'SS')", "('ABB', '3500', 'S')", "('PHK', '2500', 'A')",
           "('BLS', '1500', 'B')", "('ACR', '1000', 'C')"]
 clientes = list()
-socket_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+connected_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 connected_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
@@ -2900,12 +2899,17 @@ def init_server():
     host = '127.0.0.1'
     port = 55000
 
+    socket_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    global connected_server
+
     try:
         socket_server.bind((host, port))
     except socket.error:
         pass
     else:
         socket_server.listen(5)
+        connected_server = socket_server
 
         while True:
             try:
@@ -2917,17 +2921,15 @@ def init_server():
 
 
 def threaded_client(connection):
-    global connected_client
-
     while True:
         try:
             data = connection.recv(1024)
         except socket.error:
+            clientes.remove(connection)
             break
         else:
             if connection not in clientes:
                 clientes.append(connection)
-                connected_client = connection
 
             info = data.decode('ascii')
             points.append(info)
@@ -3074,14 +3076,14 @@ def scores_screen(name, result, rank):
                 compress_save()
                 os.chdir('assets/cutscenes')
                 compress()
-                socket_server.close()
+                connected_client.close()
+                connected_server.close()
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     connected_client.close()
-                    if len(clientes) > 0:
-                        clientes.remove(connected_client)
+                    connected_server.close()
                     music_is_playing = False
                     salas = 0
                     menu_start()
@@ -3107,12 +3109,16 @@ def upload_data(scr):
     host = '127.0.0.1'
     port = 55000
 
+    global connected_client
+
     try:
         client_socket.connect((host, port))
     except socket.error:
         pass
 
     client_socket.sendall(str(scr).encode('ascii'))
+    connected_client = client_socket
+
     while True:
         try:
             data = client_socket.recv(1024)

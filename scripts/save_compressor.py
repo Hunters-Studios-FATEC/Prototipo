@@ -37,7 +37,10 @@ def compress_save():
             compressed_file.write(compr_lvlroom + '\n')
 
             x_pos = chr(int(data_dict['x_pos']) + 200)
-            compressed_file.write(str(x_pos) + '\n')
+            if data_dict['x_pos'] % 1 == 0:
+                compressed_file.write(x_pos + '\n')
+            else:
+                compressed_file.write(x_pos + '$' + '\n')
 
             if data_dict['rest_counter'] is True:
                 rest_counter = 't'
@@ -177,7 +180,9 @@ def decompress_save():
             decompr_file.write(decomp_lvlroom + '\n')
 
             xpos = info[3]
-            decomp_xpos = float(ord(xpos)) - 200
+            decomp_xpos = float(ord(xpos[0])) - 200
+            if len(xpos) == 2:
+                decomp_xpos += 0.5
             decompr_file.write(str(decomp_xpos) + '\n')
 
             rest_c = info[4]
@@ -204,7 +209,7 @@ def decompress_save():
             decompr_file.write(decomp_score_conds + '\n')
 
             if len(info) > 7:
-                fase4 = info[5]
+                fase4 = info[7]
                 if fase4 == 't':
                     decomp_fase4 = 'True'
                 else:
